@@ -1,8 +1,0 @@
-runtime: php74
-runtime_config:
-  document_root: .
-
-handlers:
-- url: /(.*\.(gif|png|jpg))$
-  static_files: static/\1
-  upload: static/.*\.(gif|png|jpg)$
