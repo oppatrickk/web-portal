@@ -1,10 +1,11 @@
-runtime: php74
-runtime_config:
-  document_root: .
+runtime: python27
+api_version: 1
+threadsafe: true
 
 handlers:
 - url: /
-  static_files: index.html
-  upload: index.html
+  static_files: website/index.html
+  upload: website/index.html
+
 - url: /
-  static_dir: .
+  static_dir: website
