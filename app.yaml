@@ -1,11 +1,15 @@
-runtime: python27
+runtime: php74
 api_version: 1
 threadsafe: true
 
 handlers:
 - url: /
-  static_files: website/index.html
-  upload: website/index.html
+  static_files: index.html
+  upload: index.html
 
-- url: /
-  static_dir: website
+- url: /assets
+  static_dir: assets
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
