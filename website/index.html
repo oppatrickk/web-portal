@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Web Portal</title>
+    <title>codeX</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
     <!-- External CSS -->
@@ -58,11 +58,15 @@
                 <div class="col-12 text-center mt-5">
                     <h1>Web Portal Project</h1>
                     <p class="lead">Landing Page</p>
-                    <p>version 0.5</p>
+                    <p>version 0.6</p>
                 </div>
             </div>
         </div>
     </header>
+
+    <center>
+
+    </center>
 
     <!-- Row 2 | Tutorials-->
     <section class="py-5 bg-light">
@@ -107,11 +111,13 @@
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bootstrap 5 Modal Form</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!--
                     <form>
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
@@ -129,7 +135,26 @@
                             <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
                             <button type="submit" class="btn btn-warning float-end">Submit</button>
                         </div>
+                    </form> -->
+
+                    <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="user" name="user" placeholder="Username" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" />
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe" />
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <div class="modal-footer d-block">
+                            <p class="float-start">No account yet? <a href="#">Sign Up</a></p>
+                            <button type="submit" id ="btn" value ="Login" class="btn btn-primary float-end">Submit</button>
+                        </div>
+
                     </form>
+
                 </div>
             </div>
         </div>
