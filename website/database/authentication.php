@@ -1,5 +1,6 @@
 <?php
-include('connection.php');
+session_start();
+include('config.php');
 $username = $_POST['user'];
 $password = $_POST['pass'];
 
@@ -18,7 +19,7 @@ if($count == 1) {
     //session_register("myusername");
     //$_SESSION['login_user'] = $myusername;
 
-    header("location: dashboard.html");
+    header("location: ../pages/dashboard/dashboard.php");
 }else{
     echo "<h1> Login failed. Invalid username or password.</h1>";
 }
