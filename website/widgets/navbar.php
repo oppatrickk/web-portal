@@ -2,7 +2,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
     <div class="container px-5">
         <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>">codeX</a>
-        <p class = "text-black-50"> version 1.0</p>
         <div class="d-none d-sm-block topbar-divider"></div>
         <div class="nav-item dropdown no-arrow">
             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
