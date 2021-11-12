@@ -1,5 +1,6 @@
 <!-- PHP -->
 <?php
+
 // Initialize the session
 session_start();
 
@@ -8,6 +9,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../login/login.php");
     exit;
 }
+
+// Paths
+$navbar_path = "dashboard.php";
+$logout_path = "../../database/logout.php";
+$profile_path =  "profile.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -41,33 +48,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <body>
     <!-- Top Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
-        <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="#page-top">codeX</a>
-            <div class="d-none d-sm-block topbar-divider"></div>
-            <div class="nav-item dropdown no-arrow">
-                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
-                    <span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo htmlspecialchars($_SESSION["username"]); ?></span>
-                    <img class="border rounded-circle img-profile" src="../../assets/img/avatars/avatar1.png" style="width:32px; height:32px;">
-                </a>
-                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="../../database/logout.php">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php include '../../widgets/navbar.php'; ?>
 
     <!-- Sidebar -->
 
@@ -79,7 +60,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <div class="col-12 text-center mt-5">
                     <h1>Web Portal Project</h1>
                     <p class="lead">Dashboard Page</p>
-                    <p>version 0.9</p>
                 </div>
             </div>
         </div>
@@ -93,7 +73,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <div class="card-body">
                     <h5 class="card-title">C Programming</h5>
                     <p class="card-text">Learn the basics of C programming</p>
-                    <a href="../tutorials/c/c.html" class="btn btn-primary">Learn More</a>
+                    <a href="../tutorials/c/c_dashboard.php" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -128,13 +108,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </section>
 
     <!-- Footer-->
-    <footer class="bg-black text-center py-4">
-        <div class="container px-5">
-            <div class="text-white-50 small">
-                <div class="mb-2">&copy; codeX | 2021</div>
-            </div>
-        </div>
-    </footer>
+    <?php include '../../widgets/footer.php' ?>
 
     <!-- Feedback Modal-->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

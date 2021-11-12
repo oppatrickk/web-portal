@@ -6,6 +6,8 @@ require_once "../../database/config.php";
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
+// Paths
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -95,43 +97,94 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>codeX | Login</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+
+    <!-- External CSS -->
+    <link href="../../css/dashboard.css" rel="stylesheet"/>
+
+    <!-- Bootstrap CSS and Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Icons -->
+
+    <!-- Fonts -->
+
+
+    <!-- Assets -->
+
 </head>
+
 <body>
-<div class="wrapper">
-    <h2>Sign Up</h2>
-    <p>Please fill this form to create an account.</p>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <div class="form-group">
-        <label>Username</label>
-        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-        <span class="invalid-feedback"><?php echo $username_err; ?></span>
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-        <span class="invalid-feedback"><?php echo $password_err; ?></span>
-    </div>
-    <div class="form-group">
-        <label>Confirm Password</label>
-        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-        <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Submit">
-        <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-    </div>
-    <p>Already have an account? <a href="login.php">Login here</a>.</p>
-    </form>
-</div>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
+        <div class="container px-5">
+            <a class="navbar-brand fw-bold" href="../dashboard/dashboard.php">codeX</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Tutorials</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Community</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <header class="masthead">
+        <div class="container h-100 mt-5 mb-5">
+            <div class="row h-100">
+                <div class="col-12 mt-5">
+                    <h1>Sign Up</h1>
+                    <p class="lead">Please fill this form to create an account.</p>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <div class="form-group col col-lg-3">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        </div>
+                        <div class="form-group mt-3 col col-lg-3">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        </div>
+                        <div class="form-group mt-3 col col-lg-3">
+                            <label>Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                            <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                        </div>
+                        <div class="form-group mt-4">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                            <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+                        </div>
+                        <p class="mt-5">Already have an account? <a href="login.php">Login here</a>.</p>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bootstrap JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- External JavaScript-->
+    <script src="../../js/dashboard.js"></script>
+
+    <!-- Forms -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </body>
 </html>

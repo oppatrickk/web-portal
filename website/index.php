@@ -12,9 +12,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 // Include config file
 require_once "database/config.php";
 
+
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
+
+// Paths
+$navbar_path = "index.php";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -121,30 +125,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body>
-    <?php
-    if(!empty($login_err)){
-        echo '<div class="alert alert-danger">' . $login_err . '</div>';
-    }
-    ?>
-
     <!-- Top Navigation Bar-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
-        <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="#page-top">codeX</a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Tutorials</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Community</a></li>
-                </ul>
-                <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <span class="d-flex align-items-center">
-                            <span class="medium">Log in</span>
-                        </span>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <?php include 'widgets/navbar_nologin.php' ?>
 
     <!-- Row 1 -->
     <header class="masthead">
@@ -153,7 +135,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="col-12 text-center mt-5">
                     <h1>Web Portal Project</h1>
                     <p class="lead">Landing Page</p>
-                    <p>version 0.9</p>
                 </div>
             </div>
         </div>
@@ -208,16 +189,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     <!-- Founder 2 -->
                     <div class="col-sm-2">
-                        <img class="rounded-circle" src="assets/img/founders/prieto.jpg" alt="prieto" style="height: 128px; width: 128px">
+                        <img class="rounded-circle" src="assets/img/founders/founder.png" alt="" style="height: 128px; width: 128px">
                         <div class="card-body">
-                            <p class="card-title">John Patrick M. Prieto</p>
-                            <a href="https://www.facebook.com/prietopat" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                            <p class="card-title">Founder</p>
+                            <a href="https://www.facebook.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
                                 <i class="bi-facebook m-1"></i>
                             </a>
-                            <a href="https://twitter.com/oppatrickk" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                            <a href="https://twitter.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
                                 <i class="bi-twitter m-1"></i>
                             </a>
-                            <a href="https://github.com/oppatrickk" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                            <a href="https://github.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
                                 <i class="bi-github m-1"></i>
                             </a>
                         </div>
@@ -225,26 +206,71 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     <!-- Founder 3 -->
                     <div class="col-sm-2">
-                        <img class="rounded-circle" src="assets/img/founders/prieto.jpg" alt="prieto" style="height: 128px; width: 128px">
+                        <img class="rounded-circle" src="assets/img/founders/founder.png" alt="" style="height: 128px; width: 128px">
                         <div class="card-body">
-                            <p class="card-title">John Patrick M. Prieto</p>
-                            <a href="https://www.facebook.com/prietopat" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                            <p class="card-title">Founder</p>
+                            <a href="https://www.facebook.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
                                 <i class="bi-facebook m-1"></i>
                             </a>
-                            <a href="https://twitter.com/oppatrickk" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                            <a href="https://twitter.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
                                 <i class="bi-twitter m-1"></i>
                             </a>
-                            <a href="https://github.com/oppatrickk" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                            <a href="https://github.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
                                 <i class="bi-github m-1"></i>
                             </a>
                         </div>
                     </div>
 
                     <!-- Founder 4 -->
+                    <div class="col-sm-2">
+                        <img class="rounded-circle" src="assets/img/founders/founder.png" alt="" style="height: 128px; width: 128px">
+                        <div class="card-body">
+                            <p class="card-title">Founder</p>
+                            <a href="https://www.facebook.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-facebook m-1"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-twitter m-1"></i>
+                            </a>
+                            <a href="https://github.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-github m-1"></i>
+                            </a>
+                        </div>
+                    </div>
 
                     <!-- Founder 5 -->
+                    <div class="col-sm-2">
+                        <img class="rounded-circle" src="assets/img/founders/founder.png" alt="" style="height: 128px; width: 128px">
+                        <div class="card-body">
+                            <p class="card-title">Founder</p>
+                            <a href="https://www.facebook.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-facebook m-1"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-twitter m-1"></i>
+                            </a>
+                            <a href="https://github.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-github m-1"></i>
+                            </a>
+                        </div>
+                    </div>
 
                     <!-- Founder 6 -->
+                    <div class="col-sm-2">
+                        <img class="rounded-circle" src="assets/img/founders/founder.png" alt="" style="height: 128px; width: 128px">
+                        <div class="card-body">
+                            <p class="card-title">Founder</p>
+                            <a href="https://www.facebook.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-facebook m-1"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-twitter m-1"></i>
+                            </a>
+                            <a href="https://github.com/" target="_blank" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">
+                                <i class="bi-github m-1"></i>
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </center>
@@ -259,75 +285,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
         </div>
     </footer>
-
-    <!-- Login Modal-->
-    <div class="modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered col-sm">
-            <div class="modal-content">
-                <div class="modal-header bg-primary p-4">
-                    <h5 class="modal-title font-alt text-white" id="loginModalLabel">Login</h5>
-                    <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body border-0 p-4">
-
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <!-- Username -->
-                        <div class="form-floating mb-3">
-                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                            <label>Username</label>
-                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
-                        </div>
-                        <!-- Password -->
-                        <div class="form-floating mb-3">
-                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                            <label>Password</label>
-                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                        </div>
-                        <!-- Forgot Password -->
-                        <div class="form-floating mb-3">
-                            <p class="float mt-3"><a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" style="text-decoration: none">Forgot Password?</a></p>
-                        </div>
-                        <!-- Login -->
-                        <div class="d-grid">
-                            <input type="submit" class="btn btn-primary rounded-pill" value="SIGN IN">
-                        </div>
-                        <!-- Register -->
-                        <div class="form-floating mb-3">
-                            <p class="float-center mt-3">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" style="text-decoration: none">SIGN UP</a></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sign up Modal-->
-    <div class="modal" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-primary p-4">
-                    <h5 class="modal-title font-alt text-white" id="signupModalLabel">Sign up</h5>
-                    <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body border-0 p-4">
-                    <form name="f1" action = "database/authentication.php" onsubmit = "return validation()" method = "POST">
-                        <!-- Username input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="registerUser" name="user" type="text"/>
-                            <label for="user">Username</label>
-                        </div>
-                        <!-- Email address input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="registerPass" name="pass" type="password"/>
-                            <label for="pass">Password</label>
-                        </div>
-
-                        <div class="d-grid"><button class="btn btn-primary rounded-pill" id="registerBtn" type="submit" value="Login">Register</button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

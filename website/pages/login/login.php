@@ -15,6 +15,9 @@ require_once "../../database/config.php";
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
+// Paths
+$navbar_path = "../../index.php";
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -90,42 +93,82 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>codeX | Login</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+
+    <!-- External CSS -->
+    <link href="../../css/dashboard.css" rel="stylesheet"/>
+
+    <!-- Bootstrap CSS and Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Icons -->
+
+    <!-- Fonts -->
+
+
+    <!-- Assets -->
+
 </head>
+
 <body>
-<div class="wrapper">
-    <h2>Login</h2>
-    <p>Please fill in your credentials to login.</p>
+    <!-- Top Navigation Bar -->
+    <?php include '../../widgets/navbar_nologin.php' ?>
 
-    <?php
-    if(!empty($login_err)){
-        echo '<div class="alert alert-danger">' . $login_err . '</div>';
-    }
-    ?>
+    <!-- Login -->
+    <header class="masthead">
+        <div class="container h-100 mt-5 mb-5">
+            <div class="row h-100">
+                <div class="col-12 mt-5">
+                    <h1>Login</h1>
+                    <p class="lead">You must Login to access codeX</p>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    <?php
+                    if(!empty($login_err)){
+                        echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                    }
+                    ?>
+
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <div class="form-group mt-3 col col-lg-3">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        </div>
+                        <div class="form-group mt-3 col col-lg-3">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </div>
+                        <p class="mt-5">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-            <span class="invalid-feedback"><?php echo $password_err; ?></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Login">
-        </div>
-        <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-    </form>
-</div>
+    </header>
+    </div>
+
+    <!-- Footer -->
+
+    <!-- Bootstrap JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- External JavaScript-->
+    <script src="../../js/dashboard.js"></script>
+
+    <!-- Forms -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </body>
 </html>
