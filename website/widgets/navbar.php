@@ -9,13 +9,13 @@
                 <img class="border rounded-circle img-profile" src="/website/assets/img/avatars/default_avatar.png" style="width:32px; height:32px;">
             </a>
             <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                <a class="dropdown-item" href="<?php echo $profile_path; ?>#">
+                <a class="dropdown-item" href="<?php echo $profile_path; ?>">
                     <i class="bi-person-fill me-2 text-gray-400" style="color: grey; font-size: 14px"></i>&nbsp;Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?php echo $settings_path; ?>">
                     <i class="bi-gear-fill me-2 text-gray-400" style="color: grey; font-size: 14px"></i>&nbsp;Settings
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?php echo $activity_path; ?>">
                     <i class="bi-list-ul me-2 text-gray-400" style="color: grey; font-size: 14px"></i>&nbsp;Activity log
                 </a>
                 <div class="dropdown-divider"></div>

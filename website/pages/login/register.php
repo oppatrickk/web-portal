@@ -6,8 +6,6 @@ require_once "../../database/config.php";
 $username = $password = $confirm_password = $email = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
 
-// Paths
-
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -147,14 +145,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>codeX | Login</title>
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
 
-    <!-- External CSS -->
-    <link href="../../css/dashboard.css" rel="stylesheet"/>
-
     <!-- Bootstrap CSS and Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- External CSS -->
+    <link href="../../css/dashboard.css" rel="stylesheet"/>
+
     <!-- Icons -->
+
 
     <!-- Fonts -->
 
@@ -178,7 +177,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </nav>
 
-
+    <!-- Main -->
     <header class="masthead">
         <div class="container h-100 mt-5 mb-5">
             <div class="row h-100">
@@ -219,6 +218,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
         </div>
     </header>
+
+    <!-- Footer -->
+    <?php
+    // Paths
+    $about_path = "";
+    $founders_path = "";
+    $faqs_path = "";
+    $contact_path = "";
+
+    include '../../widgets/footer.php'
+
+    ?>
 
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

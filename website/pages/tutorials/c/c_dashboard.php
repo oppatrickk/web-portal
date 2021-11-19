@@ -9,12 +9,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../../login/login.php");
     exit;
 }
-
-// Paths
-$navbar_path = "../../dashboard/dashboard.php";
-$logout_path = "../../../database/logout.php";
-$profile_path = "../../dashboard/profile.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +23,12 @@ $profile_path = "../../dashboard/profile.php";
     <title>codeX | Dashboard</title>
     <link rel="icon" type="image/x-icon" href="../../../assets/favicon.ico">
 
-    <!-- External CSS -->
-    <link href="css/styles_index.css" rel="stylesheet" />
-
     <!-- Bootstrap CSS and Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link href="css/styles_index.css" rel="stylesheet" />
 
     <!-- Icons -->
 
@@ -49,7 +43,15 @@ $profile_path = "../../dashboard/profile.php";
 <body>
 
 <!-- Top Navigation Bar-->
-<?php include "../../../widgets/navbar.php" ?>
+<?php
+    // Paths
+    $navbar_path = "../../dashboard/dashboard.php";
+    $logout_path = "../../../database/logout.php";
+    $profile_path = "../../dashboard/profile.php";
+
+    include "../../../widgets/navbar.php"
+
+?>
 
 <!-- Sidebar -->
 
@@ -88,7 +90,7 @@ $profile_path = "../../dashboard/profile.php";
                         <div class="card-body">
                             <h2 class="card-title h4">Hello World!</h2>
                             <p class="card-text">Learn the basics of C</p>
-                            <a class="btn btn-primary" href="c_lecture1.html">Begin</a>
+                            <a class="btn btn-primary" href="c_lecture1.php">Begin</a>
                         </div>
                     </div>
                 </div>
@@ -162,7 +164,15 @@ $profile_path = "../../dashboard/profile.php";
 <!-- Footer-->
 
 <!-- Top Navigation Bar-->
-<?php include "../../../widgets/footer.php" ?>
+<?php
+    // Paths
+    $about_path = "";
+    $founders_path = "";
+    $faqs_path = "";
+    $contact_path = "";
+
+    include "../../../widgets/footer.php"
+?>
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

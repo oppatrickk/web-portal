@@ -15,9 +15,6 @@ require_once "../../database/config.php";
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
-// Paths
-$navbar_path = "../../index.php";
-
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -103,12 +100,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>codeX | Login</title>
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
 
-    <!-- External CSS -->
-    <link href="../../css/dashboard.css" rel="stylesheet"/>
-
     <!-- Bootstrap CSS and Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link href="../../css/login.css" rel="stylesheet"/>
 
     <!-- Icons -->
 
@@ -121,7 +118,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <body>
     <!-- Top Navigation Bar -->
-    <?php include '../../widgets/navbar_nologin.php' ?>
+    <?php
+        // Paths
+        $navbar_path = "../../index.php";
+
+        include '../../widgets/navbar_nologin.php'
+    ?>
 
     <!-- Login -->
     <header class="masthead">
@@ -160,6 +162,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
     <!-- Footer -->
+    <?php
+        // Paths
+        $about_path = "";
+        $founders_path = "";
+        $faqs_path = "";
+        $contact_path = "";
+
+        include '../../widgets/footer.php'
+
+    ?>
 
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

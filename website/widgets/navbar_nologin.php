@@ -67,19 +67,30 @@
                 <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body border-0 p-4">
-                <form name="f1" action = "database/authentication.php" onsubmit = "return validation()" method = "POST">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <!-- Username input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="registerUser" name="user" type="text"/>
+                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                         <label for="user">Username</label>
-                    </div>
-                    <!-- Email address input-->
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="registerPass" name="pass" type="password"/>
-                        <label for="pass">Password</label>
+                        <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     </div>
 
-                    <div class="d-grid"><button class="btn btn-primary rounded-pill" id="registerBtn" type="submit" value="Login">Register</button></div>
+                    <!-- Password input-->
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                        <label for="pass">Password</label>
+                        <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    </div>
+
+                    <!-- Confirm Password input-->
+                    <div class="form-floating mb-3">
+                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                        <label for="pass">Confirm Password</label>
+                        <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                    </div>
+
+                    <div class="d-grid"><button class="btn btn-primary rounded-pill" id="registerBtn" type="submit" value="Submit">REGISTER</button></div>
+                    <p class="float-center mt-3">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" style="text-decoration: none">SIGN IN</a></p>
                 </form>
             </div>
         </div>
