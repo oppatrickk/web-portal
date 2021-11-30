@@ -3,6 +3,7 @@
     <div class="container px-5">
         <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>">codeX</a>
         <div class="d-none d-sm-block topbar-divider"></div>
+
         <div class="nav-item dropdown no-arrow">
             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                 <span class="d-none d-lg-inline me-2 text-gray-600 small"><?php echo htmlspecialchars($_SESSION["username"]); ?></span>

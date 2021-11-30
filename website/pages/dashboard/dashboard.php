@@ -55,58 +55,105 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         ?>
 
-    <!-- Sidebar -->
-
-
-    <!-- Row 1 -->
-    <header class="masthead">
-        <div class="container h-100 mt-5 mb-5">
-            <div class="row h-100 align-items-center">
-                <div class="col-12 text-center mt-5">
-                    <h1>Web Portal Project</h1>
-                    <p class="lead">Dashboard Page</p>
+    <!--Header-->
+    <header class="page-header gradient pb-5 pt-5">
+        <div class="container pt-3 pb-3">
+            <div class="row align-items-center">
+                <div class="col-md-8 px-5">
+                    <h2 class="mb-4">Welcome to codeX, <?php echo htmlspecialchars($_SESSION["username"])?>!</h2>
+                    <p>Start developing your skills by taking on challenges that you and your friends will be facing on.</p>
+                    <div class="card" style="width: 30rem;">
+                        <div class="card-body bg-transparent text-black">
+                            <b>Lorem Ipsum</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 "><img src="../../assets/img/dashboard/header.svg " alt="Header image " />
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Row 2 | Tutorials-->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="fw-light">Tutorials</h2>
-            <div class="card mt-3" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">C Programming</h5>
-                    <p class="card-text">Learn the basics of C programming</p>
-                    <a href="../tutorials/c/c_dashboard.php" class="btn btn-primary">Learn More</a>
+    <!--Main Section-->
+    <div class="row align-items-center justify-content-around mt-5">
+        <div class="col-md-6">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Video tutorial _Outline.svg" width="100%"><br>Start your day with some <b>Tutorials</b>.</button>
+                <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Competition_Flatline.svg" width="100%"><br>Take on others through <b>Challenges</b>.</button>
+                <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Group Video Call_Outline.svg" width="100%"><br>Seek assistance with our <b>Community</b>.</button>
+            </div>
+            <div class="col-md-12">
+
+                <!--Community Section-->
+                <h2 class="my-4" style="text-align:center">Community Forum</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                    <!--Forum Post Section-->
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">(Linked Forum)</h5>
+                                <p class="card-text">Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">(Linked Forum)</h5>
+                                <p class="card-text">Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">(Linked Forum)</h5>
+                                <p class="card-text">Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <a href="#" style="text-decoration: none;">
+                        <b>See all community forums </b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg></a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Row 3 | Challenges-->
-    <section class="py-5 bg-white">
-        <div class="container">
-            <h2 class="fw-light">Challenges</h2>
-            <div class="card mt-3" style="width: 18rem;">
+        <!--Program Section-->
+        <div class="col-md-4">
+            <div class="card text-center border-primary">
+                <div class="card-header">
+                    <img src="../../assets/img/dashboard/Programming Languages.png" width="50%">
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Sudoku Checker</h5>
-                    <p class="card-text">Sudoku is a popular single player game.</p>
-                    <a href="#" class="btn btn-primary">Open Problem</a>
+                    <p class="card-text"><b><h4>You haven't joined any program.</h4></b></p>
+                    <p>Choose any of the following programming languages we have prepared for you, Start your adventure on becoming a programmer.</p>
+                    <button type="button" class="btn btn-outline-primary"><b>Start now!</b></button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Row 4 | Forums -->
-    <section class="py-5 bg-light">
+    <!--Evaluation-->
+    <section class="services gradient mt-5 pt-5 pb-5">
         <div class="container">
-            <h2 class="fw-light">Forums</h2>
-            <div class="card mt-3" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Get Help</h5>
-                    <p class="card-text">Ask your fellow programmers</p>
-                    <a href="#" class="btn btn-primary">Explore</a>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-5">
+                    <h1>Quizzes</h1>
+                    <p>Assess yourself on how wide is your current knowledge on the programming language you have chosen. This way you can choose to start on something you might have difficulties.</p>
+                    <a class="btn btn-primary" href="#" role="button">Start now!</a>
+                </div>
+                <div class="col-md-6"><img src="../../assets/img/dashboard/Online research_Flatline.svg" alt=""></div>
+                <div class="col-md-6"><img src="../../assets/img/dashboard/Team presentation _Flatline.svg" alt=""></div>
+                <div class="col-md-5">
+                    <h1>Exercises</h1>
+                    <p>Try and give it a shot on some of our example Exercises that we have provided that can help you give some hints and tips on the programming track you have chosen.</p>
+                    <a class="btn btn-primary" href="#" role="button">Start now!</a>
                 </div>
             </div>
         </div>

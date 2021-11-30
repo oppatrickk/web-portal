@@ -73,7 +73,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="../../../assets/img/cprogramming.png" alt="..." /></a>
+                <a href="#!"><img class="card-img-top" src="../../../assets/img/tutorials/cprogramming.png" alt="..." /></a>
                 <div class="card-body">
                     <div class="small text-muted">Dennis Ritchie | 1972</div>
                     <h2 class="card-title">C Computer programming language</h2>
