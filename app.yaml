@@ -5,5 +5,9 @@ runtime_config:
 handlers:
 - url: /(.+\.php)$
   script: \1
+  
 - url: /.*
   script: index.php
+  
+- url: /assets
+  static_dir: assets
