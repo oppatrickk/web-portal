@@ -1,5 +1,5 @@
 application: codex-bu
-runtime: php74
+runtime: php
 api_version: 1
 threadsafe: true
 
@@ -10,7 +10,3 @@ handlers:
 
 - url: /
   static_dir: website
-
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
