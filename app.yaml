@@ -2,4 +2,4 @@ runtime: php74
 
 handlers:
 - url: /
-  script: index.php
+  script: website/index.php
