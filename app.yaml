@@ -9,13 +9,10 @@ handlers:
 - url: /.*
   script: index.php
   
-- url: /assets
-  static_dir: assets
-  
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
   
- - url: /assets/(.*\.(gif|png|jpg))
+- url: /assets/(.*\.(gif|png|jpg))
   static_files: assets/\1
   upload: assets/(.*\.(gif|png|jpg))
