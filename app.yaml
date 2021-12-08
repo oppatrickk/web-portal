@@ -9,6 +9,5 @@ handlers:
 - url: /.*
   script: index.php
   
-- url: /assets/(.*\.(gif|png|jpg|ico))
-  static_files: assets/\1
-  upload: assets/(.*\.(gif|png|jpg|ico))
+- url: /pages/login/login.php
+  script: login.php
