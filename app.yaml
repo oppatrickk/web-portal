@@ -1,5 +1,7 @@
 runtime: php74
 
 handlers:
-- url: /
+- url: /(.+\.php)$
+  script: \1
+- url: /.*
   script: index.php
