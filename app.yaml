@@ -3,7 +3,7 @@ runtime: php74
 handlers:
 - url: /(.+\.php)$
   script: \1
-- url: /assets
-  static_files: assets
 - url: /.*
   script: index.php
+- url: /assets
+  static_dir: assets
