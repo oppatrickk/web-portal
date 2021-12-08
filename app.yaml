@@ -1,5 +1,7 @@
-runtime: php74
+runtime: php55
+api_version: 1
+threadsafe: true
 
 handlers:
-- url: .*
-  script: auto
+- url: /.*
+  script: index.php
