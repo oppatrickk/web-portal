@@ -3,15 +3,22 @@ api_version: 1
 threadsafe: true
 
 handlers:
+# Allow multi-pages
 - url: /(.+\.php)$
   script: \1
 
-# Serve images as static resources.
+# Upload images
 - url: /(.+\.(gif|png|jpg|svg|ico))$
   static_files: \1
   upload: .+\.(gif|png|jpg|svg|ico)$
   application_readable: true
 
+# Upload CSS files
+- url: /css/(.*\.(css|scss))$
+  static_files: css/\1
+  upload: css/.*\.(css|scss)$
+
+# Landing Page
 - url: /.*
   script: index.php
 
