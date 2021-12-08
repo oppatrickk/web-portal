@@ -3,5 +3,12 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /(.+\.php)$
+  script: \1
+
 - url: /.*
-  script: test.php
+  script: index.php
+
+- url: /(.*\.(gif|png|jpg))$
+  static_files: assets/\1
+  upload: assets/.*\.(gif|png|jpg)$
