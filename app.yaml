@@ -12,5 +12,5 @@ handlers:
   script: \1
   
   # Index
-- url: /website\.html
+- url: /
   script: index.php
