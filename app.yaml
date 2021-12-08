@@ -1,5 +1,5 @@
 runtime: php74
 
 handlers:
--url: /website/index.php
+- url: /website/index.php
   script: index.php
