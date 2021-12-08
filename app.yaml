@@ -1,4 +1,5 @@
 runtime: php74
 
 handlers:
-
+- url: .*
+  script: auto
