@@ -5,13 +5,7 @@ handlers:
   script: \1
 - url: /.*
   script: index.php
-- url: /assets
-  static_dir: assets
 - url: /pages
   static_dir: pages
-- url: /(.*\.(gif|png|jpg))$
-  static_files: static/\1
-  upload: static/.*\.(gif|png|jpg)$
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
+ - url: /pages/login
+  static_dir: login
