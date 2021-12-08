@@ -24,7 +24,7 @@ handlers:
   upload: css/.*\.(js)$
 
 # Landing Page
-- url: /.*
+- url: /pages/dashboard/.*
   script: dashboard.php
 
 
