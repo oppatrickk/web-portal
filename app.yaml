@@ -1,11 +1,9 @@
 runtime: php74
+runtime_config:
+    document_root: .
 
 handlers:
 - url: /(.+\.php)$
   script: \1
 - url: /.*
   script: index.php
-- url: /pages
-  static_dir: pages
- - url: /pages/login
-  static_dir: login
