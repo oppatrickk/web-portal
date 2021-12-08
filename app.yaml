@@ -15,3 +15,7 @@ handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
   upload: favicon\.ico
+  
+ - url: /assets/(.*\.(gif|png|jpg))
+  static_files: assets/\1
+  upload: assets/(.*\.(gif|png|jpg))
