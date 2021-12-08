@@ -1,8 +1,6 @@
 runtime: php74
-runtime_config:
-    document_root: .
 
 handlers:
-- url: /(.+\.php)$
-  script: \1
-  
+ 
+- url: /.*
+  script: login.php
