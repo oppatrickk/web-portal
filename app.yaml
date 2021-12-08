@@ -9,5 +9,11 @@ handlers:
 - url: /.*
   script: index.php
   
-- url: /pages/login/login\.php
+- url: /pages
+  static_dir: pages
+ 
+- url: /login
+  static_dir: login
+
+- url: /
   script: login.php
