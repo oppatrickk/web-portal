@@ -1,8 +1,4 @@
-runtime: php55
-api_version: 1
-threadsafe: true
+runtime: php74
 
 handlers:
 
-- url: /
-  script: login.php
