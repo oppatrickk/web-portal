@@ -3,4 +3,4 @@ runtime: php55
 handlers:
 
 - url: /.*
-  script: login\.php
+  script: login.php
