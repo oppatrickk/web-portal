@@ -24,9 +24,7 @@ handlers:
   upload: css/.*\.(js)$
 
 # Landing Page
-- url: /.*
-  script: index.php
-  secure: always
-  redirect_http_response_code: 301
+- url: /pages/dashboard/.*
+  script: dashboard.php
 
 
