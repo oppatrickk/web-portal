@@ -1,8 +1,6 @@
 runtime: php74
+api_version: 1
 
 handlers:
-- url: /(.+\.php)$
-  script: \1
-
-- url: /.*
-  script: website/index.php
+-url: /website/
+  script: index.php
