@@ -16,48 +16,71 @@ $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
 // Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-if (isset($_POST["signup"])) {
-    $username = mysqli_real_escape_string($conn, $_POST["signup_username"]);
-    $email = mysqli_real_escape_string($conn, $_POST["signup_email"]);
-    $password = mysqli_real_escape_string($conn, md5($_POST["signup_password"]));
-    $cpassword = mysqli_real_escape_string($conn, md5($_POST["signup_cpassword"]));
-    $token = md5(rand());
-
-    $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM users WHERE email='$email'"));
-
-    if ($password !== $cpassword) {
-        echo "<script>alert('Password did not match.');</script>";
-    } elseif ($check_email > 0) {
-        echo "<script>alert('Email already exists in our database.');</script>";
-    } else {
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-            echo "<script>alert('User registration success.');</script>";
-        } else {
-            echo "<script>alert('User registration failed.');</script>";
-        }
-        $_POST["signup_username"] = "";
-        $_POST["signup_email"] = "";
-        $_POST["signup_password"] = "";
-        $_POST["signup_cpassword"] = "";
-
+    // Check if username is empty
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    } else{
+        $username = trim($_POST["username"]);
     }
-}
 
-if (isset($_POST["signin"])) {
-    $email = mysqli_real_escape_string($conn, $_POST["email"]);
-    $password = mysqli_real_escape_string($conn, md5($_POST["password"]));
+    // Check if password is empty
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter your password.";
+    } else{
+        $password = trim($_POST["password"]);
+    }
 
-    $check_email = mysqli_query($conn, "SELECT id FROM users WHERE email='$email' AND password='$password' AND status='1'");
+    // Validate credentials
+    if(empty($username_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT id, username, password FROM users WHERE username = ?";
 
-    if (mysqli_num_rows($check_email) > 0) {
-        $row = mysqli_fetch_assoc($check_email);
-        $_SESSION["user_id"] = $row['id'];
-        header("Location: pages/welcome.php");
-    } else {
-        echo "<script>alert('Login details is incorrect. Please try again.');</script>";
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+
+            // Set parameters
+            $param_username = $username;
+
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Store result
+                mysqli_stmt_store_result($stmt);
+
+                // Check if username exists, if yes then verify password
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    // Bind result variables
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($password, $hashed_password)){
+                            // Password is correct, so start a new session
+                            session_start();
+
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;
+
+                            // Redirect user to welcome page
+                            header("location: ../dashboard/dashboard.php");
+                        } else{
+                            // Password is not valid, display a generic error message
+                            $login_err = "Invalid username or password.";
+                        }
+                    }
+                } else{
+                    // Username doesn't exist, display a generic error message
+                    $login_err = "Invalid username or password.";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
     }
 
     // Close connection
@@ -94,69 +117,71 @@ if (isset($_POST["signin"])) {
 </head>
 
 <body>
-    <!-- Top Navigation Bar -->
-    <?php
-    // Paths
-    $navbar_path = "../../index.php";
+<!-- Top Navigation Bar -->
+<?php
+// Paths
+$navbar_path = "../../index.php";
+$logo_path = "../../assets/logo2.png";
 
-    include '../../widgets/navbar_nologin.php';
+include '../../widgets/navbar_nologin.php'
+?>
 
-    ?>
+<!-- Login -->
+<header class="masthead">
+    <div class="container h-100 mt-5 mb-5">
+        <div class="row h-100">
+            <div class="col-12 mt-5">
+                <h1>Login</h1>
+                <p class="lead">You must Login to access codeX</p>
 
-    <!-- Login -->
-    <header class="masthead">
-        <div class="container h-100 mt-5 mb-5">
-            <div class="row h-100">
-                <div class="col-12 mt-5">
-                    <h1>Login</h1>
-                    <p class="lead">You must Login to access codeX</p>
+                <?php
+                if(!empty($login_err)){
+                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                }
+                ?>
 
-                    <?php
-                    if(!empty($login_err)){
-                        echo '<div class="alert alert-danger">' . $login_err . '</div>';
-                    }
-                    ?>
-
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group mt-3 col col-lg-3">
-                            <label>Username</label>
-                            <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
-                        </div>
-                        <div class="form-group mt-3 col col-lg-3">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input type="submit" class="btn btn-primary" value="Login">
-                        </div>
-                        <p class="mt-5">Don't have an account? <a href="register.php">Sign up now</a>.</p>
-                    </form>
-                </div>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group mt-3 col col-lg-3">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                        <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    </div>
+                    <div class="form-group mt-3 col col-lg-3">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="submit" class="btn btn-primary" value="Login">
+                    </div>
+                    <p class="mt-5">Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                </form>
             </div>
         </div>
-    </header>
     </div>
+</header>
+</div>
 
-    <!-- Footer -->
-    <?php
-    // Paths
-    $about_path = "";
-    $founders_path = "pages/footer/founders.php";
-    $faqs_path = "";
-    $contact_path = "";
+<!-- Footer -->
+<?php
+// Paths
+$about_path = "";
+$founders_path = "";
+$faqs_path = "";
+$contact_path = "";
 
-    include '../../widgets/footer.php'
+include '../../widgets/footer.php'
 
-    ?>
+?>
 
-    <!-- Bootstrap JavaScript-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JavaScript-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- External JavaScript-->
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <script src="../../js/login.js"></script>
+<!-- External JavaScript-->
+<script src="../../js/dashboard.js"></script>
+
+<!-- Forms -->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 </body>
 </html>

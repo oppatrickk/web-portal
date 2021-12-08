@@ -1,6 +1,5 @@
 <!-- PHP -->
 <?php
-// Initialize the session
 session_start();
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
@@ -9,222 +8,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
-// Include config file
-require_once "database/config.php";
-
-// Define variables and initialize with empty values
-$username = $password = $confirm_password = $email = "";
-$username_err = $password_err = $login_err = $confirm_password_err = $email_err = "";
-
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
-
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            // Set parameters
-            $param_username = $username;
-
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;
-
-                            // Redirect user to welcome page
-                            header("location: pages/dashboard/dashboard.php");
-                        } else{
-                            // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
-                        }
-                    }
-                } else{
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-
-        // Validate username
-        if(empty(trim($_POST["username"]))){
-            $username_err = "Please enter a username.";
-        } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-            $username_err = "Username can only contain letters, numbers, and underscores.";
-        } else{
-            // Prepare a select statement
-            $sql = "SELECT id FROM users WHERE username = ?";
-
-            if($stmt = mysqli_prepare($link, $sql)){
-                // Bind variables to the prepared statement as parameters
-                mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-                // Set parameters
-                $param_username = trim($_POST["username"]);
-
-                // Attempt to execute the prepared statement
-                if(mysqli_stmt_execute($stmt)){
-                    /* store result */
-                    mysqli_stmt_store_result($stmt);
-
-                    if(mysqli_stmt_num_rows($stmt) == 1){
-                        $username_err = "This username is already taken.";
-                    } else{
-                        $username = trim($_POST["username"]);
-                    }
-                } else{
-                    echo "Oops! Something went wrong. Please try again later.";
-                }
-
-                // Close statement
-                mysqli_stmt_close($stmt);
-            }
-        }
-
-        // Validate password
-        if(empty(trim($_POST["password"]))){
-            $password_err = "Please enter a password.";
-        } elseif(strlen(trim($_POST["password"])) < 6){
-            $password_err = "Password must have atleast 6 characters.";
-        } else{
-            $password = trim($_POST["password"]);
-        }
-
-        // Validate confirm password
-        if(empty(trim($_POST["confirm_password"]))){
-            $confirm_password_err = "Please confirm password.";
-        } else{
-            $confirm_password = trim($_POST["confirm_password"]);
-            if(empty($password_err) && ($password != $confirm_password)){
-                $confirm_password_err = "Password did not match.";
-            }
-        }
-    }
-
-    // Close connection
-    mysqli_close($link);
-
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
-
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-    // Validate password
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";
-    } else{
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
-    }
-
-    // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
-
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: login.php");
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-    // Close connection
-    mysqli_close($link);
-}
 ?>
 
 
@@ -253,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
     <!-- Assets -->
 
@@ -265,20 +48,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <?php
         // Paths
         $navbar_path = "index.php";
+        $logo_path = "assets/logo2.png";
+        $login_path = "pages/login/login.php";
 
         include 'widgets/navbar_nologin.php'
     ?>
 
     <!-- Masthead -->
     <header class="page-header gradient">
-        <div class="container pt-3">
-            <div class="row align-items-center justify-content-center ">
-                <div class="col-md-5">
-                    <h2>Attain coding potentials through challenges</h2>
-                    <p>Start developing your skills by taking on challenges that you and your friends will be facing on.</p>
+        <div class="container pt-5">
+            <div class="row align-items-center justify-content-center">
+                <div class="col px-5">
+                    <h2 class="mb-4">Attain coding potentials through challenges</h2>
+                    <p>Start developing your skills by taking on challenges<br> that you and your friends will be facing on.</p>
                     <button type="button" class="btn btn-outline-success btn-lg">Join Now</button>
                 </div>
-                <div class="col-md-6"><img src="assets/img/index/Profiling_Monochromatic.svg" alt="Header image" /></div>
+                <div class="col-md-5"><img src="assets/img/index/Profiling_Monochromatic.svg" alt="Header image" /></div>
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,80C672,53,768,43,864,64C960,85,1056,139,1152,144C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
@@ -367,7 +152,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <h1>Enhance your skills</h1>
                     <p>Challenge yourself by taking on some of the coding exercise that we have provided for you. By partaking on our tutorials, we will guide you through the basics of learning C Language.</p>
                 </div>
-                <div class="col-md-6"><img src="assets/img/index/Information carousel_Monochromatic.svg" alt=""></div>
+                <div class="col-md-6 mt-5 pt-5"><img src="assets/img/index/Information carousel_Monochromatic.svg" alt=""></div>
                 <div class="col-md-6"><img src="assets/img/index/Progress _Monochromatic.png" alt=""></div>
                 <div class="col-md-5">
                     <h1>Receive Feedbacks</h1>
@@ -378,7 +163,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <p>Coding exercises are ranked from beginner to hardcore difficulty. As you complete higher difficulty, you will be able to progress through the ranks, pushing your capabilities in coding to your highest potential.</p>
                 </div>
                 <div class="col-md-6"><img src="assets/img/index/Ranking_Monochromatic.png" alt=""></div>
-                <div class="col-md-6"><img src="assets/img/index/Video call_Monochromatic.svg" alt=""></div>
+                <div class="col-md-6 pb-5 mb-5"><img src="assets/img/index/Video call_Monochromatic.svg" alt=""></div>
                 <div class="col-md-5 mb-5">
                     <h1>Compare insights</h1>
                     <p>Compare your answers with others to further enhance your understanding on language. Discuss with others how and what you and they can do to improve their skills in coding. Watch how others solve the same problem as you with a different

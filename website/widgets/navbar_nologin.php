@@ -1,98 +1,28 @@
-<?php
-
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
-
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
-
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            // Set parameters
-            $param_username = $username;
-
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;
-
-                            // Redirect user to page
-                            header("location: $redirect_path");
-                        } else{
-                            // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
-                        }
-                    }
-                } else{
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-    // Close connection
-    mysqli_close($link);
-}
-?>
-
 
 <!-- Top Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
-    <div class="container px-5">
-        <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>">codeX</a>
+    <div class="container px-4">
+        <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem" alt="logo"></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-1">
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Tutorials</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Community</a></li>
             </ul>
+            <a class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>">
+                        <span class="d-flex align-items-center">
+                            <span class="medium">Log in</span>
+                        </span>
+            </a>
+
+
+            <!--
             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
                         <span class="d-flex align-items-center">
                             <span class="medium">Log in</span>
                         </span>
             </button>
+            -->
         </div>
     </div>
 </nav>

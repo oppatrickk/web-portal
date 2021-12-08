@@ -11,6 +11,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../login/login.php");
     exit;
 }
+$id = htmlspecialchars($_SESSION["id"]);
 
 ?>
 
@@ -50,6 +51,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     $navbar_path = "dashboard.php";
     $logout_path = "../../database/logout.php";
     $profile_path = "profile.php";
+    $tutorials_path = "../tutorials/tutorial_dashboard.php";
+    $forums_path = "../forum/forum.php";
+    $logo_path = "../../assets/logo2.png";
 
     include '../../widgets/navbar.php';
 
@@ -80,10 +84,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <div class="col col-sm-2">
                     <?php
                     // Get image from the database
-                    $query = $link->query("SELECT * FROM images ORDER BY uploaded_on DESC");
+                    $query = $link->query("SELECT * FROM images where `username` = '$id'");
 
                     if($query->num_rows > 0){
-                        while($row = $query->fetch_assoc()){
+                        if($row = $query->fetch_assoc()){
                             $imageURL = '../../assets/img/avatars/'.$row["file_name"];
                             ?>
                             <img src="<?php echo $imageURL; ?>" style="height: 128px; width: 128px" alt="" />
@@ -126,38 +130,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     include '../../widgets/footer.php'
 ?>
-
-<!-- Feedback Modal-->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Bootstrap 5 Modal Form</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Email Address</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe" />
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
-                    <div class="modal-footer d-block">
-                        <p class="float-start">Not yet account <a href="#">Sign Up</a></p>
-                        <button type="submit" class="btn btn-warning float-end">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

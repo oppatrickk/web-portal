@@ -3,48 +3,11 @@
 require_once "../../database/config.php";
 
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $email = "";
-$username_err = $password_err = $confirm_password_err = $email_err = "";
+$username = $password = $confirm_password = "";
+$username_err = $password_err = $confirm_password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-    // Validate email
-    /*
-    if(empty(trim($_POST["email"]))){
-        $email_err = "Please enter your email.";
-    } elseif(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i/', trim($_POST["email"]))){
-        $email_err = "Please enter a valid email.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE email = ?";
-
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_email);
-
-            // Set parameters
-            $param_email = trim($_POST["email"]);
-
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){ */
-                /* store result */ /*
-                mysqli_stmt_store_result($stmt);
-
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $email_err = "This email is already in use.";
-                } else{
-                    $email = trim($_POST["email"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-    */
 
     // Validate username
     if(empty(trim($_POST["username"]))){
@@ -164,18 +127,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <body>
     <!-- Top Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
-        <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="../dashboard/dashboard.php">codeX</a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Tutorials</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Community</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php
+    // Paths
+    $navbar_path = "../../index.php";
+    $login_path = "login.php";
+    $logo_path = "../../assets/logo2.png";
+
+    include '../../widgets/navbar_nologin.php';
+
+    ?>
 
     <!-- Main -->
     <header class="masthead">

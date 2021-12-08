@@ -4,6 +4,8 @@
 // Initialize the session
 session_start();
 
+include '../../database/config.php';
+
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../login/login.php");
@@ -34,7 +36,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- Icons -->
 
     <!-- Fonts -->
-
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
     <!-- Assets -->
 
@@ -50,6 +52,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         $settings_path =  "";
         $activity_path =  "";
         $logout_path = "../../database/logout.php";
+        $tutorials_path = "../tutorials/tutorial_dashboard.php";
+        $forums_path = "../forum/forum.php";
+        $logo_path = "../../assets/logo2.png";
 
         include '../../widgets/navbar.php';
 
@@ -76,11 +81,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <!--Main Section-->
     <div class="row align-items-center justify-content-around mt-5">
-        <div class="col-md-6">
+        <div class="col-md-4">
+
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Video tutorial _Outline.svg" width="100%"><br>Start your day with some <b>Tutorials</b>.</button>
+                <a type="button" class="btn btn-outline-primary" href="../tutorials/tutorial_dashboard.php"><img src="../../assets/img/dashboard/Video tutorial _Outline.svg" width="100%"><br>Start your day with some <b>Tutorials</b>.</a>
                 <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Competition_Flatline.svg" width="100%"><br>Take on others through <b>Challenges</b>.</button>
-                <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Group Video Call_Outline.svg" width="100%"><br>Seek assistance with our <b>Community</b>.</button>
+                <a type="button" class="btn btn-outline-primary" href="../forum/forum.php"><img src="../../assets/img/dashboard/Group Video Call_Outline.svg" width="100%"><br>Seek assistance with our <b>Community</b>.</a>
             </div>
             <div class="col-md-12">
 

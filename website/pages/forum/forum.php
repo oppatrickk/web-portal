@@ -50,6 +50,7 @@ require_once "../../database/config.php";
     $activity_path =  "";
     $logout_path = "../../database/logout.php";
     $redirect_path = "forum.php";
+    $logo_path = "../../assets/logo2.png";
 
     // Check if the user is logged in
     if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){

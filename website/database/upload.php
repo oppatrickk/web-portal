@@ -1,9 +1,13 @@
 <?php
+session_start();
+
 // Include the database configuration file
 include 'config.php';
 $statusMsg = '';
 
 // File upload path
+$name = htmlspecialchars($_SESSION["username"]);
+$id = ($_SESSION["id"]);
 $targetDir = "../assets/img/avatars/";
 $fileName = basename($_FILES["file"]["name"]);
 $targetFilePath = $targetDir . $fileName;
@@ -11,12 +15,16 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
 if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
     // Allow certain file formats
-    $allowTypes = array('jpg','png','jpeg','gif','pdf');
+    $allowTypes = array('jpg','png','jpeg');
     if(in_array($fileType, $allowTypes)){
         // Upload file to server
-        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $newfilename = $name . "_avatar" . '.' . end($temp);
+
+        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetDir . $newfilename)){
             // Insert image file name into database
-            $insert = $link->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
+            $insert = $link->query("INSERT into images (file_name, uploaded_on, username) VALUES ('".$newfilename."', NOW(),'".$id."')");
             if($insert){
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{

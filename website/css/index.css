@@ -2,6 +2,7 @@ html,
 body {
     height: 100%;
     font-size: 1rem;
+    font-family: 'Noto Sans';
 }
 
 .gradient {
@@ -12,8 +13,7 @@ body {
 .page-header {
     margin-top: 3.5rem;
     font-size: 1.25rem;
-    color: #fff;
-    font-family: 'Merriweather', serif;
+    color: #fff;;
 }
 
 .feature {
