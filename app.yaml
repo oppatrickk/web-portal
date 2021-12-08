@@ -1,6 +1,17 @@
 runtime: php74
 
 handlers:
- 
+
 - url: /.*
   script: login.php
+  
+- url: /
+  static_files: pages/login/login.php
+  upload: pages/login/login.php
+
+- url: /
+  static_dir: 
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
