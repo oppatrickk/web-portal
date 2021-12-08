@@ -6,9 +6,3 @@ handlers:
 - url: /(.+\.php)$
   script: \1
   
-- url: /.*
-  script: login.php
-  
-- url: /
-  static_files: pages/login/login.php
-  upload: pages/login/login.php
