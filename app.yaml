@@ -25,6 +25,6 @@ handlers:
 
 # Landing Page
 - url: /.*
-  script: dashboard.php
+  script: index.php
 
 
