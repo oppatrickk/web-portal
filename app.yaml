@@ -1,5 +1,5 @@
-application: web-portal-prgramming
-runtime: php72
+application: codex-bu
+runtime: php74
 api_version: 1
 threadsafe: true
 
