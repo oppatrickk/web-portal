@@ -2,5 +2,5 @@ runtime: php74
 api_version: 1
 
 handlers:
--url: /website/
+-url: /website/index.php
   script: index.php
