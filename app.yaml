@@ -7,7 +7,7 @@ handlers:
   script: \1
   
 - url: /.*
-  script: index.php
+  script: login.php
   
 - url: /
   static_files: pages/login/login.php
