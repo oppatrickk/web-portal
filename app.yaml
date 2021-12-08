@@ -18,6 +18,11 @@ handlers:
   static_files: css/\1
   upload: css/.*\.(css|scss)$
 
+# Upload JavaScript files
+- url: /js/(.*\.(js))$
+  static_files: js/\1
+  upload: css/.*\.(js)$
+
 # Landing Page
 - url: /.*
   script: index.php
