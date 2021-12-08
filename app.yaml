@@ -9,9 +9,8 @@ handlers:
 - url: /.*
   script: index.php
 
-- url: /(.*\.(gif|png|jpg))$
-  static_files: assets/\1
-  upload: assets/.*\.(gif|png|jpg)$
-
-- url: /assets
-  static_dir: assets
+# Serve images as static resources.
+- url: /(.+\.(gif|png|jpg))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg)$
+  application_readable: true
