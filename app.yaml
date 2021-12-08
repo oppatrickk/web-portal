@@ -4,5 +4,5 @@ threadsafe: true
 
 handlers:
 
-- url: /.*
+- url: /
   script: login.php
