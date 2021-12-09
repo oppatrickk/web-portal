@@ -4,9 +4,7 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
 
 $bucket = 'codex-bu.appspot.com'; // your bucket name
 
-$options = ['size' => 400, 'crop' => true];
-$image_file = "gs://$bucket/11.jpg";
-$image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
+
 
 $root_path = 'gs://' . $bucket . '/';
 $_url = '';
@@ -31,8 +29,9 @@ if(isset($_POST['submit']))
     <p/> <input name="userfile" type="file" />
     <p/> <input type="submit" name="submit" value="Send files" />
 </form>
+<img src="gs://codex-bu.appspot.com/11.jpg">
 
-<img src="<?php echo $image_url;?>">
+
 
 </body>
 

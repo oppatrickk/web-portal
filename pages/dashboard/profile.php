@@ -83,14 +83,39 @@ $id = htmlspecialchars($_SESSION["id"]);
             <div class="row">
                 <div class="col col-sm-2">
                     <?php
-                    // Get image from the database
+                    // Database
                     $query = $link->query("SELECT * FROM images where `username` = '$id'");
 
+                    // Cloud Image Storage
+                    use google\appengine\api\cloud_storage\CloudStorageTools;
+
+                    $bucket = 'codex-bu.appspot.com'; // your bucket name
+
+                    $root_path = 'gs://' . $bucket . '/';
+                    $_url = '';
+                    if(isset($_POST['submit']))
+                    {
+                        if(isset($_FILES['userfile']))
+                        {
+                            $name = $_FILES['userfile']['name'];
+                            $file_size =$_FILES['userfile']['size'];
+                            $file_tmp =$_FILES['userfile']['tmp_name'];
+                            $original = $root_path .$name;
+                            move_uploaded_file($file_tmp, $original);
+                            $_url=CloudStorageTools::getImageServingUrl($original);
+                        }
+                    }
+
+                    // Get image from the database
                     if($query->num_rows > 0){
                         if($row = $query->fetch_assoc()){
-                            $imageURL = '../../assets/img/avatars/'.$row["file_name"];
+
+                            $options = ['size' => 400, 'crop' => true];
+                            $image_file = 'gs://$bucket/' .$row["file_name"];
+                            $image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
+
                             ?>
-                            <img src="<?php echo $imageURL; ?>" style="height: 128px; width: 128px" alt="" />
+                            <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
 
                         <?php }
                     }
@@ -108,7 +133,7 @@ $id = htmlspecialchars($_SESSION["id"]);
                     <form action="../../database/upload.php" method="post" enctype="multipart/form-data">
                         Select Image File to Upload:
                         <br>
-                        <input type="file" name="file">
+                        <input name="userfile" type="file">
                         <input type="submit" name="submit" value="Upload">
                     </form>
                 </div>
