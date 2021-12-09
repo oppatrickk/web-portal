@@ -32,7 +32,7 @@ if(isset($_POST['submit']))
     <p/> <input type="submit" name="submit" value="Send files" />
 </form>
 
-<?php echo $image_url;?>
+<img src="<?php echo $image_url;?>">
 
 </body>
 
