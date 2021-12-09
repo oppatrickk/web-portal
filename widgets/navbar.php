@@ -1,7 +1,6 @@
 <!-- PHP -->
 <?php
 
-
 $id = htmlspecialchars($_SESSION["id"]);
 
 // Get image from the database
@@ -21,7 +20,7 @@ else{
 <!-- Top Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
     <div class="container px-5">
-        <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style="width: 64px; height: 24px;"/></a>
+        <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem;"/></a>
 
         <div class="nav-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto me-4 my-lg-1">

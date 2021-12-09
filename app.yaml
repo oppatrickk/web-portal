@@ -34,5 +34,6 @@ env_variables:
   MYSQL_USER: "<your username>"
   MYSQL_PASSWORD: "<your password>"
   MYSQL_DSN: "mysql:dbname=codex;unix_socket=/cloudsql/codex-bu:asia-southeast1:codex"
-
+beta_settings:
+  cloud_sql_instances: "codex-bu:asia-southeast1:codex"
 

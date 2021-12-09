@@ -1,4 +1,3 @@
-
 <!-- Top Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
     <div class="container px-4">

@@ -5,7 +5,7 @@
             <!-- Main -->
             <div class="col md-0 mt-3 text-center ">
                 <h5>&copy; codeX | 2021</h5>
-                <p class="text-white-50">version 1.4</p>
+                <p class="text-white-50">version 2.2</p>
             </div>
             <hr class="clearfix w-100 d-md-none pb-3">
             <!-- About -->
