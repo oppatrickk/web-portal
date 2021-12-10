@@ -21,7 +21,7 @@ handlers:
 # Upload JavaScript files
 - url: /js/(.*\.(js))$
   static_files: js/\1
-  upload: css/.*\.(js)$
+  upload: js/.*\.(js)$
 
 # Landing Page
 - url: /
