@@ -66,7 +66,7 @@ return array(
     'Google\\Cloud\\Bigtable\\' => array($vendorDir . '/google/cloud/Bigtable/src'),
     'Google\\Cloud\\BigQuery\\DataTransfer\\' => array($vendorDir . '/google/cloud/BigQueryDataTransfer/src'),
     'Google\\Cloud\\BigQuery\\' => array($vendorDir . '/google/cloud/BigQuery/src'),
-    'Google\\Cloud\\' => array($vendorDir . '/google/gax/src/Cloud', $vendorDir . '/google/cloud/src'),
+    'Google\\Cloud\\' => array($vendorDir . '/google/cloud/src', $vendorDir . '/google/gax/src/Cloud'),
     'Google\\Auth\\' => array($vendorDir . '/google/auth/src'),
     'Google\\Api\\' => array($vendorDir . '/google/gax/src/Api'),
     'Google\\ApiCore\\' => array($vendorDir . '/google/gax/src/ApiCore'),
