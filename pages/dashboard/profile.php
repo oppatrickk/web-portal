@@ -25,7 +25,7 @@ $id = htmlspecialchars($_SESSION["id"]);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>codeX | Dashboard</title>
+    <title>codeX | <?php echo htmlspecialchars($_SESSION["username"]);?></title>
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
 
     <!-- Bootstrap CSS and Icons -->

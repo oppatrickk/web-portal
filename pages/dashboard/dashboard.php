@@ -172,9 +172,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <?php
         // Paths
         $about_path = "";
-        $founders_path = "";
+        $founders_path = "../footer/founders.php";
         $faqs_path = "";
         $contact_path = "";
+        $report_path = "../footer/report.php";
+
 
         include '../../widgets/footer.php'
 

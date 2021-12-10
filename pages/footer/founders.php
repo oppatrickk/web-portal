@@ -50,6 +50,8 @@ require_once "../../database/config.php";
         $activity_path =  "";
         $logout_path = "../../database/logout.php";
         $redirect_path = "founders.php";
+        $logo_path = "../../assets/logo2.png";
+        $login_path = "../login/login.php";
 
         // Check if the user is logged in
         if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -61,121 +63,173 @@ require_once "../../database/config.php";
 
     ?>
 
-    <div class="about-section">
-        <h1>About Us</h1>
-        <p>Everyone says it, but in our case it’s true: our team is the secret to our success. Each of member is amazing
-            in their own right, but together we are what makes CodeX such a fun and rewarding piece of work. The CodeX
-            team is a tight-knit, talented group with a shared vision of delivering a website that can give new and old
-            programmers a place to hangout. <br> We’re very proud of the team we’ve built – there’s only five of us now
-            but it still feels like it did when there were just a few of us. CodeX has always been a team defined by
-            bringing together talented people with a shared vision and passion for helping us to be the best we can be
-            for our clients. But that doesn’t mean CodeX is a cookie-cutter Team. WE at CodeX are unique individuals who
-            are united by a set of core values that apply to everything we do within the team. </p>
-    </div>
+    <div class="main custom-scrollbar-css">
+        <!--Header-->
+        <header class="page-header gradient pb-5 pt-5">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-2">
+                    </div>
+                    <div class="col-md-auto">
+                        <h1 class="fw-bold">MEET THE TEAM</h1>
+                    </div>
+                    <div class="col col-lg-2">
+                    </div>
+                </div>
+            </div>
+            <p class="px-5" id="opening">Everyone says it, but in our case it’s true: our team is the secret to our success. Each of member is amazing
+                in their own right, but together we are what makes CodeX such a fun and rewarding piece of work. The CodeX
+                team is a tight-knit, talented group with a shared vision of delivering a website that can give new and old
+                programmers a place to hangout. <br> We’re very proud of the team we’ve built – there’s only five of us now
+                but it still feels like it did when there were just a few of us. CodeX has always been a team defined by
+                bringing together talented people with a shared vision and passion for helping us to be the best we can be
+                for our clients. But that doesn’t mean CodeX is a cookie-cutter Team. WE at CodeX are unique individuals who
+                are united by a set of core values that apply to everything we do within the team. </p>
+        </header>
 
-    <h1 style="text-align:center">MEET THE TEAM</h1>
-    <div class="row">
-        <!-- Founder 1 -->
-        <div class="column">
-            <div class="card">
-                <img src="" alt="Patrick" style="width:100%">
-                <div class="container">
-                    <h2>John Patrick Prieto</h2>
-                    <p class="title">Founder/Programmer</p>
-                    <p>"Description"</p>
-                    <p>johnpatrickmanguerra.prieto@bicol-u.edu.ph</p>
-                    <p>
-                        <button class="button"><a class="nav-link me-lg-3" href="https://www.facebook.com/prietopat">Contact
-                        </button>
-                    </p>
-                    </a>
+        <!-- Founders -->
+        <div class="row">
+            <!-- Founder 1 -->
+            <div class="col">
+                <div class="card m-5" style="width: auto;">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                </div>
+                                <div class="col-md-auto">
+                                    <img src="../../assets/img/founders/prieto.jpg" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                </div>
+                                <div class="col col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mt-3">John Patrick M. Prieto</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Founder/Programmer</h6>
+                        <p class="card-text">Quote</p>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founder 2 -->
+            <div class="col">
+                <div class="card m-5" style="width: auto;">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                </div>
+                                <div class="col-md-auto">
+                                    <img src="../../assets/img/founders/francisco.jpg" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                </div>
+                                <div class="col col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mt-3">Jhon Lorence T. Francisco</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Founder/Programmer</h6>
+                        <p class="card-text">Quote</p>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founder 3 -->
+            <div class="col">
+                <div class="card m-5" style="width: auto;">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                </div>
+                                <div class="col-md-auto">
+                                    <img src="../../assets/img/founders/raro.jpeg" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                </div>
+                                <div class="col col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mt-3">John Mynard Raro</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Founder/Programmer</h6>
+                        <p class="card-text">Quote</p>
+                        <i class="bi bi-facebook"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Founder 2 -->
-        <div class="column">
-            <div class="card">
-                <img src="" alt="Lorence" style="width:100%">
-                <div class="container">
-                    <h2>Jhon Lorence Francisco</h2>
-                    <p class="title">Founder/Programmer</p>
-                    <p>"Description"</p>
-                    <p>Email</p>
-                    <p>
-                        <button class="button"><a class="nav-link me-lg-3" href="https://www.facebook.com/jhonlorence.francisco.9">Contact
-                        </button>
-                    </p>
-                    </a>
+
+        <div class="row">
+            <!-- Founder 4 -->
+            <div class="col">
+                <div class="card m-5" style="width: auto;">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                </div>
+                                <div class="col-md-auto">
+                                    <img src="../../assets/img/founders/guiriba.jpg" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                </div>
+                                <div class="col col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mt-3">Malven Guiriba</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Founder/Programmer</h6>
+                        <p class="card-text">Quote</p>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founder 5 -->
+            <div class="col">
+                <div class="card m-5" style="width: auto;">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                </div>
+                                <div class="col-md-auto">
+                                    <img src="../../assets/img/founders/founder.png" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                </div>
+                                <div class="col col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mt-3">John Patrick M. Prieto</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Founder/Programmer</h6>
+                        <p class="card-text">Quote</p>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founder 6 -->
+            <div class="col">
+                <div class="card m-5" style="width: auto;">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-2">
+                                </div>
+                                <div class="col-md-auto">
+                                    <img src="../../assets/img/founders/founder.png" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                </div>
+                                <div class="col col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title mt-3">John Patrick M. Prieto</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Founder/Programmer</h6>
+                        <p class="card-text">Quote</p>
+                        <i class="bi bi-facebook"></i>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Founder 3 -->
-        <div class="column">
-            <div class="card">
-                <img src="" alt="Mynard" style="width:100%">
-                <div class="container">
-                    <h2>John Mynard A. Raro</h2>
-                    <p class="title">Founder/Programmer</p>
-                    <p>Description</p>
-                    <p>email</p>
-                    <p>
-                        <button class="button"><a class="nav-link me-lg-3" href="https://www.facebook.com/CaliBur01/">Contact
-                        </button>
-                    </p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Founder 4 -->
-        <div class="column">
-            <div class="card">
-                <img src="/w3images/team2.jpg" alt="Malven" style="width:100%">
-                <div class="container">
-                    <h2>Malven Guiriba</h2>
-                    <p class="title">Founder/Programmer</p>
-                    <p>Description</p>
-                    <p>Email</p>
-                    <p>
-                        <button class="button"><a class="nav-link me-lg-3" href="https://www.facebook.com/boy.guiriba.1">Contact</button>
-                    </p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Founder 5 -->
-        <div class="column">
-            <div class="card">
-                <img src="" alt="John" style="width:100%">
-                <div class="container">
-                    <h2>John Joseph Jasareno</h2>
-                    <p class="title">Founder/Programmer</p>
-                    <p>Description</p>
-                    <p>Email</p>
-                    <p>
-                        <button class="button"><a class="nav-link me-lg-3" href="https://www.facebook.com/josef.jasareno">Contact</button>
-                    </p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- Founder 6 -->
-        <div class="column">
-            <div class="card">
-                <img src="" alt="John" style="width:100%">
-                <div class="container">
-                    <h2>Ryan Clavo</h2>
-                    <p class="title">Founder/Programmer</p>
-                    <p>Description</p>
-                    <p>Email</p>
-                    <p>
-                        <button class="button"><a class="nav-link me-lg-3"
-                                                  href="https://www.facebook.com/josef.jasareno">Contact</button>
-                    </p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Footer-->
     <?php
@@ -189,11 +243,16 @@ require_once "../../database/config.php";
 
     ?>
 
+    </div>
+
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- External JavaScript-->
-    <script src="js/scripts_index.js"></script>
+    <script src="../../js/scroll.js"></script>
 
     <!-- Forms -->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
