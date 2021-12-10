@@ -11,6 +11,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../login/login.php");
     exit;
 }
+
 $id = htmlspecialchars($_SESSION["id"]);
 
 ?>
@@ -32,11 +33,14 @@ $id = htmlspecialchars($_SESSION["id"]);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- External CSS -->
-    <link href="../../css/dashboard.css" rel="stylesheet"/>
+    <link href="../../css/profile.css" rel="stylesheet"/>
 
     <!-- Icons -->
 
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
 
     <!-- Assets -->
@@ -51,6 +55,7 @@ $id = htmlspecialchars($_SESSION["id"]);
     $navbar_path = "dashboard.php";
     $logout_path = "../../database/logout.php";
     $profile_path = "profile.php";
+    $settings_path = "settings.php";
     $tutorials_path = "../tutorials/tutorial_dashboard.php";
     $forums_path = "../forum/forum.php";
     $logo_path = "../../assets/logo2.png";
@@ -59,29 +64,17 @@ $id = htmlspecialchars($_SESSION["id"]);
 
 ?>
 
-<!-- Sidebar -->
+<div class="main custom-scrollbar-css">
 
+    <!-- Row 1 -->
+    <header class="masthead">
 
-<!-- Row 1 -->
-<header class="masthead">
-    <div class="container h-100 mt-5 mb-5">
-        <div class="row h-100 align-items-center">
-            <div class="col-12 text-center mt-5">
-                <h1>Web Portal Project</h1>
-                <p class="lead">Profile Page</p>
-            </div>
-        </div>
-    </div>
-</header>
+        <div class="container mt-5 pt-5">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
 
-<!-- Row 2 | Profile-->
-<section class="py-5 bg-light">
-    <div class="container">
-        <h2 class="fw-light"><?php echo htmlspecialchars($_SESSION["username"]); ?></h2>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-sm-2">
+                </div>
+                <div class="col-md-auto">
                     <?php
                     // Database
                     $query = $link->query("SELECT * FROM images where `username` = '$id'");
@@ -120,50 +113,83 @@ $id = htmlspecialchars($_SESSION["id"]);
                         <?php }
                     }
                     else{ ?>
-                    <img src="../../assets/img/avatars/default_avatar.png" style="height: 128px; width: 128px" class="rounded-circle">
+                        <img src="../../assets/img/avatars/default_avatar.png" style="height: 128px; width: 128px" class="rounded-circle">
                     <?php } ?>
-
                 </div>
-                <div class="col col-sm-5">
-                    <p>First name, Last Name</p>
-                    <p>Email</p>
+                <div class="col col-lg-2">
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#pictureModal" style = "text-decoration: none">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
                 </div>
 
-                <div class="mt-5">
-                    <form action="../../database/upload.php" method="post" enctype="multipart/form-data">
-                        Select Image File to Upload:
-                        <br>
-                        <input name="userfile" type="file">
-                        <input type="submit" name="submit" value="Upload">
-                    </form>
+                <div class="col-12 text-center mt-2">
+                    <h1>NAME</h1>
+                    <p class="lead">@<?php echo htmlspecialchars($_SESSION["username"]);?></p>
                 </div>
             </div>
         </div>
+    </header>
 
+    <!-- Badges -->
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col px-5">
+                <h1 class="mt-5 mb-4">Your Badges</h1>
+                <p> You currently do not have any badges</p>
 
-
+            </div>
+        </div>
     </div>
-</section>
 
-<!-- Footer-->
-<?php
-    // Paths
-    $about_path = "";
-    $founders_path = "";
-    $faqs_path = "";
-    $contact_path = "";
 
-    include '../../widgets/footer.php'
-?>
+<!-- Picture Modal-->
+<div class="modal fade" id="pictureModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered col-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-primary p-4">
+                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Change Picture</h5>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body border-0 p-4">
+                <form action="../../database/upload.php" method="post" enctype="multipart/form-data">
+                    <!-- Image -->
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <img id="frame" src="../../assets/img/avatars/default_avatar.png" class="img-fluid rounded-circle mb-4" style="height: 12rem; width: 12rem;"/>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Upload File -->
+                    <div class="container">
+                        <div>
+                            <input name="userfile" class="form-control" type="file" id="formFile" onchange="preview()">
+                            <div class="d-grid mt-3">
+                                <input onclick="clearImage()" type="submit" class="btn btn-primary rounded-pill" name="submit" value="Upload">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- External JavaScript-->
-<script src="../../js/dashboard.js"></script>
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Forms -->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<!-- External JavaScript-->
+<script src="../../js/profile.js"></script>
 
 </body>
 </html>

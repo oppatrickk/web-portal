@@ -51,8 +51,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         // Paths
         $navbar_path = "dashboard.php";
         $profile_path =  "profile.php";
-        $settings_path =  "";
-        $activity_path =  "";
+        $settings_path =  "settings.php";
+        $activity_path =  "activity.php";
         $logout_path = "../../database/logout.php";
         $tutorials_path = "../tutorials/tutorial_dashboard.php";
         $forums_path = "../forum/forum.php";
@@ -62,6 +62,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         ?>
 
+    <div class="main custom-scrollbar-css">
     <!--Header-->
     <header class="page-header gradient pb-5 pt-5">
         <div class="container pt-3 pb-3">
@@ -178,6 +179,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         include '../../widgets/footer.php'
 
     ?>
+    </div>
 
     <!-- Feedback Modal-->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -213,6 +215,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- External JavaScript-->
     <script src="../../js/dashboard.js"></script>

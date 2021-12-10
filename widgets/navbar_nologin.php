@@ -1,23 +1,24 @@
 <!-- Top Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
-    <div class="container px-4">
+    <div class="container px-5">
         <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem" alt="logo"></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
 
             <!--
-            <a class="ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>" style = "text-decoration: none">
-                <span class="d-flex align-items-center">
-                    <span class="medium">Sign in</span>
-                </span>
-            </a>
-            -->
 
             <button class="btn btn-link ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal" style = "text-decoration: none">
                         <span class="d-flex align-items-center">
                             <span class="medium">Log in</span>
                         </span>
             </button>
+            -->
+
+            <a class="ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>" style = "text-decoration: none">
+                <span class="d-flex align-items-center">
+                    <span class="medium">Sign in</span>
+                </span>
+            </a>
 
             <a class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>">
                 <span class="d-flex align-items-center">

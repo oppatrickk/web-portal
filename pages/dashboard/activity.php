@@ -24,7 +24,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>codeX | Settings</title>
+    <title>codeX | Activity Log</title>
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
 
     <!-- Bootstrap CSS and Icons -->
@@ -53,6 +53,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 $navbar_path = "../../index.php";
 $logo_path = "../../assets/logo2.png";
 $login_path = "../login/login.php";
+$profile_path = "profile.php";
+$settings_path = "settings.php";
+$activity_path = "activity.php";
+$logout_path = "../../database/logout.php";
 
 include '../../widgets/navbar.php'
 ?>

@@ -1,3 +1,13 @@
+<!-- PHP -->
+<?php
+// Initialize the session
+session_start();
+
+// Include config file
+require_once "../../database/config.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +25,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- External CSS -->
-    <link href="../../css/report.css" rel="stylesheet" />
+    <link href="../../css/scroll.css" rel="stylesheet" />
 
     <!-- Icons -->
 
@@ -32,16 +42,28 @@
 <body>
 <!-- Top Nav Bar-->
 <?php
-// Paths
-$navbar_path = "../../index.php";
-$logo_path = "../../assets/logo2.png";
-$login_path = "../login/login.php";
+    // Paths
+    $navbar_path = "../../index.php";
+    $profile_path = "../dashboard/profile.php";
+    $settings_path = "../dashboard/settings.php";
+    $activity_path = "";
+    $logout_path = "../../database/logout.php";
+    $login_path = "../login/login.php";
+    $redirect_path = "report.php";
+    $logo_path = "../../assets/logo2.png";
 
-include '../../widgets/navbar_nologin.php'
+    // Check if the user is logged in
+    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+        include '../../widgets/navbar_nologin.php';
+    } else {
+        include '../../widgets/navbar.php';
+    }
+
+
 ?>
 
 <!-- Header -->
-<div class="main">
+<div class="main custom-scrollbar-css">
     <header class="pt-5 pb-5">
         <div class="container pt-5">
             <div class="row align-items-center justify-content-center">
@@ -78,7 +100,7 @@ include '../../widgets/navbar_nologin.php'
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- External JavaScript-->
-<script src="../../js/report.js"></script>
+<script src="../../js/scroll.js"></script>
 
 </body>
 </html>

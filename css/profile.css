@@ -1,0 +1,40 @@
+html,
+body {
+    height: 100%;
+    font-size: 1rem;
+    font-family: 'Noto Sans';
+}
+
+.main{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: -55px;
+}
+
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+    height: 100px;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #00d2ff;
+    background-image: linear-gradient(to top, #000dff 0%, #001aa9 100%);
+}

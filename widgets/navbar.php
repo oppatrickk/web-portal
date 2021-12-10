@@ -19,16 +19,21 @@ else{
 
 <!-- Top Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
-    <div class="container px-5">
-        <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem;"/></a>
 
-        <div class="nav-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-1 me-4 my-lg-1">
-                <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $tutorials_path?>">Tutorials</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $forums_path?>">Forums</a></li>
-            </ul>
-        </div>
+    <div class="px-5"></div>
+    <a class="navbar-brand fw-bold px-5" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem;"/></a>
+    <div class="nav-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link me-lg-3" href="<?php echo $tutorials_path?>">Tutorials</a>
+            </li>
+            <li class="nav-item"><a class="nav-link me-lg-3 disabled" href="#download">Challenges</a></li>
+            <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $forums_path?>">Forums</a></li>
+        </ul>
+    </div>
+
+
+    <div class="container px-5">
 
         <div class="d-none d-sm-block topbar-divider"></div>
 
@@ -49,7 +54,7 @@ else{
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo $logout_path; ?>">
-                    <i class="bi-box-arrow-right me-2 text-gray-400" style="color: grey; font-size: 14px"></i>&nbsp;Logout
+                    <i class="bi-box-arrow-right me-2 text-gray-400" style="color: grey; font-size: 14px"></i>&nbsp;Sign out
                 </a>
             </div>
         </div>
