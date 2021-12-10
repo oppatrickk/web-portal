@@ -9,6 +9,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
 
 // Include config file
+require __DIR__ . '../../vendor/autoload.php';
+require __DIR__ . '../../env.php';
+
 require_once "../../database/config.php";
 
 // Define variables and initialize with empty values
