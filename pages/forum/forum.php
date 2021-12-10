@@ -65,7 +65,14 @@ require_once "../../database/config.php";
     <!-- Introduction -->
     <div class="about-section mt-5">
         <h1>Welcome to the CodeX Forum</h1>
-        <p> Rules And Descriptions Later </p>
+        <div class="about-section mt-5">
+        <h1>Welcome to the CodeX Forum</h1>
+        <h2>Please Follow Our Rules and Regulations Listed Below :</h2>
+        <p> 1. No Spam / Advertising / Self-promote in the forums <br> 2. Do not post copyright-infringing material
+        <br> 3. Do not post “offensive” posts, links or images <br> 4.  Do not cross post questions <br> 5.Do not PM users asking for help
+        <br> 6. Remain respectful of other members at all times
+            </p>
+    </div>
     </div>
 
 
