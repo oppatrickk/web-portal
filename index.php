@@ -7,6 +7,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: pages/dashboard/dashboard.php");
     exit;
 }
+$dashboard_path = "pages/dashboard/dashboard.php";
+include 'database/login.php';
 
 ?>
 
@@ -61,11 +63,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <div class="container pt-5">
             <div class="row align-items-center justify-content-center">
                 <div class="col px-5">
-                    <h2 class="mb-4">Attain coding potentials through challenges</h2>
-                    <p>Start developing your skills by taking on challenges<br> that you and your friends will be facing on.</p>
-                    <button type="button" class="btn btn-outline-success btn-lg">Join Now</button>
+                    <h1 class="mb-4 fw-bold">Learn Basic Programming</h1>
+                    <p class="fw-light">Start developing your skills by taking<br>our Tutorials and Challenges</p>
+                    <button type="button" class="btn btn-success btn-lg">Join Now</button>
                 </div>
-                <div class="col-md-5"><img src="assets/img/index/Profiling_Monochromatic.svg" alt="Header image" /></div>
+                <div class="col-md-5"><img src="assets/img/index/img1.png" alt="Header image" style="height: 20rem"/></div>
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,80C672,53,768,43,864,64C960,85,1056,139,1152,144C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
@@ -78,6 +80,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <div class="col"><img src="assets/img/index/logo_c.png" alt="Language logo" class="img-fluid" class="img-responsive" width="50%"></div>
                 <div class="col"><img src="assets/img/index/logo_html5.png" alt="Language logo" class="img-fluid" class="img-responsive" width="50%"></div>
                 <div class="col"><img src="assets/img/index/logo_css3.png" alt="Language logo" class="img-fluid" class="img-responsive" width="35%"></div>
+                <div class="col"><img src="assets/img/index/logo_python.svg" alt="Language logo" class="img-fluid" class="img-responsive" width="50%"></div>
             </div>
         </div>
     </section>
@@ -92,13 +95,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 </div>
 
                 <div class="col-md-6">
-                    <h1 class="my-3">Welcome to codeX</h1>
-                    <p class="my-4">You will be greeted with countless of opportunity to learn new things here. What we offer are the following:</p>
-                    <ul>
-                        <li>Tutorials</li>
-                        <li>Challenges</li>
-                        <li>Community</li>
-                    </ul>
+                    <h1 class="my-3 fw-bold">Welcome to codeX!</h1>
+                    <p class="my-4">There are countless opportunities to learn new things here</p>
                 </div>
             </div>
         </div>
@@ -181,8 +179,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         // Paths
         $about_path = "";
         $founders_path = "pages/footer/founders.php";
-        $faqs_path = "";
-        $contact_path = "";
+        $forum_path = "pages/forum/forum.php";
+        $report_path = "pages/footer/report.php";
 
         include 'widgets/footer.php'
 
@@ -197,9 +195,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
     <!-- External JavaScript-->
     <script src="js/index.js"></script>
-
-    <!-- Forms -->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 </body>
 </html>

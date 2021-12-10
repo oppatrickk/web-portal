@@ -26,7 +26,6 @@ handlers:
 # Landing Page
 - url: /
   script: index.php
-  upload: index
 
 # all other pages are a 404
 - url: /.*

@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer pt-4 bg-black pb-4 pt-5">
+<footer class="page-footer pt-4 bg-black pb-5 pt-5">
     <div class="container-fluid text-md-left text-white">
         <div class="row">
             <!-- Main -->
@@ -25,10 +25,7 @@
                 <h5 class="text-uppercase">Get Help</h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="<?php echo $faqs_path; ?>"style="text-decoration:none; color: dimgray" rel="noopener noreferrer">FAQs</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo $contact_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Contact Us</a>
+                        <a href="<?php echo $forum_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Forums</a>
                     </li>
                     <li>
                         <a href="<?php echo $report_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Report Issue</a>

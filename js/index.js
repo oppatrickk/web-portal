@@ -10,7 +10,7 @@
 $(document).ready(function(){
     $('.main').height($(window).height() - 55);
     $(window).on("resize", function(){
-        $('.main').height($(window).height() - 110);
+        $('.main').height($(window).height() - 55);
     });
 });
 
