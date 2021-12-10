@@ -3,15 +3,16 @@
     <div class="container px-4">
         <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem" alt="logo"></a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-1">
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Tutorials</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Community</a></li>
-            </ul>
+
+            <a class="ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>" style = "text-decoration: none">
+                <span class="d-flex align-items-center">
+                    <span class="medium">Sign in</span>
+                </span>
+            </a>
             <a class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>">
-                        <span class="d-flex align-items-center">
-                            <span class="medium">Log in</span>
-                        </span>
+                <span class="d-flex align-items-center">
+                    <span class="medium">Sign up</span>
+                </span>
             </a>
 
 

@@ -162,17 +162,6 @@ include '../../widgets/navbar_nologin.php'
 </header>
 </div>
 
-<!-- Footer -->
-<?php
-// Paths
-$about_path = "";
-$founders_path = "";
-$faqs_path = "";
-$contact_path = "";
-
-include '../../widgets/footer.php'
-
-?>
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

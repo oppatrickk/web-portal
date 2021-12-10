@@ -54,6 +54,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         include 'widgets/navbar_nologin.php'
     ?>
 
+    <div class="main custom-scrollbar-css">
+
     <!-- Masthead -->
     <header class="page-header gradient">
         <div class="container pt-5">
@@ -172,9 +174,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 </div>
             </div>
         </div>
-        </section>
-
-
+    </section>
 
     <!-- Footer-->
     <?php
@@ -187,9 +187,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         include 'widgets/footer.php'
 
     ?>
+    </div>
 
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- External JavaScript-->
     <script src="js/index.js"></script>

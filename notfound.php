@@ -28,12 +28,33 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <h1>404 Not Found!</h1>
+    <!-- Top Nav Bar-->
+    <?php
+    // Paths
+    $navbar_path = "index.php";
+    $logo_path = "assets/logo2.png";
+    $login_path = "pages/login/login.php";
 
-    <form action="index.php">
-        <input type="submit" value="return" />
-    </form>
+    include 'widgets/navbar_nologin.php'
+    ?>
+
+    <!-- Header -->
+    <div style="text-align: center;" class="pt-5 mt-5">
+
+        <img src="assets/img/404/img1.svg" style="height: 24rem;">
+        <h1 class="mt-5">404 Page Not Found</h1>
+        <p class="mt-3">Sorry, the page you're looking for doesn't exist.</p>
+
+        <a class="btn btn-primary rounded-pill px-3 mt-4" href="index.php">
+            Return Home
+        </a>
+        <span class="p-2"></span>
+        <a class="btn btn-outline-danger rounded-pill px-3 mt-4" href="">
+            Report Problem
+        </a>
+
+    </div>
+
 
 
 

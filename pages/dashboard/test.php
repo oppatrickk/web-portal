@@ -4,8 +4,6 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
 
 $bucket = 'codex-bu.appspot.com'; // your bucket name
 
-
-
 $root_path = 'gs://' . $bucket . '/';
 $_url = '';
 if(isset($_POST['submit']))

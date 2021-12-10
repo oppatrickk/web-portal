@@ -24,8 +24,12 @@ handlers:
   upload: css/.*\.(js)$
 
 # Landing Page
-- url: /.*
+- url: /
   script: index.php
+
+# all other pages are a 404
+- url: /.*
+  script: notfound.php
 
 # Environment
 env_variables:
