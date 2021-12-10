@@ -27,9 +27,9 @@ handlers:
 - url: /
   script: index.php
 
-# This doesn't work either
-error_handlers:
-- file: notfound.php
+# all other pages are a 404
+- url: /.*
+  script: notfound.php
 
 # Environment
 env_variables:
