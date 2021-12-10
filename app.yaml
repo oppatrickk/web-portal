@@ -3,6 +3,10 @@ api_version: 1
 threadsafe: true
 
 handlers:
+# Landing Page
+- url: /
+    script: pages/dashboard/dashboard.php
+
 # Allow multi-pages
 - url: /(.+\.php)$
   script: \1
@@ -22,10 +26,6 @@ handlers:
 - url: /js/(.*\.(js))$
   static_files: js/\1
   upload: js/.*\.(js)$
-
-# Landing Page
-- url: /
-  script: index.php
 
 # all other pages are a 404
 - url: /.*

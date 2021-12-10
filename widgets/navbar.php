@@ -23,7 +23,7 @@ else{
         <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem;"/></a>
 
         <div class="nav-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto me-4 my-lg-1">
+            <ul class="navbar-nav ms-1 me-4 my-lg-1">
                 <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $tutorials_path?>">Tutorials</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Challenges</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $forums_path?>">Forums</a></li>
