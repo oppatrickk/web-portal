@@ -97,30 +97,35 @@ require_once "../../database/config.php";
         </div>
     </div>
 
-    <div class="container">
-        <h1 class="py-2">Start a Discussion</h1>
-    </div>
-
-    <div class="container">
-
-        <!-- Forms-->
-
-
-        <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Thread Title</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Keep your title be breif and short as much as possible</div>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Please Elaborate your Concerns</label>
-                <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-
-    </div>
-
+    <<?php 
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true){ 
+    echo '<div class="container">
+            <h1 class="py-2">Start a Discussion</h1> 
+            <form action="'. $_SERVER["REQUEST_URI"] . '" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Problem Title</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as
+                        possible</small>
+                </div>
+                <input type="hidden" name="sno" value="'. $_SESSION["sno"]. '">
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Ellaborate Your Concern</label>
+                    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>';
+    }
+    else{
+        echo '
+        <div class="container">
+        <h1 class="py-2">Start a Discussion</h1> 
+           <p class="lead">You are not logged in. Please login to be able to start a Discussion</p>
+        </div>
+        ';
+    }
+    ?>
 
     <div class="container">
 
@@ -136,30 +141,35 @@ require_once "../../database/config.php";
             $id = $row['thread_id'];
             $title = $row['thread_title'];
             $desc = $row['thread_description'];
-
+            $time = $row['timestamp'];
 
             echo '<div class="media my-3">
-              <img class="mr-3" src="../../assets/img/avatars/default_avatar.png" width="40px" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid=' . $id . '">' . $title . '</a></h5>
-                ' . $desc . '
+      <img class="mr-3" src="assets/Default User.jpg" width="40px" alt="Generic placeholder image">
+      <div class="media-body"> 
+      <p class="font-weight-bold my-0"><b> Created by an Anonymous User at ' .$time. '</b></p>
+        <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid='  . $id  . '">' . $title . '</a></h5>
+        ' . $desc . '
+      </div>
+    </div>';
+    }
+
+    // echo var_dump($noResult);
+    if ($noResult) {
+      echo '<div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                  <p class="lead">No Threads Found</p>
+                  <p class="lead"> Be the first person to ask a question</p>
               </div>
-            </div>';
-        }
+           </div> ';
+    }
+    ?>
 
-        // echo var_dump($noResult);
-        if ($noResult) {
-            echo '<div class="jumbotron jumbotron-fluid mb-5">
-                      <div class="container">
-                          <p class="lead">No Threads Found</p>
-                          <p class="lead"> Be the first person to ask a question</p>
-                      </div>
-                   </div> ';
-        }
-        ?>
 
-        <!-- remove later; putting this just to check html allignment-->
+    <!-- remove later; putting this just to check html allignment-->
 
+
+
+  </div>
 
     </div>
 
