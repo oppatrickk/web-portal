@@ -87,7 +87,7 @@ require_once "database/config.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- External JavaScript-->
-    <script src="js/notfound.js"></script>
+    <script src="js/scroll.js"></script>
 
 </body>
 </html>

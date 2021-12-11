@@ -1,5 +1,6 @@
 <?php
 
+
 const DB_SERVER = '34.124.248.106';
 const DB_USERNAME = 'root';
 const DB_PASSWORD = '123456';
