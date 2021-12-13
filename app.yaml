@@ -1,6 +1,12 @@
 # Use the PHP 7.3 runtime (BETA) by replacing "php72" below with "php73"
 runtime: php72
 
+handlers:
+  # Serve Images as static resources
+- url: /(.+\.(gif|png|jpg|svg|ico|css|js))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg|svg|ico|css|js)$
+
 env_variables:
   # Replace USER, PASSWORD, DATABASE, and CONNECTION_NAME with the
   # values obtained when configuring your Cloud SQL instance.
