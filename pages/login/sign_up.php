@@ -121,10 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- External CSS -->
-    <link href="../../css/dashboard.css" rel="stylesheet"/>
+    <link href="../../css/sign_up.css" rel="stylesheet"/>
 
     <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,13 +184,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="form-group mt-3 col col-lg-3">
                             <label>Email</label>
                             <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>">
+
                             <span class="invalid-feedback"><?php echo $email_err; ?></span>
                         </div>
 
                         <!-- Password -->
                         <div class="form-group mt-3 col col-lg-3">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" id="password-field">
+                            <span toggle="#password-field" class="bi bi-eye-slash field-icon toggle-password"></span>
                             <span class="invalid-feedback"><?php echo $password_err; ?></span>
                         </div>
 
@@ -217,8 +220,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- External JavaScript-->
-    <script src="../../js/dashboard.js"></script>
+    <script src="../../js/sign_up.js"></script>
 
 </body>
 </html>

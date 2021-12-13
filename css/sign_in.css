@@ -1,0 +1,15 @@
+html,
+body {
+    height: 100%;
+    font-family: 'Noto Sans';
+    overflow: hidden;
+}
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}

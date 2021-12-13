@@ -6,13 +6,13 @@ session_start();
 
 // Check if User is logged in or not
 if(isset($_SESSION["user_login"])){
-    header("location: pages/dashboard/dashboard.php");
+    header("location: ../dashboard/dashboard.php");
 }
 
 if(isset($_REQUEST['btn_login'])){
     $username = strip_tags($_REQUEST["txt_username_email"]);
     $email = strip_tags($_REQUEST["txt_username_email"]);
-    $password = strip_tags($_REQUEST["txt_username_email"]);
+    $password = strip_tags($_REQUEST["txt_password"]);
 
     // Check if value is empty
     if(empty($username)){
@@ -33,9 +33,13 @@ if(isset($_REQUEST['btn_login'])){
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
                     if(password_verify($password, $row["password"])){
-                        $_SESSION["user_login"] = $row["user_id"];
+                        // Session Variables
+                        $_SESSION["id"] = $row["user_id"];
+                        $_SESSION["username"] = $row["username"];
+
+                        // Login
                         $loginMsg = "Success!";
-                        header("refresh:2 pages/dashboard/dashboard.php");
+                        header("Location: ../dashboard/dashboard.php");
                     }
                     else{
                         $errorMsg[] = "Wrong password";
@@ -74,7 +78,7 @@ if(isset($_REQUEST['btn_login'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- External CSS -->
-    <link href="../../css/login.css" rel="stylesheet"/>
+    <link href="../../css/sign_in.css" rel="stylesheet"/>
 
     <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -106,7 +110,7 @@ include '../../widgets/navbar_nologin.php'
                     foreach($errorMsg as $error){
                     ?>
                         <div class = "alert alert-danger">
-                            <strong><?php echo $error; ?></strong>
+                           <?php echo $error; ?>
                         </div>
                     <?php
                     }
@@ -134,7 +138,8 @@ include '../../widgets/navbar_nologin.php'
                     <!-- Password -->
                     <div class="form-group mt-3 col col-lg-3">
                         <label>Password</label>
-                        <input type="password" name="txt_password" class="form-control">
+                        <input type="password" name="txt_password" class="form-control" id="password-field">
+                        <span toggle="#password-field" class="bi bi-eye-slash field-icon toggle-password"></span>
                     </div>
 
                     <!-- Submit -->
@@ -155,11 +160,11 @@ include '../../widgets/navbar_nologin.php'
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- External JavaScript-->
-<script src="../../js/dashboard.js"></script>
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Forms -->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<!-- External JavaScript-->
+<script src="../../js/sign_in.js"></script>
 
 </body>
 </html>

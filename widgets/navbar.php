@@ -4,15 +4,14 @@
 $id = htmlspecialchars($_SESSION["id"]);
 
 // Get image from the database
-$query = $link->query("SELECT * FROM images where `username` = '$id'");
+$query = $db->query("SELECT * FROM images where `username` = '$id'");
 
-if($query->num_rows > 0){
+if($query > 0){
     if($row = $query->fetch_assoc()){
         $imageURL = '../../assets/img/avatars/'.$row["file_name"];
     }
 }
 else{
-
     $imageURL = '../../assets/img/avatars/default_avatar.png';
  } ?>
 

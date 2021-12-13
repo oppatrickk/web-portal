@@ -1,15 +1,13 @@
 <!-- PHP -->
 <?php
 
+include '../../database/config.php';
+
 // Initialize the session
 session_start();
 
-include '../../database/config.php';
-
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: ../../index.php");
-    exit;
+if(!isset($_SESSION['user_login'])){
+    header("../../index.php");
 }
 
 ?>
