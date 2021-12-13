@@ -9,9 +9,13 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/pages/login/login.php':
         require 'pages/login/login.php';
         break;
+    case '/pages/login/register.php':
+        require 'pages/login/register.php';
+        break;
     case '/pages/dashboard/dashboard.php':
         require 'pages/dashboard/dashboard.php';
         break;
+
     default:
         http_response_code(404);
         exit('Not Found');
