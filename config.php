@@ -24,9 +24,5 @@ $password = getenv('CLOUDSQL_PASSWORD');
 // create the PDO client
 $db = new PDO($dsn, $user, $password);
 
-// create the tables if they don't exist
-$sql = 'CREATE TABLE IF NOT EXISTS contacts (name VARCHAR(255), phone VARCHAR(255), email VARCHAR(255))';
-$stmt = $db->prepare($sql);
-$stmt->execute();
-# [END gae_cloudsql_example]
+
 ?>

@@ -1,4 +1,6 @@
 <?php
+require_once 'config.php';
+
 // Query existing entries.
 $results = $db->query('SELECT * FROM contacts');
 ?>

@@ -1,4 +1,6 @@
 <?php
+require_once 'config.php';
+
 $msg = '';
 // Insert a new row into the guestbook on POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
