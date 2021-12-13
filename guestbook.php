@@ -23,7 +23,7 @@ if (isset($_SERVER['SERVER_SOFTWARE']) &&
     strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') !== false) {
     // Connect from App Engine.
     try{
-        $db = new pdo('mysql:unix_socket=/cloudsql/codex-bu:codex-bu:asia-southeast2:codex-bu;dbname=guestbook', 'root', 'U^YuNDKb4Oh#pgjOSHkR');
+        $db = new pdo('mysql:unix_socket=/cloudsql/codex-bu:asia-southeast2:codex-bu;dbname=guestbook', 'root', 'U^YuNDKb4Oh#pgjOSHkR');
     }catch(PDOException $ex){
         die(json_encode(
             array('outcome' => false, 'message' => 'Unable to connect.')
