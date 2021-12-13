@@ -1,40 +1,10 @@
-runtime: php55
-api_version: 1
-threadsafe: true
+# Use the PHP 7.3 runtime (BETA) by replacing "php72" below with "php73"
+runtime: php72
 
-handlers:
-# Landing Page
-- url: /
-  script: index.php
-
-# Allow multi-pages
-- url: /(.+\.php)$
-  script: \1
-
-# Upload images
-- url: /(.+\.(gif|png|jpg|svg|ico))$
-  static_files: \1
-  upload: .+\.(gif|png|jpg|svg|ico)$
-  application_readable: true
-
-# Upload CSS files
-- url: /css/(.*\.(css|scss))$
-  static_files: css/\1
-  upload: css/.*\.(css|scss)$
-
-# Upload JavaScript files
-- url: /js/(.*\.(js))$
-  static_files: js/\1
-  upload: js/.*\.(js)$
-
-# all other pages are a 404
-- url: /.*
-  script: notfound.php
-
-# Environment
 env_variables:
+  # Replace USER, PASSWORD, DATABASE, and CONNECTION_NAME with the
+  # values obtained when configuring your Cloud SQL instance.
   CLOUDSQL_USER: root
-  CLOUDSQL_DB: codex
   CLOUDSQL_PASSWORD: U^YuNDKb4Oh#pgjOSHkR
-  CLOUDSQL_DSN: /cloudsql/codex-bu:asia-southeast2:codex-bu
-
+  CLOUDSQL_DSN: "mysql:dbname=codex;unix_socket=/cloudsql/codex-bu:asia-southeast2:codex-bu"
+# [END gae_cloudsql_mysql_env]
