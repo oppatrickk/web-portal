@@ -1,19 +1,35 @@
-runtime: php72
-
-runtime_config:
-  document_root: .
+runtime: php55
+api_version: 1
+threadsafe: true
 
 handlers:
-# Serve Images as static resources
-- url: /(.+\.(gif|png|jpg|svg|ico|css|js))$
+# Landing Page
+- url: /
+  script: index.php
+
+# Allow multi-pages
+- url: /(.+\.php)$
+  script: \1
+
+# Upload images
+- url: /(.+\.(gif|png|jpg|svg|ico))$
   static_files: \1
-  upload: .+\.(gif|png|jpg|svg|ico|css|js)$
+  upload: .+\.(gif|png|jpg|svg|ico)$
+  application_readable: true
 
+# Upload CSS files
+- url: /css/(.*\.(css|scss))$
+  static_files: css/\1
+  upload: css/.*\.(css|scss)$
+
+# Upload JavaScript files
+- url: /js/(.*\.(js))$
+  static_files: js/\1
+  upload: js/.*\.(js)$
+
+# all other pages are a 404
 - url: /.*
-  script: auto
-
-entrypoint:
-  serve handler.php
+  script: notfound.php
 
 # Environment
 env_variables:
@@ -21,5 +37,4 @@ env_variables:
   CLOUDSQL_DB: codex
   CLOUDSQL_PASSWORD: U^YuNDKb4Oh#pgjOSHkR
   CLOUDSQL_DSN: /cloudsql/codex-bu:asia-southeast2:codex-bu
-
 
