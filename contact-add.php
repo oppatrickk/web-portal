@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <body>
 <h2>Add New Contact</h2>
-<form action="/contact-add.php" method="post">
+<form action="contact-add.php" method="post">
     <div>Name: <input name="name" /></div>
     <div>Phone: <input name="phone" /></div>
     <div>Email: <input type="email" name="email" /></div>

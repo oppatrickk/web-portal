@@ -2,55 +2,103 @@
 
 require_once '../../database/config.php';
 
-if(isset($_REQUEST['btn_register'])){
-    $username = strip_tags($_REQUEST["txt_username_email"]);
-    $email = strip_tags($_REQUEST["txt_username_email"]);
-    $password = strip_tags($_REQUEST["txt_username_email"]);
+// Variables
+$username = $first_name = $last_name = $password = $email = $confirm_password = "";
+$username_err = $first_name_err = $last_name_err = $password_err = $email_err = $confirm_password_err = "";
 
-    // Check if value is empty
-    if(empty($username)){
-        $errorMsg[]="Please enter username";
-    }
-    else if(empty($email)){
-        $errorMsg[]="Please enter email";
-    }
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errorMsg[]="Please enter a valid email";
-    }
-    else if(empty($password)){
-        $errorMsg[]="Please enter password";
-    }
-    else if(strlen($password)){
-        $errorMsg[]="Password must be at least 6 characters";
+$pass = 0;
+
+// Insert a new row into the guestbook on POST
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $stmt = $db->prepare("SELECT username, email FROM users WHERE username=:name OR email=:email");
+    $stmt->execute(array(':name' => $_POST["name"], ':email' => $_POST["email"]));
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Validate First Name
+    if(empty($_POST['first_name'])){
+        $first_name_err = "Required";
     }
     else{
-        try{
-            $select_stmt = $db->prepare("Select username, email FROM users WHERE username=:uname OR email=:uemail");
-            $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
-            $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+        $pass++;
+    }
 
-            if($row["username"] == $username){
-                $errorMsg[] = "This username is already taken";
-            }
-            else if($row["email"] == $email){
-                $errorMsg[] = "This email is already in use";
-            }
-            else if(!isset($errorMsg)){
-                $new_password = password_hash($password, PASSWORD_DEFAULT);
+    // Validate Last Name
+    if(empty($_POST['last_name'])){
+        $last_name_err = "Required";
+    }
+    else{
+        $pass++;
+    }
 
-                $insert_stmt = $db->prepare("INSERT INTO users (username, email, password) VALUES (:uname, :uemail, :upassword)");
+    // Validate  Username
+    if(empty($_POST['name'])){
+        $username_err = "Please enter a username.";
+    }
+    else if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["name"]))) {
+        $username_err = "Username can only contain letters, numbers, and underscores.";
+    }
+    else if ($row["username"] == $_POST["name"]) {
+        $username_err = "Username already taken";
+    }
+    else{
+        $pass++;
+    }
 
-                if($insert_stmt->execute(array( ':uname:' => $username,
-                    ':uemail' => $email,
-                    ':upassword' => $new_password))){
-                    $registerMsg = "Registration Success!";
-                }
-            }
-        }
-        catch(PDOException $e){
-            $e->getMessage();
+    // Validate  Email
+    if(empty(trim($_POST["email"]))){
+        $email_err = "Please enter your email.";
+    }
+    elseif(!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)) {
+        $email_err = "Please enter a valid email.";
+    }
+    else if ($row["email"] == $_POST["email"]) {
+        $email_err = "Email already in use";
+    }
+    else{
+        $pass++;
+    }
+
+    // Validate Password Strength
+    $uppercase = preg_match("#[A-Z]+#", $_POST["password"]);
+    $lowercase = preg_match("#[a-z]+#", $_POST["password"]);
+    $number    = preg_match("#[0-9]+#", $_POST["password"]);
+    $char      = preg_match("#[^\w]+#", $_POST["password"]);
+
+    // Validate Password
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter a password.";
+    }
+    else if(!$uppercase || !$lowercase || !$number || strlen($_POST["password"]) < 6) {
+        $password_err = "Password should be at least 8 characters in length and include at least one upper case letter, one number, and one special character";
+    }
+    else{
+        $pass++;
+    }
+
+    // Confirm Password
+    if($_POST["password"] != $_POST["confirm_password"]){
+        $confirm_password_err = "Password did not match";
+    }
+    else{
+        $pass++;
+    }
+
+
+    if($pass == 6) {
+        $params = [
+            ':name' => $_POST['name'],
+            ':email' => $_POST['email'],
+            ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        ];
+
+        $stmt = $db->prepare('INSERT INTO users (username, email, password) VALUES (:name, :email, :password)');
+        if ($stmt->execute($params)) {
+            header('Location: sign_in.php');
         }
     }
+
+
 }
 
 ?>
@@ -99,53 +147,62 @@ if(isset($_REQUEST['btn_register'])){
 
     <!-- Main -->
     <header class="masthead">
-        <div class="container h-100 mt-5 mb-5">
+        <div class="container h-100 mt-5 mb-5 px-5">
             <div class="row h-100">
                 <div class="col-12 mt-5">
-                    <?php
-                    if(isset($errorMsg)){
-                        foreach($errorMsg as $error){
-                            ?>
-                            <div class = "alert alert-danger">
-                                <strong>Error! <?php echo $error; ?></strong>
-                            </div>
-                            <?php
-                        }
-                    }
-                    if (isset($registerMsg)){
-                        ?>
-                        <div class = "alert alert-success">
-                            <strong><?php echo $registerMsg; ?></strong>
-                        </div>
-                        <?php
-                    }
-                    ?>
 
                     <h1>Sign Up</h1>
                     <p class="lead">Please fill this form to create an account.</p>
 
                     <form method="post">
+                        <!-- Names -->
+
+                        <div class="form-group col mt-3 col-lg-3">
+                            <div class="row">
+                                <div class="col">
+                                    <label>First Name</label>
+                                    <input type="text" name="first_name" class="form-control <?php echo (!empty($first_name_err)) ? 'is-invalid' : ''; ?>">
+                                    <span class="invalid-feedback"><?php echo $first_name_err; ?></span>
+                                </div>
+                                <div class="col">
+                                    <label>Last Name</label>
+                                    <input type="text" name="last_name" class="form-control <?php echo (!empty($last_name_err)) ? 'is-invalid' : ''; ?>">
+                                    <span class="invalid-feedback"><?php echo $last_name_err; ?></span>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Username -->
                         <div class="form-group col mt-3 col-lg-3">
                             <label>Username</label>
-                            <input type="text" name="txt_username" class="form-control">
+                            <input type="text" name="name" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
                         </div>
 
                         <!-- Email -->
                         <div class="form-group mt-3 col col-lg-3">
                             <label>Email</label>
-                            <input type="text" name="txt_email" class="form-control">
+                            <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
                         </div>
 
                         <!-- Password -->
                         <div class="form-group mt-3 col col-lg-3">
                             <label>Password</label>
-                            <input type="password" name="txt_password" class="form-control">
+                            <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group mt-3 col col-lg-3">
+                            <label>Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                            <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                         </div>
 
                         <!-- Submit -->
                         <div class="form-group mt-4">
-                            <input type="submit" name="btn-register" class="btn btn-primary" value="Register">
+                            <input type="submit" name="btn-register" class="btn btn-primary" value="Add">
                         </div>
 
                         <!-- Login -->
