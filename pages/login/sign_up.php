@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
         ];
 
-        $stmt = $db->prepare('INSERT INTO users (username, email, password) VALUES (:name, :email, :password)');
-        if ($stmt->execute($params)) {
+        $stm = $db->prepare('INSERT INTO users (username, email, password) VALUES (:name, :email, :password)');
+        if ($stm->execute($params)) {
             header('Location: sign_in.php');
         }
     }
@@ -219,9 +219,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- External JavaScript-->
     <script src="../../js/dashboard.js"></script>
-
-    <!-- Forms -->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 </body>
 </html>

@@ -15,11 +15,6 @@ $password = getenv('CLOUDSQL_PASSWORD');
 //$password = '';
 
 // Create the PDO client
-try{
-    $db = new PDO($dsn, $user, $password);
-}
-catch(PDOException $e){
-    $e->getMessage();
-}
+$db = new PDO($dsn, $user, $password);
 
 ?>
