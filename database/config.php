@@ -7,7 +7,7 @@ const DB_NAME = 'codex';
 const DB_INSTANCE = '/cloudsql/codex-bu:asia-southeast2:codex-bu';
 
 /* Attempt to connect to MySQL database */
-$link = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME, null, DB_INSTANCE);
+$link = new mysqli(null, DB_USERNAME, DB_PASSWORD, DB_NAME, null, DB_INSTANCE);
 
 // Check connection
 if ($link->connect_error) {
