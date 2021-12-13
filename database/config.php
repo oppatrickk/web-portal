@@ -8,7 +8,6 @@ $dsn = getenv('CLOUDSQL_DSN');
 $user = getenv('CLOUDSQL_USER');
 $password = getenv('CLOUDSQL_PASSWORD');
 
-// create the PDO client
-$db = new PDO($dsn, $user, $password);
+$link = new mysqli(null, $user, $password, 'codex', null, '/cloudsql/codex-bu:asia-southeast2:codex-bu');
 
 ?>
