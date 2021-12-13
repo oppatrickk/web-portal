@@ -1,37 +1,63 @@
 <!-- Footer -->
-<footer class="page-footer pt-4 bg-black pb-5 pt-5">
-    <div class="container-fluid text-md-left text-white">
+<footer class="page-footer bg-white pb-5 pt-5">
+    <div class="container px-5 text-black">
         <div class="row">
-            <!-- Main -->
-            <div class="col md-0 mt-3 text-center ">
-                <h5>&copy; codeX | 2021</h5>
-                <p class="text-white-50">version 2.4</p>
+            <!-- Tutorials -->
+            <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="mb-4">Tutorials</h5>
+                <ul class="list-unstyled">
+                    <li class="mt-2">
+                        <a href="<?php echo $about_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">C</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">HTML5</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">CSS3</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">Python</a>
+                    </li>
+                </ul>
             </div>
-            <hr class="clearfix w-100 d-md-none pb-3">
             <!-- About -->
             <div class="col-md-3 mb-md-0 mb-3">
-                <h5 class="text-uppercase">About</h5>
+                <h5 class="mb-4">Forums</h5>
                 <ul class="list-unstyled">
-                    <li>
+                    <li class="mt-2">
+                        <a href="<?php echo $about_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">General</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">Threads</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- About -->
+            <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="mb-4">About</h5>
+                <ul class="list-unstyled">
+                    <li class="mt-2">
                         <a href="<?php echo $about_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">About codeX</a>
                     </li>
-                    <li>
+                    <li class="mt-2">
                         <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">Founders</a>
                     </li>
                 </ul>
             </div>
             <!-- Get Help -->
             <div class="col-md-3 mb-md-0 mb-3">
-                <h5 class="text-uppercase">Get Help</h5>
+                <h5 class="mb-4">Get Help</h5>
                 <ul class="list-unstyled">
-                    <li>
-                        <a href="<?php echo $forum_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Forums</a>
+                    <li class="mt-2">
+                        <a href="<?php echo $forum_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Contact us</a>
                     </li>
-                    <li>
+                    <li class="mt-2">
                         <a href="<?php echo $report_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Report Issue</a>
                     </li>
                 </ul>
             </div>
         </div>
+        <hr>
+        <p class="text-black-50"> <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo"></a> © codeX 2021 version 2.5. All rights reserved.</p>
     </div>
 </footer>

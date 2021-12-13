@@ -3,7 +3,69 @@ body {
     height: 100%;
     font-size: 1rem;
     font-family: 'Noto Sans';
-    overflow: hidden;
+}
+
+.navbar{
+    background-color: transparent;
+}
+
+.sign-in{
+    color:white;
+}
+.sign-in.top-of-page{
+    color:blue;
+}
+
+.sign-up{
+    color:white;
+}
+.sign-up.top-of-page{
+    color:blue;
+}
+
+.sign-btn{
+    outline: white solid 1px;
+}
+
+.sign-btn.top-of-page{
+    outline: blue solid 1px;
+}
+
+
+.bg-white{
+    animation: fadeIn 0.3s;
+    -webkit-animation: fadein 0.3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 0.3s; /* Firefox < 16 */
+    -ms-animation: fadein 0.3s; /* Internet Explorer */
+    -o-animation: fadein 0.3s; /* Opera < 12.1 */
+    animation: fadein 0.3s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.navbar.top-of-page{
+    background-color: transparent;
 }
 
 .custom-scrollbar-js,
@@ -14,32 +76,24 @@ body {
 
 /* Custom Scrollbar using CSS */
 .custom-scrollbar-css {
-    overflow-y: scroll;
 }
 
 /* scrollbar width */
-.custom-scrollbar-css::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 7px;
 }
 
 /* scrollbar track */
-.custom-scrollbar-css::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background-color: white;
 }
 
 /* scrollbar handle */
-.custom-scrollbar-css::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+::-webkit-scrollbar-thumb {
     background-color: #00d2ff;
     background-image: linear-gradient(to top, #000dff 0%, #001aa9 100%);
 }
 
-.main{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding-top: 55px;
-    margin-bottom: -55px;
-}
 
 .gradient {
     background: rgb(2, 0, 36);

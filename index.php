@@ -40,9 +40,6 @@ include 'database/login.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
-    <!-- Assets -->
-
-
 </head>
 
 <body>
@@ -50,16 +47,39 @@ include 'database/login.php';
     <?php
         // Paths
         $navbar_path = "index.php";
-        $logo_path = "assets/logo2.png";
         $login_path = "pages/login/login.php";
+        $logo_path = "assets/logo2_white.png";
 
-        include 'widgets/navbar_nologin.php'
+        //include 'widgets/navbar_nologin.php'
     ?>
+
+    <!-- Top Navigation Bar-->
+    <nav class="mainNav navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container px-5">
+            <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo"></a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <a class="ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>" style = "text-decoration: none">
+                <span class="d-flex align-items-center">
+                    <span class="medium sign-in">Sign in</span>
+                </span>
+                </a>
+
+                <a class="btn rounded-pill px-3 mb-2 mb-lg-0 sign-btn" href="<?php echo $login_path; ?>">
+                <span class="d-flex align-items-center">
+                    <span class="medium sign-up">Sign up</span>
+                </span>
+                </a>
+
+
+            </div>
+        </div>
+    </nav>
 
     <div class="main custom-scrollbar-css">
 
     <!-- Masthead -->
-    <header class="page-header gradient">
+    <header class="page-header gradient pt-5">
         <div class="container pt-5">
             <div class="row align-items-center justify-content-center">
                 <div class="col px-5">
@@ -181,6 +201,7 @@ include 'database/login.php';
         $founders_path = "pages/footer/founders.php";
         $forum_path = "pages/forum/forum.php";
         $report_path = "pages/footer/report.php";
+        $logo_path = "assets/logo2.png";
 
         include 'widgets/footer.php'
 

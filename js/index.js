@@ -7,11 +7,26 @@
 // Scripts
 //
 
-$(document).ready(function(){
-    $('.main').height($(window).height() - 55);
-    $(window).on("resize", function(){
-        $('.main').height($(window).height() - 55);
-    });
+$(window).on("scroll", function() {
+    var scrollPos = $(window).scrollTop();
+    if (scrollPos <= 100) {
+        $('.mainNav').removeClass('bg-white');
+        $('.mainNav').removeClass('shadow-sm');
+        $('.sign-in').removeClass('top-of-page');
+        $('.sign-up').removeClass('top-of-page');
+        $('.sign-btn').removeClass('top-of-page');
+        $('.mainNav').addClass('top-of-page');
+        $('.mainNav').addClass('bg-transparent');
+    } else {
+        $('.mainNav').removeClass('top-of-page');
+        $('.mainNav').removeClass('bg-transparent');
+        $('.mainNav').addClass('bg-white');
+        $('.mainNav').addClass('shadow-sm');
+        $('.sign-in').addClass('top-of-page');
+        $('.sign-up').addClass('top-of-page');
+        $('.sign-btn').addClass('top-of-page');
+
+    }
 });
 
 
