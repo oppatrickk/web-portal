@@ -58,6 +58,6 @@
             </div>
         </div>
         <hr>
-        <p class="text-black-50"> <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo"></a> © codeX 2021 version 2.7 | All rights reserved.</p>
+        <p class="text-black-50"> <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo"></a> © codeX 2021 version 2.8 | All rights reserved.</p>
     </div>
 </footer>
