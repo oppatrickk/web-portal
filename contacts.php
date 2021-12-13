@@ -6,7 +6,7 @@ $results = $db->query('SELECT * FROM contacts');
 <html>
 <body>
 <h2>Contacts</h2>
-<a href="/contact-add.php">Add New</a>
+<a href="/contact-add.php">Add New!!</a>
 <table border="1">
     <thead>
     <tr>
