@@ -21,6 +21,5 @@ env_variables:
   CLOUDSQL_DB: codex
   CLOUDSQL_PASSWORD: U^YuNDKb4Oh#pgjOSHkR
   CLOUDSQL_DSN: /cloudsql/codex-bu:asia-southeast2:codex-bu
-  GOOGLE_STORAGE_BUCKET: "codex-bu.appspot.com"
 
 
