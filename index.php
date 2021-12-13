@@ -6,13 +6,13 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/landing.php':
         require 'landing.php';
         break;
-    case '/pages/login/login.php':
+    case 'pages/login/login.php':
         require 'pages/login/login.php';
         break;
-    case '/pages/login/register.php':
+    case 'pages/login/register.php':
         require 'pages/login/register.php';
         break;
-    case '/pages/dashboard/dashboard.php':
+    case 'pages/dashboard/dashboard.php':
         require 'pages/dashboard/dashboard.php';
         break;
 

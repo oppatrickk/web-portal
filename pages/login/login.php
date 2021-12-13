@@ -8,8 +8,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
-
-
 // Include config file
 require_once "../../database/config.php";
 
