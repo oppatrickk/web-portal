@@ -88,17 +88,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if($pass == 6) {
         $params = [
             ':name' => $_POST['name'],
+            ':first_name' => $_POST['first_name'],
+            ':last_name' => $_POST['last_name'],
             ':email' => $_POST['email'],
             ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
         ];
 
         $stmt = $db->prepare('INSERT INTO users (username, email, password) VALUES (:name, :email, :password)');
         if ($stmt->execute($params)) {
-            header('Location: \sign_in.php');
+            header('Location: sign_in.php');
         }
     }
-
-
 }
 
 ?>
@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <!-- Submit -->
                         <div class="form-group mt-4">
-                            <input type="submit" name="btn-register" class="btn btn-primary" value="Add">
+                            <input type="submit" name="btn-register" class="btn btn-primary" value="Register">
                         </div>
 
                         <!-- Login -->
