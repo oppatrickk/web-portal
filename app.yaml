@@ -36,7 +36,7 @@ env_variables:
   APP_LOG: errorlog
   GOOGLE_STORAGE_BUCKET: "codex-bu.appspot.com"
   MYSQL_USER: "root"
-  MYSQL_PASSWORD: "123456"
+  MYSQL_PASSWORD: "U^YuNDKb4Oh#pgjOSHkR"
   MYSQL_DSN: "mysql:dbname=codex;unix_socket=/cloudsql/codex-bu:asia-southeast1:codex"
 beta_settings:
   cloud_sql_instances: "codex-bu:asia-southeast1:codex"
