@@ -1,43 +1,26 @@
-runtime: php55
-api_version: 1
-threadsafe: true
+runtime: php72
+
+runtime_config:
+  document_root: .
 
 handlers:
-# Landing Page
-- url: /
-  script: index.php
-
-# Allow multi-pages
-- url: /(.+\.php)$
-  script: \1
-
-# Upload images
-- url: /(.+\.(gif|png|jpg|svg|ico))$
+# Serve Images as static resources
+- url: /(.+\.(gif|png|jpg|svg|ico|css|js))$
   static_files: \1
-  upload: .+\.(gif|png|jpg|svg|ico)$
-  application_readable: true
+  upload: .+\.(gif|png|jpg|svg|ico|css|js)$
 
-# Upload CSS files
-- url: /css/(.*\.(css|scss))$
-  static_files: css/\1
-  upload: css/.*\.(css|scss)$
-
-# Upload JavaScript files
-- url: /js/(.*\.(js))$
-  static_files: js/\1
-  upload: js/.*\.(js)$
-
-# all other pages are a 404
 - url: /.*
-  script: notfound.php
+  script: auto
+
+entrypoint:
+  serve handler.php
 
 # Environment
 env_variables:
-  APP_LOG: errorlog
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: codex
+  CLOUDSQL_PASSWORD: U^YuNDKb4Oh#pgjOSHkR
+  CLOUDSQL_DSN: /cloudsql/codex-bu:asia-southeast2:codex-bu
   GOOGLE_STORAGE_BUCKET: "codex-bu.appspot.com"
-  MYSQL_USER: "root"
-  MYSQL_PASSWORD: "U^YuNDKb4Oh#pgjOSHkR"
-  MYSQL_DSN: "mysql:dbname=codex;unix_socket=/cloudsql/codex-bu:asia-southeast1:codex"
-beta_settings:
-  cloud_sql_instances: "codex-bu:asia-southeast1:codex"
+
 

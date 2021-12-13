@@ -1,16 +1,13 @@
 <?php
 
-const DB_SERVER = '34.101.86.177';
-const DB_USERNAME = 'root';
-const DB_PASSWORD = 'U^YuNDKb4Oh#pgjOSHkR';
-const DB_NAME = 'codex';
-const DB_INSTANCE = '/cloudsql/codex-bu:asia-southeast2:codex-bu';
+$user = getenv('CLOUDSQL_USER');
+$pass = getenv('CLOUDSQL_PASSWORD');
+$inst = getenv('CLOUDSQL_DSN');
+$db = getenv('CLOUDSQL_DB');
 
-/* Attempt to connect to MySQL database */
-$link = new mysqli(null, DB_USERNAME, DB_PASSWORD, DB_NAME, null, DB_INSTANCE);
+$connection = mysqli_connect(null, $user, $pass, $db, null, $inst);
 
-// Check connection
-if ($link->connect_error) {
-    die("Connection failed: " . $link->connect_error);
+if (!$connection){
+    echo "ERROR!".mysqli_connect_error();
 }
 ?>
