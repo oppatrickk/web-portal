@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $stmt = $db->prepare('INSERT INTO users (username, email, password) VALUES (:name, :email, :password)');
         if ($stmt->execute($params)) {
-            header('Location: sign_in.php');
+            header('Location: \sign_in.php');
         }
     }
 
