@@ -1,5 +1,5 @@
 <?php
-header('Location: '."/guestbook");
+header('Location: '."/guestbook.php");
 
 use google\appengine\api\users\User;
 use google\appengine\api\users\UserService;
