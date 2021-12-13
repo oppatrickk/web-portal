@@ -1,13 +1,16 @@
 <?php
-require_once 'config.php';
+require_once 'database/config.php';
 # [START gae_simple_front_controller]
 switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/':
-    case '/contacts.php':
-        require 'contacts.php';
+    case '/landing.php':
+        require 'landing.php';
         break;
-    case '/contact-add.php':
-        require 'contact-add.php';
+    case '/pages/login/login.php':
+        require 'pages/login/login.php';
+        break;
+    case '/pages/dashboard/dashboard.php':
+        require 'pages/dashboard/dashboard.php';
         break;
     default:
         http_response_code(404);
