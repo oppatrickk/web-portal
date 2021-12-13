@@ -9,6 +9,6 @@ $user = getenv('CLOUDSQL_USER');
 $password = getenv('CLOUDSQL_PASSWORD');
 
 // create the PDO client
-$link = new PDO($dsn, $user, $password);
+$db = new PDO($dsn, $user, $password);
 
 ?>
