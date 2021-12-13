@@ -42,7 +42,7 @@ if(isset($_REQUEST['btn_register'])){
 
                 if($insert_stmt->execute(array( ':uname:' => $username,
                     ':uemail' => $email,
-                    ':epassword' => $new_password))){
+                    ':upassword' => $new_password))){
                     $registerMsg = "Registration Success!";
                 }
             }
