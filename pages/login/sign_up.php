@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
         ];
 
-        $stm = $db->prepare('INSERT INTO users (username, email, password) VALUES (:name, :email, :password)');
+        $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name) VALUES (:name, :email, :password, :first_name, :last_name)');
         if ($stm->execute($params)) {
             header('Location: sign_in.php');
         }
