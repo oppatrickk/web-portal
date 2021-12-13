@@ -1,14 +1,5 @@
 <!-- PHP -->
 <?php
-session_start();
-
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: pages/dashboard/dashboard.php");
-    exit;
-}
-$dashboard_path = "pages/dashboard/dashboard.php";
-include 'database/login.php';
 
 ?>
 
@@ -47,7 +38,8 @@ include 'database/login.php';
     <?php
         // Paths
         $navbar_path = "index.php";
-        $login_path = "pages/login/login.php";
+        $login_path = "pages/login/sign_in.php";
+        $register_path = "pages/login/sign_up.php";
         $logo_path = "assets/logo2_white.png";
 
         //include 'widgets/navbar_nologin.php'
@@ -65,7 +57,7 @@ include 'database/login.php';
                 </span>
                 </a>
 
-                <a class="btn rounded-pill px-3 mb-2 mb-lg-0 sign-btn" href="<?php echo $login_path; ?>">
+                <a class="btn rounded-pill px-3 mb-2 mb-lg-0 sign-btn" href="<?php echo $register_path; ?>">
                 <span class="d-flex align-items-center">
                     <span class="medium sign-up">Sign up</span>
                 </span>
