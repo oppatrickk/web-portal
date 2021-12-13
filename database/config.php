@@ -5,7 +5,7 @@ try {
     $username = 'root';
     $password = 'U^YuNDKb4Oh#pgjOSHkR';
     $dbName = 'codex';
-    $connectionName = getenv("codex-bu:asia-southeast1:codex");
+    $connectionName = 'codex-bu:asia-southeast2:codex-bu';
     $socketDir = getenv('DB_SOCKET_DIR') ?: '/cloudsql';
 
     // Connect using UNIX sockets
@@ -46,7 +46,7 @@ try {
     );
 }
 
-//const DB_SERVER = '34.124.248.106';
+//const DB_SERVER = '34.101.86.177';
 //const DB_USERNAME = 'root';
 //const DB_PASSWORD = 'U^YuNDKb4Oh#pgjOSHkR';
 //const DB_NAME = 'codex';
