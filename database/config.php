@@ -8,6 +8,10 @@ $dsn = getenv('CLOUDSQL_DSN');
 $user = getenv('CLOUDSQL_USER');
 $password = getenv('CLOUDSQL_PASSWORD');
 
-$link = new mysqli(null, $user, $password, 'codex', null, '/cloudsql/codex-bu:asia-southeast2:codex-bu');
+$link = mysql_connect(':/cloudsql/codex-bu:asia-southeast2:codex-bu',
+    'root', // username
+    'U^YuNDKb4Oh#pgjOSHkR'      // password
+);
+mysql_select_db('codex');
 
 ?>
