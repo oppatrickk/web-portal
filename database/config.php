@@ -1,7 +1,7 @@
 <?php
 
-//const DB_SERVER = '34.124.248.106';
-const DB_SERVER = 'null';
+const DB_SERVER = '34.124.248.106';
+//const DB_SERVER = 'null';
 const DB_USERNAME = 'root';
 const DB_PASSWORD = 'U^YuNDKb4Oh#pgjOSHkR';
 const DB_NAME = 'codex';
