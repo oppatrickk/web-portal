@@ -2,7 +2,6 @@
 
 require_once '../../database/config.php';
 
-
 if(isset($_REQUEST['btn_register'])){
     $username = strip_tags($_REQUEST["txt_username_email"]);
     $email = strip_tags($_REQUEST["txt_username_email"]);
@@ -134,7 +133,7 @@ if(isset($_REQUEST['btn_register'])){
 
                         <!-- Email -->
                         <div class="form-group mt-3 col col-lg-3">
-                            <label>Password</label>
+                            <label>Email</label>
                             <input type="text" name="txt_email" class="form-control">
                         </div>
 

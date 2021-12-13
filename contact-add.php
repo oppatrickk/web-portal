@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once 'database/config.php';
 
 $msg = '';
 // Insert a new row into the guestbook on POST
