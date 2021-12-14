@@ -1,6 +1,6 @@
 <?php
 
-use google\appengine\api\mail\Message;
+//use google\appengine\api\mail\Message;
 
 require_once '../../database/config.php';
 
@@ -15,7 +15,7 @@ else{
 
 if(isset($_REQUEST['btn_recover'])){
 
-    $username= strip_tags($_REQUEST["txt_username_email"]);
+    $username = strip_tags($_REQUEST["txt_username_email"]);
     $email = strip_tags($_REQUEST["txt_username_email"]);
 
     // Check if value is empty
@@ -33,8 +33,13 @@ if(isset($_REQUEST['btn_recover'])){
 
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
-                    $successMsg[] = "We have sent the instructions to " . $email;
 
+                    $successMsg[] = "We have sent the instructions to ";
+
+                    foreach ($select_stmt as $key => $value) {
+
+                        $successMsg[] = $successMsg . $value . "\ ";
+                    }
 
                     $message_body = 'We have reset your password.
 Please log in using the following password: $recovery_password
