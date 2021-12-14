@@ -11,20 +11,17 @@ else{
     exit;
 }
 
-if(isset($_REQUEST['btn_login'])){
-    $username = strip_tags($_REQUEST["txt_username_email"]);
+if(isset($_REQUEST['btn_recover'])){
+
+    $username= strip_tags($_REQUEST["txt_username_email"]);
     $email = strip_tags($_REQUEST["txt_username_email"]);
-    $password = strip_tags($_REQUEST["txt_password"]);
 
     // Check if value is empty
     if(empty($username)){
-        $errorMsg[]="Please enter username";
+        $errorMsg[]="Please enter your username/email";
     }
     else if(empty($email)){
-        $errorMsg[]="Please enter email";
-    }
-    else if(empty($password)){
-        $errorMsg[]="Please enter password";
+        $errorMsg[]="Please enter your username/email";
     }
     else{
         try{
@@ -34,28 +31,38 @@ if(isset($_REQUEST['btn_login'])){
 
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
-                    if(password_verify($password, $row["password"])){
-                        // Session Variables
-                        $_SESSION["user_login"] = true;
-                        $_SESSION["id"] = $row["user_id"];
-                        $_SESSION["username"] = $row["username"];
-                        $_SESSION["first_name"] = $row["first_name"];
-                        $_SESSION["last_name"] = $row["last_name"];
+                    $successMsg[] = "We have sent the instructions to " . $email;
 
-                        // Login
-                        $loginMsg = "Success!";
-                        header("Location: ../dashboard/dashboard.php");
+
+                    use google\appengine\api\mail\Message;
+
+                    $message_body = 'We have reset your password.
+Please log in using the following password: $recovery_password
+
+We recommend changing your password after logging in through Profile > Settings > Change Password
+';
+
+                    $mail_options = [
+                        'sender' => 'recovery@codex-bu.appspotmail.com',
+                        'to' => $email,
+                        'subject' => 'codeX | Recover Password',
+                        'textBody' => $message_body
+                    ];
+
+                    try {
+                        $message = new Message($mail_options);
+                        $message->send();
+                    } catch (InvalidArgumentException $e) {
+                        echo 'error: ';
                     }
-                    else{
-                        $errorMsg[] = "Wrong password";
-                    }
+
                 }
                 else{
-                    $errorMsg[] = "Wrong username/email";
+                    $errorMsg[] = "Email/username does not exist in our database";
                 }
             }
             else{
-                $errorMsg[] = "Wrong username/email";
+                $errorMsg[] = "Email/username does not exist in our database";
             }
         }
         catch(PDOException $e){
@@ -64,6 +71,10 @@ if(isset($_REQUEST['btn_login'])){
     }
 
 }
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -120,17 +131,17 @@ include '../../widgets/navbar_nologin.php'
                     <?php
                     }
                 }
-                if (isset($loginMsg)){
+                if (isset($successMsg)){
                     ?>
                     <div class = "alert alert-success">
-                        <strong><?php echo $loginMsg; ?></strong>
+                        <strong><?php echo $successMsg; ?></strong>
                     </div>
                 <?php
                 }
                 ?>
 
-                <h1>Login</h1>
-                <p class="lead">Sign in to access codeX</p>
+                <h1>Recover Password</h1>
+                <p class="lead">Enter your username or email address</p>
 
 
                 <form method="post">
@@ -140,23 +151,14 @@ include '../../widgets/navbar_nologin.php'
                         <input type="text" name="txt_username_email" class="form-control">
                     </div>
 
-                    <!-- Password -->
-                    <div class="form-group mt-3 col col-lg-3">
-                        <label>Password</label>
-                        <input type="password" name="txt_password" class="form-control" id="password-field">
-                        <span toggle="#password-field" class="bi bi-eye-slash field-icon toggle-password"></span>
-                    </div>
 
                     <!-- Submit -->
                     <div class="form-group mt-3">
-                        <input type="submit" name="btn_login" class="btn btn-primary" value="Login">
+                        <input type="submit" name="btn_recover" class="btn btn-primary" value="Recover">
                     </div>
 
                     <!-- Register -->
-                    <p class="mt-5">Don't have an account? <a href="sign_up.php">Sign up</a>.</p>
-
-                    <!-- Forgot Pass -->
-                    <p class="mt-5">Forgot your password? <a href="recovery.php">Recover</a>.</p>
+                    <p class="mt-5">Remembered your password? <a href="sign_in.php">Sign in now</a>.</p>
                 </form>
             </div>
         </div>
