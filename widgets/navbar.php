@@ -20,13 +20,13 @@ else{
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" id="mainNav">
 
     <div class="px-5"></div>
-    <a class="navbar-brand fw-bold px-5" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 5rem; height: 2rem;"/></a>
+    <a class="navbar-brand fw-bold px-3" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem;"/></a>
     <div class="nav-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link me-lg-3" href="<?php echo $tutorials_path?>">Tutorials</a>
             </li>
-            <li class="nav-item"><a class="nav-link me-lg-3 disabled" href="#download">Challenges</a></li>
+            <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $challenges_path?>">Challenges</a></li>
             <li class="nav-item"><a class="nav-link me-lg-3" href="<?php echo $forums_path?>">Forums</a></li>
         </ul>
     </div>

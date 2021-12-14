@@ -1,10 +1,10 @@
 <!-- PHP -->
 <?php
-// Initialize the session
-session_start();
-
 // Include config file
 require_once "../../database/config.php";
+
+// Initialize the session
+session_start();
 
 ?>
 
@@ -34,9 +34,6 @@ require_once "../../database/config.php";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
-    <!-- Assets -->
-
-
 </head>
 
 <body>
@@ -52,13 +49,13 @@ require_once "../../database/config.php";
     $redirect_path = "report.php";
     $logo_path = "../../assets/logo2.png";
 
-    // Check if the user is logged in
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    // Check if Logged in
+    if(!isset($_SESSION['user_login'])){
         include '../../widgets/navbar_nologin.php';
-    } else {
+    }
+    else{
         include '../../widgets/navbar.php';
     }
-
 
 ?>
 

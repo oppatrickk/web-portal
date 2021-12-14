@@ -30,7 +30,6 @@ body {
 
 /* scrollbar handle */
 .custom-scrollbar-css::-webkit-scrollbar-thumb {
-    border-radius: 5px;
     background-color: #00d2ff;
     background-image: linear-gradient(to top, #000dff 0%, #001aa9 100%);
 }

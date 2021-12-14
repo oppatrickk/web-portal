@@ -4,9 +4,11 @@ require_once '../../database/config.php';
 
 session_start();
 
-// Check if User is logged in or not
-if(isset($_SESSION["user_login"])){
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
+else{
     header("location: ../dashboard/dashboard.php");
+    exit;
 }
 
 if(isset($_REQUEST['btn_login'])){
@@ -34,8 +36,11 @@ if(isset($_REQUEST['btn_login'])){
                 if($username==$row["username"] OR $email==$row["email"]){
                     if(password_verify($password, $row["password"])){
                         // Session Variables
+                        $_SESSION["user_login"] = true;
                         $_SESSION["id"] = $row["user_id"];
                         $_SESSION["username"] = $row["username"];
+                        $_SESSION["first_name"] = $row["first_name"];
+                        $_SESSION["last_name"] = $row["last_name"];
 
                         // Login
                         $loginMsg = "Success!";

@@ -2,6 +2,15 @@
 
 require_once '../../database/config.php';
 
+session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
+else{
+    header("location: ../dashboard/dashboard.php");
+    exit;
+}
+
 // Variables
 $username = $first_name = $last_name = $password = $email = $confirm_password = "";
 $username_err = $first_name_err = $last_name_err = $password_err = $email_err = $confirm_password_err = "";

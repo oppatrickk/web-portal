@@ -12,9 +12,9 @@ handlers:
     script: \1
 
   # Upload images
-  - url: /(.+\.(gif|png|jpg|svg|ico))$
+  - url: /(.+\.(gif|png|jpg|svg|ico|jpeg))$
     static_files: \1
-    upload: .+\.(gif|png|jpg|svg|ico)$
+    upload: .+\.(gif|png|jpg|svg|ico|jpeg)$
     application_readable: true
 
   # Upload CSS files

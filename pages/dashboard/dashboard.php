@@ -6,8 +6,10 @@ include '../../database/config.php';
 // Initialize the session
 session_start();
 
-if(!isset($_SESSION['user_login'])){
-    header("../../index.php");
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
+    header("location: ../../index.php");
+    exit;
 }
 
 ?>
@@ -66,15 +68,15 @@ if(!isset($_SESSION['user_login'])){
         <div class="container pt-3 pb-3">
             <div class="row align-items-center">
                 <div class="col-md-8 px-5">
-                    <h2 class="mb-4">Welcome to codeX, <?php echo htmlspecialchars($_SESSION["username"])?>!</h2>
-                    <p>Start developing your skills by taking on challenges that you and your friends will be facing on.</p>
-                    <div class="card" style="width: 30rem;">
+                    <h1 class="mb-4 fw-bolder">Welcome to codeX!</h1>
+                    <p class="fw-lighter">Start developing your skills by taking on challenges <br>that you and your friends will be facing on.</p>
+                    <div class="card mt-5" style="width: 30rem;">
                         <div class="card-body bg-transparent text-black">
-                            <b>Lorem Ipsum</b>
+                            <b>printf("Hello, <?php echo htmlspecialchars($_SESSION["username"])?>!");</b>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 "><img src="../../assets/img/dashboard/header.svg " alt="Header image " />
+                <div class="col-md-3 "><img src="../../assets/img/dashboard/img1.svg" alt="Header image" style="width: 125%;"/>
                 </div>
             </div>
         </div>
@@ -174,6 +176,7 @@ if(!isset($_SESSION['user_login'])){
         $faqs_path = "";
         $contact_path = "";
         $report_path = "../footer/report.php";
+        $logo_path = "../../assets/logo2_white.png";
 
 
         include '../../widgets/footer.php'

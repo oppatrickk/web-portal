@@ -20,7 +20,7 @@
                 </span>
             </a>
 
-            <a class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>">
+            <a class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" href="<?php echo $register_path; ?>">
                 <span class="d-flex align-items-center">
                     <span class="medium">Sign up</span>
                 </span>

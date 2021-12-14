@@ -7,8 +7,8 @@ include '../../database/config.php';
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: ../login/login.php");
+if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
+    header("location: ../../index.php");
     exit;
 }
 
@@ -56,6 +56,7 @@ $id = htmlspecialchars($_SESSION["id"]);
     $logout_path = "../../database/logout.php";
     $profile_path = "profile.php";
     $settings_path = "settings.php";
+    $activity_path = "activity.php";
     $tutorials_path = "../tutorials/tutorial_dashboard.php";
     $forums_path = "../forum/forum.php";
     $logo_path = "../../assets/logo2.png";
@@ -77,7 +78,7 @@ $id = htmlspecialchars($_SESSION["id"]);
                 <div class="col-md-auto">
                     <?php
                     // Database
-                    $query = $link->query("SELECT * FROM images where `username` = '$id'");
+                    $query = $db->query("SELECT * FROM images where `username` = '$id'");
 
                     // Cloud Image Storage
                     use google\appengine\api\cloud_storage\CloudStorageTools;
@@ -100,7 +101,7 @@ $id = htmlspecialchars($_SESSION["id"]);
                     }
 
                     // Get image from the database
-                    if($query->num_rows > 0){
+                    if($query > 0){
                         if($row = $query->fetch_assoc()){
 
                             $options = ['size' => 400, 'crop' => true];
@@ -117,13 +118,13 @@ $id = htmlspecialchars($_SESSION["id"]);
                     <?php } ?>
                 </div>
                 <div class="col col-lg-2">
-                    <button class="btn" data-bs-toggle="modal" data-bs-target="#pictureModal" style = "text-decoration: none">
+                    <a class="btn" href="settings.php" style = "text-decoration: none">
                         <i class="bi bi-pencil-fill"></i>
-                    </button>
+                    </a>
                 </div>
 
                 <div class="col-12 text-center mt-2">
-                    <h1>NAME</h1>
+                    <h1><?php echo $_SESSION["first_name"] . " " . $_SESSION["last_name"]?></h1>
                     <p class="lead">@<?php echo htmlspecialchars($_SESSION["username"]);?></p>
                 </div>
             </div>
@@ -132,53 +133,80 @@ $id = htmlspecialchars($_SESSION["id"]);
 
     <!-- Badges -->
     <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col px-5">
-                <h1 class="mt-5 mb-4">Your Badges</h1>
-                <p> You currently do not have any badges</p>
 
-            </div>
-        </div>
-    </div>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <!-- Badges Text-->
+                <div class="px-5">
+                    <h1 class="mt-5 mb-4">Your Badges</h1>
+                    <?php ?>
+                    <p> You currently do not have any badges</p>
+                </div>
 
-
-<!-- Picture Modal-->
-<div class="modal fade" id="pictureModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered col-sm">
-        <div class="modal-content">
-            <div class="modal-header bg-primary p-4">
-                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Change Picture</h5>
-                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body border-0 p-4">
-                <form action="../../database/upload.php" method="post" enctype="multipart/form-data">
-                    <!-- Image -->
-                    <div class="container">
-                        <div class="row justify-content-md-center">
-                            <div class="col col-lg-2">
+                <!-- Card -->
+                <div class="col col-lg-2 m-4">
+                </div>
+                <div class="col-md-auto">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body p-5">
+                                    <div class="d-flex justify-content-center"><img src="../../assets/logo1.png" style="height: 64px; width: 64px;"></div>
+                                    <h6 class="card-title d-flex justify-content-center fw-bolder">codeX</h6>
+                                    <p class="card-text mt-4 d-flex justify-content-center">Introduction to C</p>
+                                    <div class="d-flex justify-content-center"><hr style="width: 250px; height: 8px; color: blue;" class="d-flex justify-content-center"></div>
+                                    <p class="card-text d-flex justify-content-center">PROGRAMMING LANGUAGE</p>
+                                </div>
                             </div>
-                            <div class="col-md-auto">
-                                <img id="frame" src="../../assets/img/avatars/default_avatar.png" class="img-fluid rounded-circle mb-4" style="height: 12rem; width: 12rem;"/>
-                            </div>
-                            <div class="col col-lg-2">
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body p-5">
+                                    <div class="d-flex justify-content-center"><img src="../../assets/logo1.png" style="height: 64px; width: 64px;"></div>
+                                    <h6 class="card-title d-flex justify-content-center fw-bolder">codeX</h6>
+                                    <p class="card-text mt-4 d-flex justify-content-center">Basics of HTML5</p>
+                                    <div class="d-flex justify-content-center"><hr style="width: 250px; height: 8px; color: blue;" class="d-flex justify-content-center"></div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Upload File -->
-                    <div class="container">
-                        <div>
-                            <input name="userfile" class="form-control" type="file" id="formFile" onchange="preview()">
-                            <div class="d-grid mt-3">
-                                <input onclick="clearImage()" type="submit" class="btn btn-primary rounded-pill" name="submit" value="Upload">
+                </div>
+                <div class="col col-lg-2">
+                </div>
+
+                <!-- Card -->
+                <div class="col col-lg-2 m-3">
+                </div>
+                <div class="col-md-auto">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="col col-lg-2">
+                </div>
 
             </div>
         </div>
+
     </div>
-</div>
 
 </div>
 

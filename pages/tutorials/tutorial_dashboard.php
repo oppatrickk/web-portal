@@ -1,17 +1,11 @@
 <!-- PHP -->
 <?php
 
-// Initialize the session
-session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: ../../login/login.php");
-    exit;
-}
-
 // Include config file
 require_once "../../database/config.php";
+
+// Initialize the session
+session_start();
 
 ?>
 
@@ -32,14 +26,14 @@ require_once "../../database/config.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- External CSS -->
-    <link href="css/styles_index.css" rel="stylesheet" />
+    <link href="../../css/scroll.css" rel="stylesheet" />
 
     <!-- Icons -->
 
     <!-- Fonts -->
-
-
-    <!-- Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
 
 </head>
@@ -51,16 +45,23 @@ require_once "../../database/config.php";
     // Paths
     $navbar_path = "../dashboard/dashboard.php";
     $logout_path = "../../database/logout.php";
+    $login_path = "../login/sign_in.php";
+    $register_path = "../login/sign_up.php";
     $profile_path = "../dashboard/profile.php";
     $logo_path = "../../assets/logo2.png";
 
-    include "../../widgets/navbar.php"
+
+    // Check if the user is logged in
+    if(!isset($_SESSION['user_login'])){
+        include '../../widgets/navbar_nologin.php';
+    }
+    else{
+        include '../../widgets/navbar.php';
+    }
 
     ?>
 
-    <!-- Sidebar -->
-
-
+    <div class="main custom-scrollbar-css">
     <!-- Row 1 -->
     <header class="masthead">
         <div class="container h-100 mt-5 mb-1">
@@ -72,7 +73,7 @@ require_once "../../database/config.php";
     </header>
 
     <!-- Page content-->
-    <div class="container">
+    <div class="container px-5">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-12 pb-5">
@@ -98,7 +99,7 @@ require_once "../../database/config.php";
                             <div class="card-body">
                                 <h2 class="card-title h4">Python</h2>
                                 <p class="card-text">An interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with its use of significant indentation. </p>
-                                <a class="btn btn-primary disabled mt-4" href="#!">To be added</a>
+                                <a class="btn btn-primary" href="#!">Explore</a>
                             </div>
                         </div>
                     </div>
@@ -136,19 +137,25 @@ require_once "../../database/config.php";
     <!-- Top Navigation Bar-->
     <?php
     // Paths
-    $about_path = "";
-    $founders_path = "";
-    $faqs_path = "";
-    $contact_path = "";
+    $founders_path = "../footer/founders.php";
+    $logo_path = "../../assets/logo2_white.png";
+    $report_path = "../footer/report.php";
 
     include "../../widgets/footer.php"
     ?>
 
+    </div>
+
+
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <!-- External JavaScript-->
-<script src="js/scripts_dashboard.js"></script>
+<script src="../../js/scroll.js"></script>
+
 
 <!-- Forms -->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
