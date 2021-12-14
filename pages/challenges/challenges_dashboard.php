@@ -79,70 +79,104 @@ else{
             <div class="col-lg-12 pb-5">
                 <!-- Featured blog post-->
                 <h1 class="card-title mb-4">Challenges</h1>
-                <!-- Nested row for non-featured blog posts-->
+
+                <!-- Row 1-->
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col">
                         <!-- C Tutorial -->
                         <div class="card mb-4">
-                            <img class="card-img-top" src="../../assets/img/tutorials/cprogramming.png" alt="c" />
                             <div class="card-body">
-                                <h2 class="card-title h4">C</h2>
-                                <p class="card-text">A general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system.</p>
-                                <a class="btn btn-primary" href="c/c_dashboard.php">Explore</a>
+                                <h2 class="card-title h4 fw-bold">"Hello, World!" in C</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">C Programming Language</p>
+                                <a class="btn btn-primary" href="challenge_1.php">Solve</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <!-- Python -->
+                    <div class="col">
+                        <!-- C Tutorial -->
                         <div class="card mb-4">
-                            <img class="card-img-top" src="../../assets/img/tutorials/python/python.jpg" alt="python" />
                             <div class="card-body">
-                                <h2 class="card-title h4">Python</h2>
-                                <p class="card-text">An interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with its use of significant indentation. </p>
-                                <a class="btn btn-primary" href="#!">Explore</a>
+                                <h2 class="card-title h4 fw-bold">Say "Hello, World!" With Python</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">Python</p>
+                                <a class="btn btn-primary" href="challenge_2.php">Solve</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Row 2-->
                 <div class="row">
-                    <div class="col-lg-6">
-                        <!-- HTML -->
+                    <div class="col">
+                        <!-- C Tutorial -->
                         <div class="card mb-4">
-                            <img class="card-img-top" src="../../assets/img/tutorials/html/html5.jpg" alt="..." />
                             <div class="card-body">
-                                <h2 class="card-title h4">HTML5</h2>
-                                <p class="card-text">The HyperText Markup Language is the standard markup language for documents designed to be displayed in a web browser.</p>
-                                <a class="btn btn-primary" href="c_lecture1.php">Explore</a>
+                                <h2 class="card-title h4 fw-bold">Conditional Statements</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">C Programming Language</p>
+                                <a class="btn btn-primary disabled" href="challenge_1.php">To Be Added</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <!-- CSS -->
+                    <div class="col">
+                        <!-- C Tutorial -->
                         <div class="card mb-4">
-                            <img class="card-img-top" src="../../assets/img/tutorials/css/css3.jpg" alt="..." />
                             <div class="card-body">
-                                <h2 class="card-title h4">CSS3</h2>
-                                <p class="card-text">Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML.</p>
-                                <a class="btn btn-primary disabled" href="#!">To be added</a>
+                                <h2 class="card-title h4 fw-bold">If-Else Statement</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">Python</p>
+                                <a class="btn btn-primary disabled" href="challenge_1.php">To Be Added</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Row 3-->
+                <div class="row">
+                    <div class="col">
+                        <!-- C Tutorial -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h4 fw-bold">Functions</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">C Programming Language</p>
+                                <a class="btn btn-primary disabled" href="challenge_1.php">To Be Added</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- C Tutorial -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h4 fw-bold">Arithmetic Operations</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">Python</p>
+                                <a class="btn btn-primary disabled" href="challenge_1.php">To Be Added</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <div class="row">
+                    <div class="col">
+                        <!-- C Tutorial -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h4 fw-bold">Pointers</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">C Programming Language</p>
+                                <a class="btn btn-primary disabled" href="challenge_1.php">To Be Added</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- C Tutorial -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h2 class="card-title h4 fw-bold">Loops</h2>
+                                <p class="card-text mb-4" style="font-size: 12px; color: grey;">Python</p>
+                                <a class="btn btn-primary disabled" href="challenge_1.php">To Be Added</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
-
-    <!-- Footer-->
-
-    <!-- Top Navigation Bar-->
-    <?php
-    // Paths
-    $founders_path = "../footer/founders.php";
-    $logo_path = "../../assets/logo2_white.png";
-    $report_path = "../footer/report.php";
-
-    include "../../widgets/footer.php"
-    ?>
 
 </div>
 

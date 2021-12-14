@@ -75,14 +75,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <p class="px-5" id="opening">Everyone says it, but in our case it’s true: our team is the secret to our success. <br>Each of member is amazing
-                in their own right, but together we are what makes CodeX such a fun and rewarding piece of work. The CodeX
-                team is a tight-knit, talented group with a shared vision of delivering a website that can give new and old
-                programmers a place to hangout. <br> We’re very proud of the team we’ve built – there’s only five of us now
-                but it still feels like it did when there were just a few of us. CodeX has always been a team defined by
-                bringing together talented people with a shared vision and passion for helping us to be the best we can be
-                for our clients. But that doesn’t mean CodeX is a cookie-cutter Team. WE at CodeX are unique individuals who
-                are united by a set of core values that apply to everything we do within the team. </p>
+            <div class="px-5 d-flex justify-content-center" id="opening">Everyone says it, but in our case it’s true: our team is the secret to our success. </div>
         </header>
 
         <!-- Founders -->
@@ -185,7 +178,7 @@ session_start();
                                 <div class="col col-lg-2">
                                 </div>
                                 <div class="col-md-auto">
-                                    <img src="../../assets/img/founders/founder.png" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
+                                    <img src="../../assets/img/founders/jasareno.jpg" class="rounded-circle center-block" style="width: 8rem; height: 8rem;">
                                 </div>
                                 <div class="col col-lg-2">
                                 </div>
@@ -223,7 +216,7 @@ session_start();
                         </div>
                         <h5 class="card-title mt-3 d-flex justify-content-center">John Patrick M. Prieto</h5>
                         <h6 class="text-black-50 d-flex justify-content-center">Founder</h6>
-                        <p class="card-text d-flex justify-content-center mt-4">"Pakistan is in da bag"</p>
+                        <p class="card-text d-flex justify-content-center mt-4">404: "Quote Not Found"</p>
 
                         <!-- Links -->
                         <div class=" d-flex justify-content-center">

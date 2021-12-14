@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>codeX | Challenge # 1</title>
+    <title>codeX | Challenge # 2</title>
     <link rel="icon" type="image/x-icon" href="../../../assets/favicon.ico">
 
     <!-- Bootstrap CSS and Icons -->
@@ -87,51 +87,38 @@ session_start();
                             <!-- Post meta content-->
                             <!-- Post categories-->
                             <p class="badge bg-secondary text-decoration-none link-light" href="#!">Easy</p>
-                            <p class="badge bg-secondary text-decoration-none link-light" href="#!">C Programming Language</p>
+                            <p class="badge bg-secondary text-decoration-none link-light" href="#!">Python</p>
                             <p class="badge bg-secondary text-decoration-none link-light" href="#!">Challenge</p>
                         </header>
                         <!-- Post content-->
 
                         <section class="mb-5">
-                            <h5 class="fw-bolder mb-4 mt-5">Objective</h5>
-                            <p class="fs-5 mb-4">In this challenge, we will learn some basic concepts of C that will get you started with the language. You will need to use the same syntax to read input and write output in many C challenges. As you work through these problems, review the code stubs to learn about reading from stdin and writing to stdout.</p>
-
-                            <h5 class="fw-bolder mb-4 mt-5">Task</h5>
-                            <p class="fs-5 mb-4">This challenge requires you to print  on a single line, and then print the already provided input string to stdout. If you are not familiar with C, you may want to read about the printf() command.</p>
-
-                            <h5 class="fw-bolder mb-4 mt-5">Example</h5>
-                            <p class="fs-5 mb-4">s = <i>"Life is Beautiful"</i></p>
-                            <p class="fs-5 mb-4">The required output is:</i></p>
+                            <p class="fs-5">Here is a sample line of code that can be executed in Python:</p>
                             <div class="card">
                                 <div class="card-body bg-light">
-                                    <p>Hello, World!</p>
-                                    <p>Life is beautiful!</p>
+                                    <p>print("Hello, World!")</p>
                                 </div>
                             </div>
 
-                            <h5 class="fw-bolder mb-4 mt-5">Function Description</h5>
-                            <p class="fs-5 mb-4">Complete the main() function below.</p>
-                            <p class="fs-5 mb-4">The main() function has the following input:</p>
-                            <li>string s: a string</li>
-
-                            <h5 class="fw-bolder mb-4 mt-5">Prints</h5>
-                            <li>*two strings: * "Hello, World!" on one line and the input string on the next line.</li>
-
-                            <h5 class="fw-bolder mb-4 mt-5">Input Format</h5>
-                            <p class="fs-5 mb-4">There is one line of text, <i>s</i></p>
-
-                            <h5 class="fw-bolder mb-4 mt-5">Sample Input 0</h5>
+                            <p class="fs-5 mt-3">You can just as easily store a string as a variable and then print it to stdout:</p>
                             <div class="card">
                                 <div class="card-body bg-light">
-                                    <p>Welcome to C programming.</p>
+                                    <p>my_string = "Hello, World!"</p>
+                                    <p>print(my_string)</p>
                                 </div>
                             </div>
+                            <p class="fs-5 mt-4">The above code will print Hello, World! on your screen. Try it yourself in the editor below!</p>
+
+                            <h5 class="fw-bolder mb-4 mt-4">Input Format</h5>
+                            <p class="fs-5 mb-4">You do not need to read any input in this challenge.</p>
+
+                            <h5 class="fw-bolder mb-4 mt-5">Output Format</h5>
+                            <p class="fs-5 mb-4">Print <b>Hello, World!</b> to stdout.</p>
 
                             <h5 class="fw-bolder mb-4 mt-5">Sample Output 0</h5>
                             <div class="card">
                                 <div class="card-body bg-light">
                                     <p>Hello, World!</p>
-                                    <p>Welcome to C Programming.</p>
                                 </div>
                             </div>
                             <div class="pb-5 mb-5">
@@ -145,14 +132,14 @@ session_start();
                             Select Language:
                             &nbsp; &nbsp;
                             <select id="languages" class="languages" onchange="changeLanguage()" style="margin-right: 5px;">
+                                <option value="python"> Python </option>
                                 <option value="c"> C </option>
                                 <option value="cpp"> C++ </option>
                                 <option value="php"> PHP </option>
-                                <option value="python"> Python </option>
                                 <option value="node"> Node JS </option>
                             </select>
                         </div>
-                        <div class="editor" id="editor"><?php include 'challenge1.txt'?></div>
+                        <div class="editor" id="editor">print("")</div>
                         <div class="button-container">
                             <button class="btn" onclick="executeCode()"> Run </button>
                         </div>
@@ -174,7 +161,7 @@ session_start();
 <script src="../../js/scroll.js"></script>
 <script src="../../js/lib/ace.js"></script>
     <script src="../../js/lib/theme-xcode.js"></script>
-    <script src="../../js/ide_c.js"></script>
+    <script src="../../js/ide_python.js"></script>
 
 </body>
 </html>

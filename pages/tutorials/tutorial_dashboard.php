@@ -48,6 +48,10 @@ session_start();
     $login_path = "../login/sign_in.php";
     $register_path = "../login/sign_up.php";
     $profile_path = "../dashboard/profile.php";
+    $settings_path = "../dashboard/settings.php";
+    $activity_path = "../dashboard/activity.php";
+    $challenges_path = "../challenges/challenges_dashboard.php";
+    $forums_path = "../forum/forum.php";
     $logo_path = "../../assets/logo2.png";
 
 

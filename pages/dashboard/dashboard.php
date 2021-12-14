@@ -57,6 +57,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
         $tutorials_path = "../tutorials/tutorial_dashboard.php";
         $forums_path = "../forum/forum.php";
         $logo_path = "../../assets/logo2.png";
+        $challenges_path = "../challenges/challenges_dashboard.php";
 
         include '../../widgets/navbar.php';
 
