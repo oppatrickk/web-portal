@@ -44,7 +44,7 @@ Please log in using the following password:' . $recovery_password .
 
                     $mail_options = [
                         'sender' => 'codeX@codex-bu.appspotmail.com',
-                        'to' => $email,
+                        'to' => $row["email"],
                         'subject' => 'Password Recovery',
                         'textBody' => $message_body
                     ];
@@ -55,7 +55,6 @@ Please log in using the following password:' . $recovery_password .
                     } catch (InvalidArgumentException $e) {
                         echo 'error: ';
                     }
-
                 }
                 else{
                     $errorMsg[] = "Email/username does not exist in our database";
