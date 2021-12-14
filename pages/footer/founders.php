@@ -264,6 +264,11 @@ session_start();
     <!-- Footer-->
     <?php
         // Paths
+        $c_path = "../tutorials/c/c_dashboard.php";
+        $html_path = "../tutorials/html/html_dashboard.php";
+        $css_path = "../tutorials/tutorial_dashboard";
+        $python_path = "../tutorials/python/python_dashboard.php";
+
         $founders_path = "founders.php";
         $logo_path = "../../assets/logo2_white.png";
         $report_path = "report.php";

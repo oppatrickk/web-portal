@@ -1,17 +1,10 @@
 <!-- PHP -->
 <?php
 
+include '../../../database/config.php';
+
 // Initialize the session
 session_start();
-
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: ../../login/login.php");
-    exit;
-}
-
-// Include config file
-require_once "../../../database/config.php";
 
 ?>
 
@@ -50,12 +43,23 @@ require_once "../../../database/config.php";
 <!-- Top Navigation Bar-->
 <?php
     // Paths
-    $navbar_path = "../../dashboard/dashboard.php";
+    $navbar_path = "../../../index.php";
+    $profile_path =  "../../dashboard/profile.php";
+    $settings_path =  "../../dashboard/settings.php";
+    $activity_path =  "../../dashboard/activity.php";
     $logout_path = "../../../database/logout.php";
-    $profile_path = "../../dashboard/profile.php";
     $logo_path = "../../../assets/logo2.png";
+    $login_path = "../../login/sign_in.php";
+    $register_path = "../../login/sign_up.php";
+    $tutorials_path = "../../tutorials/tutorial_dashboard.php";
 
-    include "../../../widgets/navbar.php"
+    // Check if the user is logged in
+    if(!isset($_SESSION['user_login'])){
+        include '../../../widgets/navbar_nologin.php';
+    }
+    else{
+        include '../../../widgets/navbar.php';
+    }
 
 ?>
 
@@ -188,16 +192,19 @@ require_once "../../../database/config.php";
 </div>
 
 <!-- Footer-->
-
-<!-- Top Navigation Bar-->
 <?php
     // Paths
-    $about_path = "";
-    $founders_path = "";
-    $faqs_path = "";
-    $contact_path = "";
+    $c_path = "c_dashboard.php";
+    $html_path = "../html/html_dashboard.php";
+    $css_path = "../tutorial_dashboard";
+    $python_path = "../python/python_dashboard.php";
 
-    include "../../../widgets/footer.php"
+    $founders_path = "../../footer/founders.php";
+    $logo_path = "../../../assets/logo2_white.png";
+    $report_path = "../../footer/report.php";
+
+    include '../../../widgets/footer.php'
+
 ?>
 
 <!-- Bootstrap JavaScript-->

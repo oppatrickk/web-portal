@@ -201,11 +201,14 @@ else{
     <!-- Footer-->
     <?php
         // Paths
-        $about_path = "";
+        $c_path = "pages/tutorials/c/c_dashboard.php";
+        $html_path = "pages/tutorials/html/html_dashboard.php";
+        $css_path = "pages/tutorials/tutorial_dashboard";
+        $python_path = "pages/tutorials/python/python_dashboard.php";
+
         $founders_path = "pages/footer/founders.php";
-        $forum_path = "pages/forum/forum.php";
-        $report_path = "pages/footer/report.php";
         $logo_path = "assets/logo2_white.png";
+        $report_path = "pages/footer/report.php";
 
         include 'widgets/footer.php'
 

@@ -7,16 +7,16 @@
                 <h5 class="mb-4">Tutorials</h5>
                 <ul class="list-unstyled">
                     <li class="mt-2">
-                        <a href="<?php echo $about_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">C</a>
+                        <a href="<?php echo $c_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">C</a>
                     </li>
                     <li class="mt-2">
-                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">HTML5</a>
+                        <a href="<?php echo $html_path; ?>" style="text-decoration:none; color: dimgray">HTML5</a>
                     </li>
                     <li class="mt-2">
-                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">CSS3</a>
+                        <a href="<?php echo $css_path; ?>" style="text-decoration:none; color: dimgray">CSS3</a>
                     </li>
                     <li class="mt-2">
-                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">Python</a>
+                        <a href="<?php echo $python_path; ?>" style="text-decoration:none; color: dimgray">Python</a>
                     </li>
                 </ul>
             </div>
@@ -61,7 +61,7 @@
         <p class="text-white-50">
             <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>">
                 <img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo">
-            </a> © codeX 2021 version 2.9 | All rights reserved.
+            </a> © codeX 2021 version 3.0 | All rights reserved.
         </p>
     </div>
 </footer>
