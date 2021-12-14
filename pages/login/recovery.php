@@ -41,7 +41,7 @@ if(isset($_REQUEST['btn_recover'])){
                         ':password' => $recovery_password,
                     ];
 
-                    $stm = $db->prepare('INSERT INTO users (password) VALUES (:password)');
+                    $stm = $db->prepare('REPLACE INTO users (password) VALUES (:password)');
                     $stm->execute($params);
 
                     $successMsg = "We have sent the instructions to " .$row["email"];
