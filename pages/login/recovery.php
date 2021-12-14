@@ -1,5 +1,6 @@
 <?php
 
+// Use Mail API
 use google\appengine\api\mail\Message;
 
 require_once '../../database/config.php';
@@ -11,21 +12,6 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
 else{
     header("location: ../dashboard/dashboard.php");
     exit;
-}
-
-function getRandomBytes($nbBytes = 32)
-{
-    $bytes = openssl_random_pseudo_bytes($nbBytes, $strong);
-    if (false !== $bytes && true === $strong) {
-        return $bytes;
-    }
-    else {
-        throw new \Exception("Unable to generate secure token from OpenSSL.");
-    }
-}
-
-function generatePassword($length){
-    return substr(preg_replace("/[^a-zA-Z0-9]/", "", base64_encode(getRandomBytes($length+1))),0,$length);
 }
 
 if(isset($_REQUEST['btn_recover'])){
@@ -46,33 +32,49 @@ if(isset($_REQUEST['btn_recover'])){
             $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
             $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
-
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
 
-                    $recovery_password = "Password!1";
+                    // Password Generator
+                    $digits    = array_flip(range('0', '9'));
+                    $lowercase = array_flip(range('a', 'z'));
+                    $uppercase = array_flip(range('A', 'Z'));
+                    $special   = array_flip(str_split('!@#$%^&*()_+=-}{[}]\|;:<>?/'));
+                    $combined  = array_merge($digits, $lowercase, $uppercase, $special);
 
+                    // Result
+                    $recovery_password  = str_shuffle(array_rand($digits) .
+                        array_rand($lowercase) .
+                        array_rand($uppercase) .
+                        array_rand($special) .
+                        implode(array_rand($combined, rand(4, 8))));
+
+                    // Get User
+                    $username = $row["username"];
+
+                    // Parameter
                     $params = [
-                        ':password' => $recovery_password,
+                        ':password' => password_hash($recovery_password, PASSWORD_DEFAULT),
                     ];
 
-
-                    $stm = $db->prepare('UPDATE users SET password = :password WHERE username=:uname OR email=:uemail');
-
+                    // Replace in Database
+                    $stm = $db->prepare("UPDATE users SET password = :password WHERE username = '$username'");
                     $stm->execute($params);
 
+                    // Email
                     $successMsg = "We have sent the instructions to " .$row["email"];
 
                     $message_body = 'We have reset your password.
 Please log in using the following password: ' . $recovery_password .
 
 '
+
 We recommend changing your password immediately after logging in through Profile > Settings > Change Password';
 
                     $mail_options = [
-                        'sender' => 'Recovery@codex-bu.appspotmail.com',
+                        'sender' => 'Reset@codex-bu.appspotmail.com',
                         'to' => $row["email"],
-                        'subject' => 'Password Recovery',
+                        'subject' => 'Password Reset',
                         'textBody' => $message_body
                     ];
 
