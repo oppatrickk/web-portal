@@ -43,7 +43,7 @@ Please log in using the following password:' . $recovery_password .
 'We recommend changing your password after logging in through Profile > Settings > Change Password';
 
                     $mail_options = [
-                        'sender' => 'Recovery@codex-bu.appspotmail.com',
+                        'sender' => 'recovery@codex-bu.appspotmail.com',
                         'to' => $row["email"],
                         'subject' => 'Password Recovery',
                         'textBody' => $message_body
