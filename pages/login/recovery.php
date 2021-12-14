@@ -1,6 +1,6 @@
 <?php
 
-//use google\appengine\api\mail\Message;
+use google\appengine\api\mail\Message;
 
 require_once '../../database/config.php';
 
@@ -31,26 +31,21 @@ if(isset($_REQUEST['btn_recover'])){
             $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
             $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
+            $recovery_password = $row["password"];
+
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
 
-                    $successMsg[] = "We have sent the instructions to ";
-
-                    foreach ($select_stmt as $key => $value) {
-
-                        $successMsg[] = $successMsg . $value . "\ ";
-                    }
+                    $successMsg = "We have sent the instructions to " .$row["email"];
 
                     $message_body = 'We have reset your password.
-Please log in using the following password: $recovery_password
-
-We recommend changing your password after logging in through Profile > Settings > Change Password
-';
+Please log in using the following password:' . $recovery_password .
+'We recommend changing your password after logging in through Profile > Settings > Change Password';
 
                     $mail_options = [
-                        'sender' => 'recovery@codex-bu.appspotmail.com',
+                        'sender' => 'codeX@codex-bu.appspotmail.com',
                         'to' => $email,
-                        'subject' => 'codeX | Recover Password',
+                        'subject' => 'Password Recovery',
                         'textBody' => $message_body
                     ];
 
