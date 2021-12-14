@@ -13,6 +13,21 @@ else{
     exit;
 }
 
+function getRandomBytes($nbBytes = 32)
+{
+    $bytes = openssl_random_pseudo_bytes($nbBytes, $strong);
+    if (false !== $bytes && true === $strong) {
+        return $bytes;
+    }
+    else {
+        throw new \Exception("Unable to generate secure token from OpenSSL.");
+    }
+}
+
+function generatePassword($length){
+    return substr(preg_replace("/[^a-zA-Z0-9]/", "", base64_encode(getRandomBytes($length+1))),0,$length);
+}
+
 if(isset($_REQUEST['btn_recover'])){
 
     $username = strip_tags($_REQUEST["txt_username_email"]);
@@ -35,7 +50,8 @@ if(isset($_REQUEST['btn_recover'])){
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
 
-                    $recovery_password = md5(uniqid(mt_rand(), true));
+                    $recovery_password = "";
+                    $recovery_password = generatePassword($recovery_password);
 
                     $params = [
                         ':password' => $recovery_password,
