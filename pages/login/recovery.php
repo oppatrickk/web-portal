@@ -31,19 +31,28 @@ if(isset($_REQUEST['btn_recover'])){
             $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
             $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
-            $recovery_password = $row["password"];
 
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
+
+                    $recovery_password = md5(uniqid(mt_rand(), true));
+
+                    $params = [
+                        ':password' => $recovery_password,
+                    ];
+
+                    $stm = $db->prepare('INSERT INTO users (password) VALUES (:password)');
+                    $stm->execute($params);
 
                     $successMsg = "We have sent the instructions to " .$row["email"];
 
                     $message_body = 'We have reset your password.
 Please log in using the following password:' . $recovery_password .
-'We recommend changing your password after logging in through Profile > Settings > Change Password';
+
+'\nWe recommend changing your password after logging in through Profile > Settings > Change Password';
 
                     $mail_options = [
-                        'sender' => 'recovery@codex-bu.appspotmail.com',
+                        'sender' => 'Recovery@codex-bu.appspotmail.com',
                         'to' => $row["email"],
                         'subject' => 'Password Recovery',
                         'textBody' => $message_body
