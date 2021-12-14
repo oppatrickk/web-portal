@@ -1,5 +1,7 @@
 <?php
 
+use google\appengine\api\mail\Message;
+
 require_once '../../database/config.php';
 
 session_start();
@@ -33,8 +35,6 @@ if(isset($_REQUEST['btn_recover'])){
                 if($username==$row["username"] OR $email==$row["email"]){
                     $successMsg[] = "We have sent the instructions to " . $email;
 
-
-                    use google\appengine\api\mail\Message;
 
                     $message_body = 'We have reset your password.
 Please log in using the following password: $recovery_password
