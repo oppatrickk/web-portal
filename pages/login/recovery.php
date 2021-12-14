@@ -50,14 +50,16 @@ if(isset($_REQUEST['btn_recover'])){
             if($select_stmt->rowCount() > 0){
                 if($username==$row["username"] OR $email==$row["email"]){
 
-                    $recovery_password = "";
-                    $recovery_password = generatePassword($recovery_password);
+                    $recovery_password = "Password!1";
 
                     $params = [
-                        ':password' => $recovery_password,
+                        'password' => $recovery_password,
                     ];
 
-                    $stm = $db->prepare('REPLACE INTO users (password) VALUES (:password)');
+
+
+                    $sql = "UPDATE users SET password=:password WHERE username=:uname OR email=:uemail";
+                    $stm= $db->prepare($sql);
                     $stm->execute($params);
 
                     $successMsg = "We have sent the instructions to " .$row["email"];
@@ -65,7 +67,7 @@ if(isset($_REQUEST['btn_recover'])){
                     $message_body = 'We have reset your password.
 Please log in using the following password:' . $recovery_password .
 
-'\nWe recommend changing your password after logging in through Profile > Settings > Change Password';
+'We recommend changing your password immediately after logging in through Profile > Settings > Change Password';
 
                     $mail_options = [
                         'sender' => 'Recovery@codex-bu.appspotmail.com',
