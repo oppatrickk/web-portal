@@ -53,7 +53,7 @@ if(isset($_REQUEST['btn_recover'])){
                     $recovery_password = "Password!1";
 
                     $params = [
-                        'password' => $recovery_password,
+                        ':password' => $recovery_password,
                     ];
 
 
