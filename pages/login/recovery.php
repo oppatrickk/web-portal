@@ -54,13 +54,11 @@ if(isset($_REQUEST['btn_recover'])){
 
                     $params = [
                         ':password' => $recovery_password,
-                        ':uemail' => $row["email"],
                     ];
 
 
+                    $stm = $db->prepare('UPDATE users SET password = :password WHERE username=:uname OR email=:uemail');
 
-                    $sql = "UPDATE users SET password=:password WHERE username=:uname OR email=:uemail";
-                    $stm= $db->prepare($sql);
                     $stm->execute($params);
 
                     $successMsg = "We have sent the instructions to " .$row["email"];
