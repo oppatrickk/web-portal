@@ -24,7 +24,7 @@ require_once "../../database/config.php";
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- External CSS -->
-  <link href="css/index.css" rel="stylesheet" />
+  <link href="../../css/forum.css" rel="stylesheet" />
 
   <!-- Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,38 +34,44 @@ require_once "../../database/config.php";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
 
-  <!-- Assets -->
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="../../css/forum.css">
 </head>
 
 <body>
     <!-- Navbar -->
     <?php
     // Paths
-    $navbar_path = "../../index.php";
-    $profile_path = "profile.php";
-    $settings_path = "";
-    $activity_path = "";
+    $navbar_path = "dashboard.php";
+    $profile_path =  "profile.php";
+    $settings_path =  "settings.php";
+    $activity_path =  "activity.php";
     $logout_path = "../../database/logout.php";
-    $redirect_path = "threadlist.php";
+    $tutorials_path = "../tutorials/tutorial_dashboard.php";
+    $forums_path = "../forum/forum.php";
+    $logo_path = "../../assets/logo2.png";
+    $challenges_path = "../challenges/challenges_dashboard.php";
+    $login_path = "../login/sign_in.php";
+    $register_path = "../login/sign_up.php";
+
+
 
     // Check if the user is logged in
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    if(!isset($_SESSION['user_login'])){
         include '../../widgets/navbar_nologin.php';
-    } else {
+    }
+    else{
         include '../../widgets/navbar.php';
     }
 
     ?>
 
+
+    <div class="main custom-scrollbar-css">
     <!-- Categories -->
     <?php
     $id = $_GET['catid'];
-    $sql = "SELECT * FROM `categories` WHERE category_id=$id";
-    $result = mysqli_query($link, $sql);
-    while ($row = mysqli_fetch_assoc($result)) {
+    $sql = "SELECT * FROM `forum_categories` WHERE category_id=$id";
+    $result = $db->query($sql);
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $catname = $row['category_name'];
         $catdesc = $row['category_description'];
     }
@@ -79,8 +85,9 @@ require_once "../../database/config.php";
         //Insert the thread into the database
         $th_title = $_POST['title'];
         $th_desc = $_POST['title'];
-        $sql = "INSERT INTO `threads` (`thread_title`, `thread_description`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp())";
-        $result = mysqli_query($link, $sql);
+        $name = $_SESSION['username'];
+        $sql = "INSERT INTO `forum_threads` (`thread_title`, `thread_description`, `thread_cat_id`, `thread_username`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '$name', current_timestamp())";
+        $result = $db->query($sql);
     }
     ?>
 
@@ -95,70 +102,75 @@ require_once "../../database/config.php";
                 <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
             </p>
         </div>
-    </div>
-
-    <div class="container">
-        <h1 class="py-2">Start a Discussion</h1>
-    </div>
-
-    <div class="container">
-
-        <!-- Forms-->
-
-
-        <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Thread Title</label>
-                <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Keep your title be breif and short as much as possible</div>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Please Elaborate your Concerns</label>
-                <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-
-    </div>
-
-
-    <div class="container">
-
-        <h1 class="py-2">Browse Questions</h1>
-
-        <?php
-        $id = $_GET['catid'];
-        $sql = "SELECT * FROM `threads` WHERE thread_cat_id=$id";
-        $result = mysqli_query($link, $sql);
-        $noResult = true;
-        while ($row = mysqli_fetch_assoc($result)) {
-            $noResult = false;
-            $id = $row['thread_id'];
-            $title = $row['thread_title'];
-            $desc = $row['thread_description'];
-
-
-            echo '<div class="media my-3">
-              <img class="mr-3" src="../../assets/img/avatars/default_avatar.png" width="40px" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid=' . $id . '">' . $title . '</a></h5>
-                ' . $desc . '
-              </div>
-            </div>';
+    </div> <<?php
+        if(isset($_SESSION['user_login']) && $_SESSION['user_login']==true){
+            echo '<div class="container">
+            <h1 class="py-2">Start a Discussion</h1> 
+            <form action="'. $_SERVER["REQUEST_URI"] . '" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Problem Title</label>
+                    <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as
+                        possible</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Ellaborate Your Concern</label>
+                    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>';
         }
-
-        // echo var_dump($noResult);
-        if ($noResult) {
-            echo '<div class="jumbotron jumbotron-fluid mb-5">
-                      <div class="container">
-                          <p class="lead">No Threads Found</p>
-                          <p class="lead"> Be the first person to ask a question</p>
-                      </div>
-                   </div> ';
+        else{
+            echo '
+        <div class="container">
+        <h1 class="py-2">Start a Discussion</h1> 
+           <p class="lead">You are not logged in. Please login to be able to start a Discussion</p>
+        </div>
+        ';
         }
         ?>
 
-        <!-- remove later; putting this just to check html allignment-->
+        <div class="container">
+
+            <h1 class="py-2">Browse Questions</h1>
+
+            <?php
+            $id = $_GET['catid'];
+            $sql = "SELECT * FROM `forum_threads` WHERE thread_cat_id=$id";
+            $result = $db->query($sql);
+            $noResult = true;
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $noResult = false;
+                $id = $row['thread_id'];
+                $title = $row['thread_title'];
+                $desc = $row['thread_description'];
+                $time = $row['timestamp'];
+                $name = $row['thread_username'];
+
+                echo '<div class="media my-3">
+      <img class="mr-3" src="../../assets/img/avatars/default_avatar.png" width="40px" alt="Generic placeholder image">
+      <div class="media-body"> 
+      <p class="font-weight-bold my-0"><b> Created by ' . $name . ' at ' .$time. '</b></p>
+        <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid='  . $id  . '">' . $title . '</a></h5>
+        ' . $desc . '
+      </div>
+    </div>';
+            }
+
+            // echo var_dump($noResult);
+            if ($noResult) {
+                echo '<div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                  <p class="lead">No Threads Found</p>
+                  <p class="lead"> Be the first person to ask a question</p>
+              </div>
+           </div> ';
+            }
+            ?>
+
+
+            <!-- remove later; putting this just to check html allignment-->
 
 
     </div>
@@ -174,15 +186,18 @@ require_once "../../database/config.php";
     include '../../widgets/footer.php'
 
     ?>
+    </div>
 
-<!-- Bootstrap JavaScript-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- External JavaScript-->
-<script src="js/index.js"></script>
+    <!-- Bootstrap JavaScript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Forms -->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- External JavaScript-->
+    <script src="../../js/scroll.js"></script>
+
 
 </body>
 

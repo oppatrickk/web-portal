@@ -87,67 +87,63 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     <div class="row align-items-center justify-content-around mt-5">
         <div class="col-md-4">
 
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <a type="button" class="btn btn-outline-primary" href="../tutorials/tutorial_dashboard.php"><img src="../../assets/img/dashboard/Video tutorial _Outline.svg" width="100%"><br>Start your day with some <b>Tutorials</b>.</a>
-                <button type="button" class="btn btn-outline-primary"><img src="../../assets/img/dashboard/Competition_Flatline.svg" width="100%"><br>Take on others through <b>Challenges</b>.</button>
-                <a type="button" class="btn btn-outline-primary" href="../forum/forum.php"><img src="../../assets/img/dashboard/Group Video Call_Outline.svg" width="100%"><br>Seek assistance with our <b>Community</b>.</a>
-            </div>
+
             <div class="col-md-12">
 
                 <!--Community Section-->
-                <h2 class="my-4" style="text-align:center">Community Forum</h2>
+
+
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 
                     <!--Forum Post Section-->
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">(Linked Forum)</h5>
-                                <p class="card-text">Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">(Linked Forum)</h5>
-                                <p class="card-text">Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">(Linked Forum)</h5>
-                                <p class="card-text">Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. Lorem Ipsum. </p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="mb-5">
-                    <a href="#" style="text-decoration: none;">
-                        <b>See all community forums </b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                        </svg></a>
+
                 </div>
             </div>
+
         </div>
 
         <!--Program Section-->
         <div class="col-md-4">
-            <div class="card text-center border-primary">
-                <div class="card-header">
-                    <img src="../../assets/img/dashboard/Programming Languages.png" width="50%">
-                </div>
+            <div class="card text-center">
                 <div class="card-body">
-                    <p class="card-text"><b><h4>You haven't joined any program.</h4></b></p>
-                    <p>Choose any of the following programming languages we have prepared for you, Start your adventure on becoming a programmer.</p>
-                    <button type="button" class="btn btn-outline-primary"><b>Start now!</b></button>
+                    <div class="container my-4" id="ques">
+                        <h2 class="text-center my-4 mt-5">CodeX Forum Categories</h2>
+                        <div class="row my-4">
+
+                            <!-- Fetch all the categories and use a loop to iterate through categories -->
+                            <?php
+                            $sql = "SELECT * FROM `forum_categories`";
+                            $result = $db->query($sql);
+                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                                $id = $row['category_id'];
+                                $cat = $row['category_name'];
+                                $desc = $row['category_description'];
+                                echo '<div class="col my-2">
+                      <div class="card" style="width: 12rem;">
+                          <img src="../../assets/img/forum/' . $cat . '.jpg"
+                           class="card-img-top" alt="image for this category">
+                          <div class="card-body">
+                              
+                              <p class="card-text" style=" font-size: 12px;">' . substr($desc, 0, 90) . ' </p>
+                              <a href="../forum/Threadlist.php?catid=' . $id . '" class="btn btn-primary mt-3">View Threads</a>
+                          </div>
+                      </div>
+                    </div>';
+                            }
+                            ?>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!--Evaluation-->
     <section class="services gradient mt-5 pt-5 pb-5">
@@ -178,6 +174,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
         $contact_path = "";
         $report_path = "../footer/report.php";
         $logo_path = "../../assets/logo2_white.png";
+        $forums_path = "../forum/forum.php";
 
 
         include '../../widgets/footer.php'

@@ -25,10 +25,7 @@
                 <h5 class="mb-4">Forums</h5>
                 <ul class="list-unstyled">
                     <li class="mt-2">
-                        <a href="<?php echo $about_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">General</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="<?php echo $founders_path; ?>" style="text-decoration:none; color: dimgray">Threads</a>
+                        <a href="<?php echo $forums_path; ?>" style="text-decoration:none; color: dimgray">Threads</a>
                     </li>
                 </ul>
             </div>

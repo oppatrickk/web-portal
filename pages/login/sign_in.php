@@ -38,6 +38,7 @@ if(isset($_REQUEST['btn_login'])){
                         // Session Variables
                         $_SESSION["user_login"] = true;
                         $_SESSION["id"] = $row["user_id"];
+                        $_SESSION["email"] = $row["email"];
                         $_SESSION["username"] = $row["username"];
                         $_SESSION["first_name"] = $row["first_name"];
                         $_SESSION["last_name"] = $row["last_name"];

@@ -12,6 +12,101 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     exit;
 }
 
+
+// Variables
+$err_current_password = $err_new_password = $err_confirm_password = $err_match_password = "";
+$active_profile = "active";
+$active_password = "";
+
+
+$show_profile = "show active";
+$show_password = "";
+
+if (isset($_REQUEST['btn_change'])) {
+
+    $pass = 0;
+
+    $active_password = "active";
+    $active_profile = "";
+
+    $show_profile = "";
+    $show_password = "show active";
+
+    // Variables
+    $current_password = strip_tags($_REQUEST["current_password"]);
+    $new_password = strip_tags($_REQUEST["new_password"]);
+    $confirm_password = strip_tags($_REQUEST["confirm_password"]);
+
+    $username = $_SESSION["username"];
+    $email = $_SESSION["email"];
+
+    // Check if value is empty
+    if (empty($current_password)) {
+        $err_current_password = "Please enter your current password";
+    }
+    else{
+        $pass++;
+    }
+
+    // Validate Password Strength
+    $uppercase = preg_match("#[A-Z]+#", $new_password);
+    $lowercase = preg_match("#[a-z]+#", $new_password);
+    $number    = preg_match("#[0-9]+#", $new_password);
+    $char      = preg_match("#[^\w]+#", $new_password);
+
+    if (empty($new_password)) {
+        $err_new_password = "Please enter your new password";
+    }
+    else if(!$uppercase || !$lowercase || !$number || strlen($new_password) < 6) {
+        $err_new_password = "New password should be at least 8 characters in length and include at least one upper case letter, one number, and one special character";
+    }
+    else{
+        $pass++;
+    }
+
+    if (empty($confirm_password)) {
+        $err_confirm_password = "Please enter your new password again";
+    } else if ($confirm_password != $new_password) {
+        $err_confirm_password = "Password did not match";
+    }
+    else{
+        $pass++;
+    }
+
+    if($pass == 3) {
+        try {
+            $select_stmt = $db->prepare("Select * FROM users WHERE username=:uname OR email=:uemail");
+            $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
+            $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($select_stmt->rowCount() > 0){
+                if(password_verify($current_password, $row["password"])){
+
+                        // Parameter
+                        $params = [
+                            ':password' => password_hash($new_password, PASSWORD_DEFAULT),
+                        ];
+
+                        // Username
+                        $id = $_SESSION["id"];
+
+                        // Replace in Database
+                        $stm = $db->prepare("UPDATE users SET password = :password WHERE user_id = '$id'");
+                        $stm->execute($params);
+
+                        $success_msg = "Password Changed";
+                }
+                else{
+                        $err_current_password = "Wrong password";
+                    }
+                }
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
+    }
+}
+
+
 ?>
 
 
@@ -51,6 +146,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     $navbar_path = "../../index.php";
     $logo_path = "../../assets/logo2.png";
     $login_path = "../login/sign_in.php";
+    $logout_path = "../../database/logout.php";
     $register_path = "../login/sign_up.php";
     $settings_path = "settings.php";
     $activity_path = "activity.php";
@@ -68,10 +164,10 @@ include '../../widgets/navbar.php'
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Profile Info</button>
+                            <button class="nav-link <?php echo $active_profile;?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Profile Info</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Change Password</button>
+                            <button class="nav-link <?php echo $active_password;?>" id="password-tab" data-bs-toggle="tab" data-bs-target="#change_password" type="button" role="tab" aria-controls="change_password" aria-selected="false">Change Password</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Delete Account</button>
@@ -79,7 +175,7 @@ include '../../widgets/navbar.php'
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <!-- Profile -->
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade <?php echo $show_profile?>" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="container mt-4">
                                 <div class="row">
                                     <div class="col">
@@ -177,37 +273,60 @@ include '../../widgets/navbar.php'
                             </div>
                         </div>
                         <!-- Password -->
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade <?php echo $show_password;?>" id="change_password" role="tabpanel" aria-labelledby="profile-tab">
 
                             <div class="mt-4">
                                 <h3 class="mb-2">Change Password</h3>
 
-                                <!-- Current Password -->
-                                <div class="form-group mt-3 col-3">
-                                    <label style="font-size: 12px; color: grey">Current Password</label>
-                                    <input type="password" name="txt_password" class="form-control" id="password-field">
-                                </div>
+                                <?php
+                                if(isset($errorMsg)){
+                                    foreach($errorMsg as $error){
+                                        ?>
+                                        <div class = "alert alert-danger">
+                                            <?php echo $error; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                if (isset($success_msg)){
+                                    ?>
+                                    <div class = "alert alert-success">
+                                        <strong><?php echo $success_msg; ?></strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
 
-                                <!-- New Password-->
-                                <div class="form-group mt-3 col-3">
-                                    <label style="font-size: 12px; color: grey">New Password</label>
-                                    <input type="password" name="txt_password" class="form-control" id="password-field">
-                                </div>
+                                <form method="post">
+                                    <!-- Current Password -->
+                                    <div class="form-group mt-3 col-3">
+                                        <label style="font-size: 12px; color: grey">Current Password</label>
+                                        <input type="password" name="current_password" class="form-control <?php echo (!empty($err_current_password)) ? 'is-invalid' : ''; ?>">
+                                        <span class="invalid-feedback"><?php echo $err_current_password; ?></span>
+                                    </div>
 
-                                <!-- Confirm New Password-->
-                                <div class="form-group mt-3 col-3">
-                                    <label style="font-size: 12px; color: grey">Confirm New Password</label>
-                                    <input type="password" name="txt_password" class="form-control" id="password-field">
-                                </div>
+                                    <!-- New Password-->
+                                    <div class="form-group mt-3 col-3">
+                                        <label style="font-size: 12px; color: grey">New Password</label>
+                                        <input type="password" name="new_password" class="form-control <?php echo (!empty($err_new_password)) ? 'is-invalid' : ''; ?>">
+                                        <span class="invalid-feedback"><?php echo $err_new_password; ?></span>
+                                    </div>
 
-                                <!-- Submit -->
-                                <div class="form-group mt-3">
-                                    <input type="submit" name="btn_login" class="btn btn-primary" value="Change Password">
-                                </div>
+                                    <!-- Confirm New Password-->
+                                    <div class="form-group mt-3 col-3">
+                                        <label style="font-size: 12px; color: grey">Confirm Password</label>
+                                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($err_confirm_password)) ? 'is-invalid' : ''; ?>">
+                                        <span class="invalid-feedback"><?php echo $err_confirm_password; ?></span>
+                                    </div>
+
+                                    <!-- Submit -->
+                                    <div class="form-group mt-3">
+                                        <input type="submit" name="btn_change" class="btn btn-primary" value="Change Password">
+                                    </div>
+                                </form>
                             </div>
-
-
                         </div>
+
                         <!-- Delete -->
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="mt-4 mb-4">

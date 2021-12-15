@@ -207,6 +207,7 @@ else{
         $python_path = "pages/tutorials/python/python_dashboard.php";
 
         $founders_path = "pages/footer/founders.php";
+        $forums_path = "pages/forum/forum.php";
         $logo_path = "assets/logo2_white.png";
         $report_path = "pages/footer/report.php";
 
