@@ -69,12 +69,12 @@ if(isset($_REQUEST['btn_recover'])){
 
 
 
-                    $message_body = "<body style='height: 100%; background: linear-gradient(90deg, rgba(2, 0, 36, 0.25) 0%, rgba(9, 9, 121, 0.25) 35%, rgba(0, 212, 255, 0.25) 100%);'>
+                    $message_body = "<body style='height: 100%; padding: 150px; background: linear-gradient(90deg, rgba(2, 0, 36, 0.75) 0%, rgba(9, 9, 121, 0.75) 35%, rgba(0, 212, 255, 0.75) 100%);'>
 
 <div class='container h-100 d-flex justify-content-center'>
     <div class='jumbotron my-auto' style='background-color: white; border-radius: 16px; padding: 25px'>
         <div class='d-flex justify-content-center'>
-            <img src='../../assets/logo2.png' style='width: 6rem; height: 2rem;'>
+            <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 6rem; height: 2rem;'>
         </div>
         <h1 class='display-3'>Hello, world!</h1>
     </div>
