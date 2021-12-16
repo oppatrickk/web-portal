@@ -221,7 +221,6 @@ include '../../widgets/navbar.php'
                                     });
                                 </script>
                                 <?php
-                                header("Refresh: 3");
                             }
                             ?>
 
