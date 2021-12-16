@@ -287,9 +287,6 @@ include '../../widgets/navbar.php'
         <div class="modal-content">
             <div class="modal-header bg-success p-4 justify-content-md-center">
                 <h5 class="modal-title font-alt text-white" id="loginModalLabel">Account Verification</h5>
-                <button class="btn-close btn-close-white" type="button"
-                        data-bs-dismiss = "modal"
-                        aria-label="Close"></button>
             </div>
             <div class="modal-body border-0 p-4">
                 <form action="" method="post" enctype="multipart/form-data">

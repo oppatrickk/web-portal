@@ -128,6 +128,7 @@ if (isset($_REQUEST['btn_verify'])) {
                     $stm->execute($params);
 
                     $success_msg_verify = "Verified";
+                    $_SESSION["activate_account"] = 0;
                 }
                 else{
                     $err_confirm_code = "Wrong code";
