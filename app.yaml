@@ -7,8 +7,8 @@ handlers:
   - url: /
     script: index.php
 
-  - url: /
-    script: /pages/dashboard/dashboard.php
+  - url: /index\.php
+    script: index.php
 
   # Allow multi-pages
   - url: /(.+\.php)$
