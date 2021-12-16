@@ -6,7 +6,6 @@ handlers:
   # Landing Page
   - url: /
     script: index.php
-    static_dir: index
 
   # Allow multi-pages
   - url: /(.+\.php)$
