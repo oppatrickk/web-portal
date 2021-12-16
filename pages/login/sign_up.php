@@ -1,5 +1,8 @@
 <?php
 
+// Use Mail API
+use google\appengine\api\mail\Message;
+
 require_once '../../database/config.php';
 
 session_start();
