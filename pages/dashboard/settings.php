@@ -12,100 +12,20 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     exit;
 }
 
-
 // Variables
-$err_current_password = $err_new_password = $err_confirm_password = $err_match_password = "";
-$active_profile = "active";
-$active_password = "";
+$activate_check = $_SESSION["activate_account"];
 
+$err_current_password = $err_new_password = $err_confirm_password = $err_match_password = "";
+$err_confirm_code = "";
+
+$active_profile = "active";
+$active_password = $active_account = $active_delete = "";
 
 $show_profile = "show active";
-$show_password = "";
+$show_password = $show_account = $show_delete = "";
 
-if (isset($_REQUEST['btn_change'])) {
-
-    $pass = 0;
-
-    $active_password = "active";
-    $active_profile = "";
-
-    $show_profile = "";
-    $show_password = "show active";
-
-    // Variables
-    $current_password = strip_tags($_REQUEST["current_password"]);
-    $new_password = strip_tags($_REQUEST["new_password"]);
-    $confirm_password = strip_tags($_REQUEST["confirm_password"]);
-
-    $username = $_SESSION["username"];
-    $email = $_SESSION["email"];
-
-    // Check if value is empty
-    if (empty($current_password)) {
-        $err_current_password = "Please enter your current password";
-    }
-    else{
-        $pass++;
-    }
-
-    // Validate Password Strength
-    $uppercase = preg_match("#[A-Z]+#", $new_password);
-    $lowercase = preg_match("#[a-z]+#", $new_password);
-    $number    = preg_match("#[0-9]+#", $new_password);
-    $char      = preg_match("#[^\w]+#", $new_password);
-
-    if (empty($new_password)) {
-        $err_new_password = "Please enter your new password";
-    }
-    else if(!$uppercase || !$lowercase || !$number || strlen($new_password) < 6) {
-        $err_new_password = "New password should be at least 8 characters in length and include at least one upper case letter, one number, and one special character";
-    }
-    else{
-        $pass++;
-    }
-
-    if (empty($confirm_password)) {
-        $err_confirm_password = "Please enter your new password again";
-    } else if ($confirm_password != $new_password) {
-        $err_confirm_password = "Password did not match";
-    }
-    else{
-        $pass++;
-    }
-
-    if($pass == 3) {
-        try {
-            $select_stmt = $db->prepare("Select * FROM users WHERE username=:uname OR email=:uemail");
-            $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
-            $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
-
-            if($select_stmt->rowCount() > 0){
-                if(password_verify($current_password, $row["password"])){
-
-                        // Parameter
-                        $params = [
-                            ':password' => password_hash($new_password, PASSWORD_DEFAULT),
-                        ];
-
-                        // Username
-                        $id = $_SESSION["id"];
-
-                        // Replace in Database
-                        $stm = $db->prepare("UPDATE users SET password = :password WHERE user_id = '$id'");
-                        $stm->execute($params);
-
-                        $success_msg = "Password Changed";
-                }
-                else{
-                        $err_current_password = "Wrong password";
-                    }
-                }
-        } catch (PDOException $e) {
-            $e->getMessage();
-        }
-    }
-}
-
+include_once '../../database/change_password.php';
+include_once '../../database/activate_account.php';
 
 ?>
 
@@ -128,8 +48,6 @@ if (isset($_REQUEST['btn_change'])) {
 
     <!-- External CSS -->
     <link href="../../css/scroll.css" rel="stylesheet" />
-
-    <!-- Icons -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,6 +87,16 @@ include '../../widgets/navbar.php'
                         <li class="nav-item" role="presentation">
                             <button class="nav-link <?php echo $active_password;?>" id="password-tab" data-bs-toggle="tab" data-bs-target="#change_password" type="button" role="tab" aria-controls="change_password" aria-selected="false">Change Password</button>
                         </li>
+
+                        <?php
+                        if($activate_check == 1){?>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link <?php echo $active_account;?>" id="activate-tab" data-bs-toggle="tab" data-bs-target="#activate" type="button" role="tab" aria-controls="activate_account" aria-selected="false">Activate Account</button>
+                            </li>
+
+                            <?php
+                        }
+                        ?>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Delete Account</button>
                         </li>
@@ -273,58 +201,35 @@ include '../../widgets/navbar.php'
                             </div>
                         </div>
                         <!-- Password -->
-                        <div class="tab-pane fade <?php echo $show_password;?>" id="change_password" role="tabpanel" aria-labelledby="profile-tab">
+                        <?php include_once 'change_password.php'; ?>
 
-                            <div class="mt-4">
-                                <h3 class="mb-2">Change Password</h3>
-
-                                <?php
-                                if(isset($errorMsg)){
-                                    foreach($errorMsg as $error){
-                                        ?>
-                                        <div class = "alert alert-danger">
-                                            <?php echo $error; ?>
-                                        </div>
-                                        <?php
-                                    }
-                                }
-                                if (isset($success_msg)){
-                                    ?>
-                                    <div class = "alert alert-success">
-                                        <strong><?php echo $success_msg; ?></strong>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-
-                                <form method="post">
-                                    <!-- Current Password -->
-                                    <div class="form-group mt-3 col-3">
-                                        <label style="font-size: 12px; color: grey">Current Password</label>
-                                        <input type="password" name="current_password" class="form-control <?php echo (!empty($err_current_password)) ? 'is-invalid' : ''; ?>">
-                                        <span class="invalid-feedback"><?php echo $err_current_password; ?></span>
-                                    </div>
-
-                                    <!-- New Password-->
-                                    <div class="form-group mt-3 col-3">
-                                        <label style="font-size: 12px; color: grey">New Password</label>
-                                        <input type="password" name="new_password" class="form-control <?php echo (!empty($err_new_password)) ? 'is-invalid' : ''; ?>">
-                                        <span class="invalid-feedback"><?php echo $err_new_password; ?></span>
-                                    </div>
-
-                                    <!-- Confirm New Password-->
-                                    <div class="form-group mt-3 col-3">
-                                        <label style="font-size: 12px; color: grey">Confirm Password</label>
-                                        <input type="password" name="confirm_password" class="form-control <?php echo (!empty($err_confirm_password)) ? 'is-invalid' : ''; ?>">
-                                        <span class="invalid-feedback"><?php echo $err_confirm_password; ?></span>
-                                    </div>
-
-                                    <!-- Submit -->
-                                    <div class="form-group mt-3">
-                                        <input type="submit" name="btn_change" class="btn btn-primary" value="Change Password">
-                                    </div>
-                                </form>
+                        <!-- Activate -->
+                        <div class="tab-pane fade <?php echo $show_account;?>" id="activate" role="tabpanel" aria-labelledby="activate-tab">
+                            <div class="mt-4 mb-4">
+                                <h3 class="mb-2">Verify your account</h3>
                             </div>
+
+                            <!-- Resend -->
+                            <p class="mt-4">We have sent a confirmation code to <strong><?php echo $_SESSION["email"]; ?></strong></p>
+
+                            <div class="mt-2 text-primary">
+                                <btn type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none">Resend confirmation code</btn>
+                            </div>
+
+                            <form method = "post">
+                                <!-- Confirm -->
+                                <div class="form-group mt-5 col-2">
+                                    <label style="font-size: 12px; color: grey">Confirmation code</label>
+                                    <input type="text" name="confirm_code" class="form-control <?php echo (!empty($err_confirm_code)) ? 'is-invalid' : ''; ?>" style="border-radius: 16px">
+                                    <span class="invalid-feedback"><?php echo $err_confirm_code; ?></span>
+                                </div>
+
+                                <!-- Submit -->
+                                <div class="form-group mt-3">
+                                    <input type="submit" name="btn_verify" class="btn btn-primary" value="Verify">
+                                </div>
+
+                            </form>
                         </div>
 
                         <!-- Delete -->
@@ -338,8 +243,8 @@ include '../../widgets/navbar.php'
                             </div>
                             <p class="mt-4">This would delete your personal data permanently from our system.</p>
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style = "text-decoration: none">Delete Account</button>
-
                         </div>
+
                     </div>
 
                 </div>
@@ -381,7 +286,41 @@ include '../../widgets/navbar.php'
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+<!-- Change Password Modal-->
+<div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered col-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-success p-4 justify-content-md-center">
+                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Change Password</h5>
+            </div>
+            <div class="modal-body border-0 p-4">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <!-- Image -->
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <i class="bi bi-check-circle-fill" style="color:lightgreen; font-size: 128px"> </i>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center fw-bold">
+                            Success!
+                        </div>
+                        <div class="mt-3 d-flex justify-content-center ">
+                            <p>Your password has been changed!</p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -389,7 +328,7 @@ include '../../widgets/navbar.php'
 
 
 <!-- Delete Modal-->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered col-sm">
         <div class="modal-content">
             <div class="modal-header bg-danger p-4 justify-content-md-center">
@@ -410,27 +349,30 @@ include '../../widgets/navbar.php'
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center">
-                            All data will be deleted PERMANENTLY
+                        <div class="d-flex justify-content-center fw-bold">
+                            A confirmation code has been sent to your email.
+                        </div>
+                        <div class="mt-3 d-flex justify-content-center ">
+                            <p>Didn't receive an email?⠀</p> <p class="text-danger d-inline flex justify-content-center"> Resend</p>
                         </div>
 
-                        <div class="d-flex justify-content-center fw-bold mt-3">
-                            Confirm by typing the information required below.
+
+                        <!-- Code -->
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <div class="flex form-group mt-3 justify-content-center">
+                                    <label style="font-size: 10px; color: grey">Confirmation Code</label>
+                                    <input type="text" name="confirm_code" class="form-control" style="border-radius: 25px">
+                                </div>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
                         </div>
 
-                        <!-- Username/Email -->
-                        <div class="form-group mt-3 col">
-                            <label style="font-size: 14px; color: grey">Username/Email</label>
-                            <input type="text" name="txt_username_email" class="form-control">
-                        </div>
 
-                        <!-- Password -->
-                        <div class="form-group mt-3 col">
-                            <label style="font-size: 14px; color: grey">Password</label>
-                            <input type="password" name="txt_password" class="form-control" id="password-field">
-                        </div>
-
-                        <div class="d-flex justify-content-center fw-bold mt-3 mb-4">
+                        <div class="d-flex justify-content-center fw-bold mt-4 mb-4">
                             <btn class="btn btn-danger disabled">Delete Forever</btn>
                         </div>
                     </div>

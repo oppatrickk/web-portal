@@ -110,8 +110,3 @@
         </div>
     </div>
 </div>
-
-<!-- Forgot Pass Modal -->
-
-
-<!-- Reset Pass Modal -->

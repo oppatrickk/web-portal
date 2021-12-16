@@ -93,19 +93,95 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pass++;
     }
 
+    // Generate Code
+    $digits    = array_flip(range('0', '9'));
+    $lowercase = array_flip(range('a', 'z'));
+    $uppercase = array_flip(range('A', 'Z'));
+    $special   = array_flip(str_split('!@#$%^&*()_+=-}{[}]\|;:<>?/'));
+    $combined  = array_merge($digits, $lowercase, $uppercase, $special);
+
+    // Result
+    $activate_code  = str_shuffle(array_rand($digits) .
+        array_rand($lowercase) .
+        array_rand($uppercase) .
+        array_rand($special) .
+        implode(array_rand($combined, rand(4, 8))));
+
 
     if($pass == 6) {
+        // Email
+        $message_body = "
+<body style='height: 100%; padding: 2%; background-color: seagreen;'>
+
+<div>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; margin: auto; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>
+        <center>
+            <div>
+                <a href='https://codex-bu.appspot.com/'>
+                    <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 7rem; height: 2.5rem;'>
+                </a>
+            </div>
+        </center>
+        <div style='padding-left: 15px; padding-right: 15px;'>
+            <br>
+            <h1 style='font-weight: bold; color: limegreen; margin-bottom: 12px;'>Activate your account</h1>
+            <p style='color:black'>Hello <b>" .  $first_name . " " . $last_name . "</b>, welcome to codeX!</p>
+            <br>
+            <p style='color:black'>Use the following code to activate your account:</p>
+            <center>
+                <div style='border-radius: 32px; border: 1px solid limegreen; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$activate_code. "</div>
+            </center>
+            <br>
+
+            <br>
+            <p style='color:black'>Having trouble? <a href='https://codex-bu.appspot.com/pages/footer/report.php' style='text-decoration: none; color:limegreen'>Contact us</a></p>
+
+            <br>
+        </div>
+    </div>
+    <div style='width: 600px; margin: auto;'>
+        <center>
+            <br>
+            <p style='color:white; font-size: 12px; opacity: 75%'>The code will expire in the next 24 hours.</p>
+            <br>
+            <a href='https://codex-bu.appspot.com/'>
+                <img src='https://i.ibb.co/VTB4vfy/logo1.png' style='width: 6rem; height: 6rem;'>
+            </a>
+            <p style='color:white; font-size: 12px; opacity: 100%'>codeX © 2021</p>
+        </center>
+    </div>
+</div>
+
+</body>";
+
+        $mail_options = [
+            'sender' => 'Activate@codex-bu.appspotmail.com',
+            'to' => $row["email"],
+            'subject' => 'codeX | Verify Account',
+            'htmlBody' => $message_body
+        ];
+
+        try {
+            $message = new Message($mail_options);
+            $message->send();
+        } catch (InvalidArgumentException $e) {
+            echo 'error: ';
+        }
+
         $params = [
             ':name' => $_POST['name'],
             ':first_name' => $_POST['first_name'],
             ':last_name' => $_POST['last_name'],
             ':email' => $_POST['email'],
             ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            ':activate' => 1,
+            ':activate_code' =>$activate_code,
         ];
 
-        $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name) VALUES (:name, :email, :password, :first_name, :last_name)');
+        $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code)');
         if ($stm->execute($params)) {
             header('Location: sign_in.php');
+            exit;
         }
     }
 }

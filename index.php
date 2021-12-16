@@ -67,22 +67,31 @@ else{
         $login_path = "pages/login/sign_in.php";
         $register_path = "pages/login/sign_up.php";
         $logo_path = "assets/logo2_white.png";
+        $redirect_path = "pages/dashboard/dashboard.php";
 
         //include 'widgets/navbar_nologin.php'
     ?>
 
     <!-- Top Navigation Bar-->
+    <?php include_once "database/login.php"; ?>
+
+
     <nav class="mainNav navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container px-5">
             <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>"><img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo"></a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
 
-                <a class="ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0" href="<?php echo $login_path; ?>" style = "text-decoration: none">
-                <span class="d-flex align-items-center">
-                    <span class="medium sign-in">Sign in</span>
-                </span>
-                </a>
+                <!-- Sign In -->
+                <btn class="btn btn-link ms-auto me-4 my-3 my-lg-1 px-3 mb-2 mb-lg-0"
+                     data-bs-toggle="modal"
+                     data-bs-target="#loginModal"
+                     style = "text-decoration: none">
+                    <span class="d-flex align-items-center">
+                        <span class="medium sign-in">Sign in</span>
+                    </span>
+                </btn>
 
+                <!-- Register -->
                 <a class="btn rounded-pill px-3 mb-2 mb-lg-0 sign-btn" href="<?php echo $register_path; ?>">
                 <span class="d-flex align-items-center">
                     <span class="medium sign-up">Sign up</span>
@@ -94,6 +103,14 @@ else{
         </div>
     </nav>
 
+    <!-- Include Modal -->
+    <?php
+
+    include "widgets/modals.php";
+
+    ?>
+
+    <!-- Main Body -->
     <div class="main custom-scrollbar-css">
 
     <!-- Masthead -->
@@ -138,6 +155,7 @@ else{
                 </div>
             </div>
         </div>
+
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,202.7C384,181,480,107,576,112C672,117,768,203,864,208C960,213,1056,139,1152,117.3C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </section>
 
