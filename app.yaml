@@ -5,7 +5,7 @@ threadsafe: true
 handlers:
   # Landing Page
   - url: /
-    script: index.php
+    script: pages/dashboard/\1/dashboard.php
 
   # Allow multi-pages
   - url: /(.+\.php)$
