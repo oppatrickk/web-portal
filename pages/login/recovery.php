@@ -77,7 +77,7 @@ if(isset($_REQUEST['btn_recover'])){
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
-                    <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 6rem; height: 6rem;'>
+                    <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 6rem; height: 2rem;'>
                 </a>
             </div>
         </center>
