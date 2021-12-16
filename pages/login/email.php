@@ -30,7 +30,7 @@
 <body style='height: 100%; padding: 2%; background-color: royalblue'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>
+    <div style='background-color: white; border-radius: 16px; padding: 20px; width: 550px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
@@ -58,12 +58,15 @@
     <div style='width: 30%;'>
     <center>
         <br>
+        <p style='color:white; font-size: 12px; opacity: 75%'>This password will expire in the next 24 hours.</p>
+        <br>
         <a href='https://codex-bu.appspot.com/'>
             <img src='https://i.ibb.co/pZ0Lmqn/logo2-white.png' style='width: 7rem; height: 2.5rem;'>
         </a>
-        <br><br>
-        <p style='color:white; font-size: 12px; opacity: 75%'>This password will expire in the next 24 hours.</p>
         <p style='color:white; font-size: 12px; opacity: 100%'>codeX © 2021</p>
+        <br>
+
+
     </center>
     </div>
 
