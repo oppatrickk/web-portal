@@ -224,7 +224,7 @@ include '../../widgets/navbar.php'
                                 <p class="mt-4">We have sent a confirmation code to <strong><?php echo $_SESSION["email"]; ?></strong></p>
 
                                 <div class="mt-2 text-primary">
-                                    <btn type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none">Resend confirmation code</btn>
+                                    <input type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none">Resend confirmation code</input>
                                 </div>
 
                                 <!-- Confirm -->

@@ -35,6 +35,7 @@ if(isset($_REQUEST['btn_login'])){
                         $_SESSION["username"] = $row["username"];
                         $_SESSION["first_name"] = $row["first_name"];
                         $_SESSION["last_name"] = $row["last_name"];
+                        $_SESSION["activate_account"] = $row["activate"];
 
                         // Login
                         $loginMsg = "Success!";
