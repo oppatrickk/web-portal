@@ -10,12 +10,6 @@ session_start();
 if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
 else{
 
-    if ($cloud == 1){
-
-        header("Location: https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
-        exit;
-    }
-
     /*
     if ($cloud == 1){
         switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
@@ -27,10 +21,10 @@ else{
                 exit('Not Found');
         }
     }*/
-    else{
-        header("location: pages/dashboard/dashboard.php");
-        exit;
-    }
+
+
+    header("location: pages/dashboard/dashboard.php");
+    exit;
 }
 
 ?>

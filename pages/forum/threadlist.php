@@ -11,28 +11,40 @@ require_once "../../database/config.php";
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Title -->
-  <title>CodeX | Community Forum</title>
-  <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
+    <!-- Title -->
+    <title>CodeX | Community Forum</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
 
-  <!-- Bootstrap CSS and Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS and Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- External CSS -->
-  <link href="../../css/forum.css" rel="stylesheet" />
+    <!-- External CSS -->
+    <link href="../../css/forum.css" rel="stylesheet"/>
 
-  <!-- Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+
+
+    <!-- Forum API -->
+    <script src="https://cdn.tiny.cloud/1/7pqbld893t2g9d1ul8wrmm34bu7vb89xc2p28iqfh4vw5e8s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#desc',
+            plugins: 'autoresize',
+
+        });
+    </script>
 
 </head>
 
@@ -84,7 +96,7 @@ require_once "../../database/config.php";
     if ($method == 'POST') {
         //Insert the thread into the database
         $th_title = $_POST['title'];
-        $th_desc = $_POST['title'];
+        $th_desc = $_POST['desc'];
         $name = $_SESSION['username'];
         $sql = "INSERT INTO `forum_threads` (`thread_title`, `thread_description`, `thread_cat_id`, `thread_username`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '$name', current_timestamp())";
         $result = $db->query($sql);
@@ -102,23 +114,29 @@ require_once "../../database/config.php";
                 <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
             </p>
         </div>
-    </div> <<?php
+    </div>
+
+
+        <<?php
         if(isset($_SESSION['user_login']) && $_SESSION['user_login']==true){
             echo '<div class="container">
             <h1 class="py-2">Start a Discussion</h1> 
+            
+            
             <form action="'. $_SERVER["REQUEST_URI"] . '" method="post">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Problem Title</label>
-                    <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as
-                        possible</small>
+                        <label for="exampleInputEmail1">Problem Title</label>
+                        <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Keep your title as short and crisp as
+                            possible</small>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Ellaborate Your Concern</label>
-                    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+                <div class="form-group mt-5">
+                    <label for="exampleFormControlTextarea1" class="mb-2">Ellaborate Your Concern</label>
+                    <textarea class="form-control" id="desc" name="desc" rows="3" style="height:350px"></textarea>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success mt-3">Submit</button>
             </form>
+            
         </div>';
         }
         else{
