@@ -14,7 +14,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
 
 if ($cloud == 1){
 
-    header("location: pages/dashboard/dashboard.php");
+    header("location: https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
 }
 
 ?>
