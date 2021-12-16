@@ -73,7 +73,7 @@ if(isset($_REQUEST['btn_recover'])){
 <body style='height: 100%; padding: 50px; background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 45%; margin: auto;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 30%; margin: auto;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
@@ -91,7 +91,10 @@ if(isset($_REQUEST['btn_recover'])){
                 <div style='border-radius: 32px; border: 1px solid #000dff; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$recovery_password. "</div>
             </center>
             <br>
-            <p>We recommend changing your password after signing in.</p>
+            <p style='color:black'>We recommend changing your password after signing in.</p>
+            <br>
+            <p style='color:black'>Having trouble? <a href='https://codex-bu.appspot.com/pages/footer/report.php' style='text-decoration: none; color:blue'>Contact us</a></p>
+            <p style='color:black'>Didn't request a password reset? You can ignore this message.</p>
             <br>
         </div>
     </div>
