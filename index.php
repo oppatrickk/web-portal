@@ -11,14 +11,17 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
 else{
     header("location: pages/dashboard/dashboard.php");
 
-    switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
-        case '/':
-            require 'pages/dashboard/dashboard.php';
-            break;
-        default:
-            http_response_code(404);
-            exit('Not Found');
+    if ($cloud == 1){
+        switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
+            case '/':
+                require 'pages/dashboard/dashboard.php';
+                break;
+            default:
+                http_response_code(404);
+                exit('Not Found');
+        }
     }
+
 
     exit;
 }
