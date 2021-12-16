@@ -73,8 +73,12 @@ include_once '../../database/activate_account.php';
     $activity_path = "activity.php";
     $profile_path = "profile.php";
 
-include '../../widgets/navbar.php'
+include '../../widgets/navbar.php';
+include '../../widgets/verify.php';
+
 ?>
+
+
 
 <div class="main custom-scrollbar-css">
     <header class="pt-5 pb-5">
