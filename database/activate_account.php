@@ -9,25 +9,6 @@ $username = $first_name = $last_name = $password = $email = "";
 
 if (isset($_REQUEST['btn_resend'])) {
 
-    // Database
-    $stmt = $db->prepare("SELECT username, email FROM users WHERE username=:name OR email=:email");
-    $stmt->execute(array(':name' => $username, ':email' => $email));
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Generate Code
-    $digits    = array_flip(range('0', '9'));
-    $lowercase = array_flip(range('a', 'z'));
-    $uppercase = array_flip(range('A', 'Z'));
-    $special   = array_flip(str_split('!@#$%^&*()_+=-}{[}]\|;:<>?/'));
-    $combined  = array_merge($digits, $lowercase, $uppercase, $special);
-
-    // Result
-    $activate_code  = str_shuffle(array_rand($digits) .
-        array_rand($lowercase) .
-        array_rand($uppercase) .
-        array_rand($special) .
-        implode(array_rand($combined, rand(4, 8))));
-
     // Email
     $message_body = "
 <body style='height: 100%; padding: 2%; background-color: seagreen;'>
@@ -44,11 +25,11 @@ if (isset($_REQUEST['btn_resend'])) {
         <div style='padding-left: 15px; padding-right: 15px;'>
             <br>
             <h1 style='font-weight: bold; color: limegreen; margin-bottom: 12px;'>Activate your account</h1>
-            <p style='color:black'>Hello <b>" .  $first_name . " " . $last_name . "</b>, welcome to codeX!</p>
+            <p style='color:black'>Hello <b>" .  $_SESSION["first_name"] . " " . $_SESSION["last_name"] . "</b>, welcome to codeX!</p>
             <br>
             <p style='color:black'>Use the following code to activate your account:</p>
             <center>
-                <div style='border-radius: 32px; border: 1px solid limegreen; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$activate_code. "</div>
+                <div style='border-radius: 32px; border: 1px solid limegreen; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$_SESSION["activate_code"]. "</div>
             </center>
             <br>
 
@@ -87,7 +68,7 @@ if (isset($_REQUEST['btn_resend'])) {
         echo 'error: ';
     }
 
-    $success_msg_verify = "We have re-sent the confirmation code to " . $row["email"];
+    $success_msg_verify = "We have re-sent the confirmation code to " . $_SESSION["email"];
 
 }
 
