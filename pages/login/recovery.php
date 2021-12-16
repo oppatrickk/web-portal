@@ -98,7 +98,7 @@ if(isset($_REQUEST['btn_recover'])){
             <br>
         </div>
     </div>
-    <div style='width: 30%;'>
+    <div style='width: 35%; margin: auto;'>
     <center>
         <br>
         <a href='https://codex-bu.appspot.com/'>
