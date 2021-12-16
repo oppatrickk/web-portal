@@ -110,7 +110,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
             <div class="card text-center">
                 <div class="card-body">
                     <div class="container my-4" id="ques">
-                        <h2 class="text-center my-4 mt-5">CodeX Forum Categories</h2>
+                        <a href="../forum/forum.php" style="text-decoration: none; color: black " ><h2 class="text-center my-4 mt-5">CodeX Forum Categories</h2></a>
                         <div class="row my-4">
 
                             <!-- Fetch all the categories and use a loop to iterate through categories -->

@@ -64,12 +64,7 @@ if(isset($_REQUEST['btn_recover'])){
                     // Email
                     $successMsg = "We have sent the instructions to " .$row["email"];
 
-                    $message_body = 'We have reset your password.
-Please log in using the following password: ' . $recovery_password .
-
-'
-
-We recommend changing your password immediately after logging in through Profile > Settings > Change Password';
+                    $message_body = include 'email.php';
 
                     $mail_options = [
                         'sender' => 'Reset@codex-bu.appspotmail.com',

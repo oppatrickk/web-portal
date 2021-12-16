@@ -80,33 +80,17 @@ session_start();
 <div class="container">
     <div class="row">
         <!-- Blog entries-->
-        <div class="col-lg-8 pb-5">
-            <!-- Featured blog post-->
-            <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="../../../assets/img/tutorials/cprogramming.png" alt="..." /></a>
-                <div class="card-body">
-                    <div class="small text-muted">Dennis Ritchie | 1972</div>
-                    <h2 class="card-title">C Computer programming language</h2>
-                    <p class="card-text">C is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, with a static type system. By design, C provides constructs that map efficiently to typical machine instructions.</p>
-                    <a class="btn btn-primary" href="#!">Read more →</a>
-                </div>
-            </div>
+        <div class="col pb-5">
+            <h1 class="card-title mb-4">Welcome to C Language Tutorials!</h1>
             <!-- Row -->
             <div class="row">
-                <!-- Progress bar -->
-                <div class="col-lg-1">
-                    <div class="col-lg-1 mt-4">
-                        <span class="material-icons">radio_button_unchecked</span>
-                    </div>
-                </div>
-                <div class="col-lg-11">
+                <div class="col">
                     <!-- Blog post-->
                     <div class="card mb-4">
                         <div class="card-body">
-                            <p class="card-title">Lecture 0</p>
-                            <h2 class="card-title h2 ">Prerequisites</h2>
-                            <p class="card-text">In this lecture, you will learn how to setup</p>
-                            <a class="btn btn-primary" href="c_lecture0.php">Begin</a>
+                            <h2 class="card-text h6 text-black-50">Lecture 0</h2>
+                            <h2 class="card-title h2 mb-3 ">Overview of C Language</h2>
+                            <a class="btn btn-primary">Start</a>
                         </div>
                     </div>
                 </div>
@@ -114,19 +98,13 @@ session_start();
 
             <!-- Row -->
             <div class="row">
-                <!-- Progress bar -->
-                <div class="col-lg-1">
-                    <div class="col-lg-2 mt-4">
-                        <span class="material-icons">radio_button_unchecked</span>
-                    </div>
-                </div>
-                <div class="col-lg-11">
+                <div class="col">
                     <!-- Blog post-->
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h2 class="card-title h4">Lecture 1</h2>
-                            <p class="card-text">Hello World!</p>
-                            <a class="btn btn-primary disabled" href="#!">Begin</a>
+                            <h2 class="card-text h6 text-black-50">Lecture 1</h2>
+                            <h2 class="card-title h2 mb-3 ">Fundamentals of C Language</h2>
+                            <a class="btn btn-primary disabled">Finish the previous lectures first</a>
                         </div>
                     </div>
                 </div>
@@ -134,58 +112,30 @@ session_start();
 
             <!-- Row -->
             <div class="row">
-                <!-- Progress bar -->
-                <div class="col-lg-1 mt-4">
-                    <span class="material-icons">radio_button_unchecked</span>
-                </div>
-                <div class="col-lg-11">
+                <div class="col">
                     <!-- Blog post-->
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h2 class="card-title h4">Lecture 2</h2>
-                            <p class="card-text">Data Types</p>
-                            <a class="btn btn-primary disabled" href="#!">Begin</a>
+                            <h2 class="card-text h6 text-black-50">Lecture 2</h2>
+                            <h2 class="card-title h2 mb-3 ">Data Input and Output</h2>
+                            <a class="btn btn-primary disabled">Finish the previous lectures first</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Other Tutorials</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">C</a></li>
-                                <li><a href="#!">Python</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">CSS</a></li>
-                            </ul>
+
+            <!-- Row -->
+            <div class="row">
+                <div class="col">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-text h6 text-black-50">Lecture 3</h2>
+                            <h2 class="card-title h2 mb-3 ">Decision Making</h2>
+                            <a class="btn btn-primary disabled">Finish the previous lectures first</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Side widget-->
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
             </div>
         </div>
     </div>
