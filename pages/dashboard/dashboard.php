@@ -6,11 +6,12 @@ include '../../database/config.php';
 // Initialize the session
 session_start();
 
-// Dashboard
+// Cloud
 if ($cloud == 1){
     switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         case '/':
             require 'pages/dashboard/dashboard.php';
+            $cloud == 0;
             break;
         default:
             http_response_code(404);
