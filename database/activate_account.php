@@ -7,7 +7,17 @@ use google\appengine\api\mail\Message;
 $err_confirm_code =  "";
 $username = $first_name = $last_name = $password = $email = "";
 
+
+
+
 if (isset($_REQUEST['btn_resend'])) {
+
+    $active_account = "active";
+    $active_profile = "";
+
+    $show_profile = "";
+    $show_account = "show active";
+
 
     // Email
     $message_body = "
