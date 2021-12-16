@@ -9,6 +9,14 @@ session_start();
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
 else{
+
+    if ($cloud == 1){
+
+        header("Location: https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
+        exit;
+    }
+
+    /*
     if ($cloud == 1){
         switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
             case '/':
@@ -18,12 +26,11 @@ else{
                 http_response_code(404);
                 exit('Not Found');
         }
-    }
+    }*/
     else{
         header("location: pages/dashboard/dashboard.php");
+        exit;
     }
-
-    exit;
 }
 
 ?>

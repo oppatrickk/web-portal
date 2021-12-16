@@ -12,12 +12,6 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     exit;
 }
 
-if ($cloud == 1){
-
-    header("Location:https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
-    exit;
-}
-
 ?>
 
 <!DOCTYPE html>
