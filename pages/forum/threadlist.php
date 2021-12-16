@@ -35,6 +35,8 @@ require_once "../../database/config.php";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Forum API -->
     <script src="https://cdn.tiny.cloud/1/7pqbld893t2g9d1ul8wrmm34bu7vb89xc2p28iqfh4vw5e8s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -72,6 +74,7 @@ require_once "../../database/config.php";
     }
     else{
         include '../../widgets/navbar.php';
+        include '../../widgets/verify.php';
     }
 
     ?>
@@ -209,9 +212,6 @@ require_once "../../database/config.php";
 
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- External JavaScript-->
     <script src="../../js/scroll.js"></script>

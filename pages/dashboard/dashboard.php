@@ -38,6 +38,9 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 </head>
 
@@ -56,8 +59,6 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
         $challenges_path = "../challenges/challenges_dashboard.php";
 
         include '../../widgets/navbar.php';
-
-
 
         ?>
 

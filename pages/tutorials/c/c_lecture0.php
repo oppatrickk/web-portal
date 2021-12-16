@@ -34,6 +34,9 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -53,6 +56,7 @@ if(!isset($_SESSION['user_login'])){
 }
 else{
     include '../../../widgets/navbar.php';
+    include '../../../widgets/verify.php.php';
 }
 
 ?>
@@ -135,9 +139,6 @@ include '../../../widgets/footer.php'
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- External JavaScript-->
 <script src="../../../js/scroll.js"></script>

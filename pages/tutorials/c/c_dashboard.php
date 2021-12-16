@@ -32,8 +32,8 @@ session_start();
 
     <!-- Fonts -->
 
-
-    <!-- Assets -->
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 </head>
@@ -59,6 +59,7 @@ session_start();
     }
     else{
         include '../../../widgets/navbar.php';
+        include '../../../widgets/verify.php';
     }
 
 ?>
@@ -162,9 +163,6 @@ session_start();
 
 <!-- External JavaScript-->
 <script src="js/scripts_dashboard.js"></script>
-
-<!-- Forms -->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 </body>
 </html>
