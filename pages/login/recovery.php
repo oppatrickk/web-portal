@@ -73,7 +73,7 @@ if(isset($_REQUEST['btn_recover'])){
 <body style='height: 100%; padding: 50px; background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 30%; margin: auto;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 45%; margin: auto;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
@@ -86,15 +86,12 @@ if(isset($_REQUEST['btn_recover'])){
             <h1 style='font-weight: bold; color: royalblue; margin-bottom: 12px;'>Forgot your Password?</h1>
             <p>Hello " .  $first_name . " " . $last_name . ", we have received a request to reset your password.</p>
             <br>
-            <p>Use the following password to log in to your account:</p>
+            <p style='color:black'>Use the following password to log in to your account:</p>
             <center>
                 <div style='border-radius: 32px; border: 1px solid #000dff; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$recovery_password. "</div>
             </center>
             <br>
             <p>We recommend changing your password after signing in.</p>
-            <br>
-            <p>Having trouble? <a href='https://codex-bu.appspot.com/pages/footer/report.php' style='text-decoration: none;'>Contact us</a></p>
-            <p>Didn't request a password reset? You can ignore this message.</p>
             <br>
         </div>
     </div>
