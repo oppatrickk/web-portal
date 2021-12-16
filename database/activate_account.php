@@ -136,7 +136,7 @@ if (isset($_REQUEST['btn_verify'])) {
                     $stm = $db->prepare("UPDATE users SET activate = :activate WHERE user_id = '$id'");
                     $stm->execute($params);
 
-                    $success_msg = "Verified";
+                    $success_msg_verify = "Verified";
                 }
                 else{
                     $err_confirm_code = "Wrong code";

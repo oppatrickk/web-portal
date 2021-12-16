@@ -54,6 +54,8 @@ include_once '../../database/activate_account.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -210,10 +212,10 @@ include '../../widgets/navbar.php'
                             </div>
 
                             <?php
-                            if (isset($success_msg)){
+                            if (isset($success_msg_verify)){
                                 ?>
                                 <div class = "alert alert-success">
-                                    <strong><?php echo $success_msg; ?></strong>
+                                    <strong><?php echo $success_msg_verify; ?></strong>
                                 </div>
                                 <?php
                             }
@@ -224,7 +226,7 @@ include '../../widgets/navbar.php'
                                 <p class="mt-4">We have sent a confirmation code to <strong><?php echo $_SESSION["email"]; ?></strong></p>
 
                                 <div class="mt-2 text-primary">
-                                    <input type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none">Resend confirmation code</input>
+                                    <input type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none" value="Resend confirmation code">
                                 </div>
 
                                 <!-- Confirm -->
@@ -301,42 +303,6 @@ include '../../widgets/navbar.php'
     </div>
 </div>
 
-
-<!-- Change Password Modal-->
-<div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered col-sm">
-        <div class="modal-content">
-            <div class="modal-header bg-success p-4 justify-content-md-center">
-                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Change Password</h5>
-            </div>
-            <div class="modal-body border-0 p-4">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <!-- Image -->
-                    <div class="container">
-                        <div class="row justify-content-md-center">
-                            <div class="col col-lg-2">
-                            </div>
-                            <div class="col-md-auto">
-                                <i class="bi bi-check-circle-fill" style="color:lightgreen; font-size: 128px"> </i>
-                            </div>
-                            <div class="col col-lg-2">
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-center fw-bold">
-                            Success!
-                        </div>
-                        <div class="mt-3 d-flex justify-content-center ">
-                            <p>Your password has been changed!</p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Delete Modal-->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered col-sm">
@@ -396,9 +362,6 @@ include '../../widgets/navbar.php'
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-
-<!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- External JavaScript-->
 <script src="../../js/settings.js"></script>

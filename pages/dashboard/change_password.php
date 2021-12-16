@@ -15,9 +15,14 @@
         }
         if (isset($success_msg)){
             ?>
-            <div class = "alert alert-success">
-                <strong><?php echo $success_msg; ?></strong>
-            </div>
+
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                    $('#changeModal').modal('show');
+                });
+            </script>
+
+
             <?php
         }
         ?>
@@ -49,5 +54,42 @@
                 <input type="submit" name="btn_change" class="btn btn-primary" value="Change Password">
             </div>
         </form>
+    </div>
+</div>
+
+<!-- Change Password Modal-->
+<div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered col-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-success p-4 justify-content-md-center">
+                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Change Password</h5>
+                <button class="btn-close btn-close-white" type="button"
+                        data-bs-dismiss = "modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body border-0 p-4">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <!-- Image -->
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <i class="bi bi-check-circle-fill" style="color:lightgreen; font-size: 128px"> </i>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center fw-bold">
+                            Success!
+                        </div>
+                        <div class="mt-3 d-flex justify-content-center ">
+                            <p>Your password has been changed</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
