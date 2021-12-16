@@ -84,7 +84,7 @@ if(isset($_REQUEST['btn_recover'])){
         <div style='padding-left: 15px; padding-right: 15px;'>
             <br>
             <h1 style='font-weight: bold; color: royalblue; margin-bottom: 12px;'>Forgot your Password?</h1>
-            <p>Hello <?php echo $first_name . " ". $last_name; ?> , we have received a request to reset your password.</p>
+            <p>Hello <?php echo $first_name . ' '. $last_name; ?> , we have received a request to reset your password.</p>
             <br>
             <p>Use the following password to log in to your account:</p>
             <center>
