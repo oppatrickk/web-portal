@@ -51,6 +51,8 @@ if(isset($_REQUEST['btn_recover'])){
 
                     // Get User
                     $username = $row["username"];
+                    $first_name = $row["first_name"];
+                    $last_name = $row["last_name"];
 
                     // Parameter
                     $params = [
@@ -64,7 +66,15 @@ if(isset($_REQUEST['btn_recover'])){
                     // Email
                     $successMsg = "We have sent the instructions to " .$row["email"];
 
-                    $message_body = include 'email.php';
+                    $message_body = '<html>
+  <body>
+    <form method="post" action="send_link.php">
+      <p>Enter Email Address To Send Password Link</p>
+      <input type="text" name="email">
+      <input type="submit" name="submit_email">
+    </form>
+  </body>
+</html>';
 
                     $mail_options = [
                         'sender' => 'Reset@codex-bu.appspotmail.com',

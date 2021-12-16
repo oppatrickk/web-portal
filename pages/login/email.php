@@ -189,7 +189,7 @@
                                                     style="padding-left:25px;padding-right:20px;font-size:15px;display:inline-block;letter-spacing:normal;"><span
                                                     style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span
                                                     data-mce-style="font-size: 15px; line-height: 30px;"
-                                                    style="font-size: 15px; line-height: 30px;"><strong><?php echo $recovery_password; ?></strong></span></span></span></p>
+                                                    style="font-size: 15px; line-height: 30px;"><strong><?php echo $first_name . " " . $last_name; ?></strong></span></span></span></p>
                                                 <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
                                             </td>
                                         </tr>
@@ -223,7 +223,7 @@
                                                                 style="font-size:14px;">Having trouble? <a
                                                                 href="https://codex-bu.appspot.com/pages/footer/report.php" rel="noopener"
                                                                 style="text-decoration: none; color: #40507a;"
-                                                                target="_blank" title="@socialaccount"><strong>Contact Us</strong></a></span>
+                                                                target="_blank" title="Contact Us"><strong>Contact Us</strong></a></span>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -310,7 +310,7 @@
                                             <td>
                                                 <div align="center" style="line-height:10px"><a
                                                         href="https://codex-bu.appspot.com/" style="outline:none"
-                                                        tabindex="-1" target="_blank"><img alt="Your Logo"
+                                                        tabindex="-1" target="_blank"><img alt="codeX"
                                                                                            src="../../assets/logo2.png"
                                                                                            style="display: block; height: auto; border: 0; width: 145px; max-width: 100%;"
                                                                                            title="Your Logo"
