@@ -214,14 +214,22 @@ include '../../widgets/navbar.php'
 
                             <?php
                             if (isset($success_msg_verify)){
+                            $_SESSION["activate_account"] = 0;
+
                                 ?>
                                 <script type="text/javascript">
                                     $(window).on('load', function() {
                                         $('#verifyModal').modal('show');
                                     });
+
+                                    $(document).ready(function () {
+                                        setTimeout(function () {
+                                            alert('Reloading Page');
+                                            location.reload(true);
+                                        }, 5000);
+                                    });
                                 </script>
                                 <?php
-                                header("refresh: 3");
                             }
                             ?>
 
