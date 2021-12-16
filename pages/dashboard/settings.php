@@ -225,9 +225,9 @@ include '../../widgets/navbar.php'
                                     $(document).ready(function () {
                                         setTimeout(function () {
                                             alert('Reloading Page');
-                                            location.reload(true);
+                                            window.location.href = 'settings.php';
                                         }, 1000);
-                                        window.location.href = 'settings.php';
+
                                     });
                                 </script>
                                 <?php
