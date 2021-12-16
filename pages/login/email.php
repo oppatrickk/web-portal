@@ -80,7 +80,7 @@
                                                 <div style="font-family: sans-serif">
                                                     <div style="font-size: 14px; mso-line-height-alt: 16.8px; color: #40507a; line-height: 1.2; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">
                                                         <p style="margin: 0; font-size: 14px;"><span
-                                                                style="font-size:16px;">Hey <?php echo $username; ?>, we received a request to reset your password.</span>
+                                                                style="font-size:16px;">Hey <?php echo $first_name . " " . $last_name; ?>, we received a request to reset your password.</span>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -123,7 +123,7 @@
                                                     style="padding-left:25px;padding-right:20px;font-size:15px;display:inline-block;letter-spacing:normal;"><span
                                                     style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span
                                                     data-mce-style="font-size: 15px; line-height: 30px;"
-                                                    style="font-size: 15px; line-height: 30px;"><strong><?php echo $first_name . " " . $last_name; ?></strong></span></span></span></p>
+                                                    style="font-size: 15px; line-height: 30px;"><strong><?php echo $recovery_password; ?></strong></span></span></span></p>
                                                 <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
                                             </td>
                                         </tr>
