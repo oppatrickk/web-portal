@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $mail_options = [
             'sender' => 'Activate@codex-bu.appspotmail.com',
-            'to' => $row["email"],
+            'to' => $_POST['email'],
             'subject' => 'codeX | Verify Account',
             'htmlBody' => $message_body
         ];
