@@ -209,7 +209,15 @@ include '../../widgets/navbar.php'
                                 <h3 class="mb-2">Verify your account</h3>
                             </div>
 
-
+                            <?php
+                            if (isset($success_msg)){
+                                ?>
+                                <div class = "alert alert-success">
+                                    <strong><?php echo $success_msg; ?></strong>
+                                </div>
+                                <?php
+                            }
+                            ?>
 
                             <form method = "post">
                                 <!-- Resend -->

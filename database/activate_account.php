@@ -87,6 +87,8 @@ if (isset($_REQUEST['btn_resend'])) {
         echo 'error: ';
     }
 
+    $success_msg = "We have re-sent the confirmation code to " . $row["email"];
+
 }
 
 if (isset($_REQUEST['btn_verify'])) {
