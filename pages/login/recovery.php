@@ -74,7 +74,7 @@ if(isset($_REQUEST['btn_recover'])){
                     $mail_options = [
                         'sender' => 'Reset@codex-bu.appspotmail.com',
                         'to' => $row["email"],
-                        'subject' => 'Password Reset',
+                        'subject' => 'codeX | Password Reset',
                         'htmlBody' => $message_body
                     ];
 
