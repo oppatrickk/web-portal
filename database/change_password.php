@@ -1,8 +1,5 @@
 <?php
 
-// Use Mail API
-use google\appengine\api\mail\Message;
-
 // Variables
 $err_current_password = $err_new_password = $err_confirm_password = $err_match_password = "";
 

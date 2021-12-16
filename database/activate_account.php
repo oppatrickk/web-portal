@@ -1,5 +1,8 @@
 <?php
 
+// Use Mail API
+use google\appengine\api\mail\Message;
+
 // Variables
 $err_confirm_code =  "";
 $username = $first_name = $last_name = $password = $email = "";
