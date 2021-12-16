@@ -184,7 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code)');
         if ($stm->execute($params)) {
             header('Location: sign_in.php');
-            exit;
         }
     }
 }
