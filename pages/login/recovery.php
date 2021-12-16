@@ -69,10 +69,7 @@ if(isset($_REQUEST['btn_recover'])){
 
 
 
-                    $message_body = '
-      <p>Enter Email Address To Send Password Link</p>
-      <input type="text" name="email">
-      <input type="submit" name="submit_email">';
+                    $message_body = 'html="<h3>Hello World</h3>"';
 
                     $mail_options = [
                         'sender' => 'Reset@codex-bu.appspotmail.com',
