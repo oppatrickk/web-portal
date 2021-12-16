@@ -70,10 +70,10 @@ if(isset($_REQUEST['btn_recover'])){
 
 
                     $message_body = "
-<body style='height: 100%; width: auto; padding: 50px; background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);'>
+<body style='height: 100%; padding: 50px; background-color: royalblue;'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 35%;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 35%; margin: auto;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
@@ -84,7 +84,7 @@ if(isset($_REQUEST['btn_recover'])){
         <div style='padding-left: 15px; padding-right: 15px;'>
             <br>
             <h1 style='font-weight: bold; color: royalblue; margin-bottom: 12px;'>Forgot your Password?</h1>
-            <p>Hello <b>" .  $first_name . " " . $last_name . "</b>, we have received a request to reset your password.</p>
+            <p style='color:black'>Hello <b>" .  $first_name . " " . $last_name . "</b>, we have received a request to reset your password.</p>
             <br>
             <p style='color:black'>Use the following password to log in to your account:</p>
             <center>

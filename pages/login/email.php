@@ -27,7 +27,7 @@
 
 </head>
 
-<body style='height: 100%; padding: 50px; background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);'>
+<body style='height: 100%; padding: 50px; background-color: royalblue'>
 
 <div>
     <div style='background-color: white; border-radius: 16px; padding: 25px; width: 30%;'>
