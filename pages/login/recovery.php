@@ -70,10 +70,10 @@ if(isset($_REQUEST['btn_recover'])){
 
 
                     $message_body = "
-<body style='height: 100%; padding: 50px; background-color: royalblue;'>
+<body style='height: 100%; padding: 2%; background-color: royalblue;'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; margin: auto;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; margin: auto; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>

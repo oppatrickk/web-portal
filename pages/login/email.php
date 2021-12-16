@@ -27,10 +27,10 @@
 
 </head>
 
-<body style='height: 100%; padding: 50px; background-color: royalblue'>
+<body style='height: 100%; padding: 2%; background-color: royalblue'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
