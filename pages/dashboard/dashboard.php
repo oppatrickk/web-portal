@@ -10,7 +10,7 @@ session_start();
 if ($cloud == 1){
     switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
         case '/':
-            require 'pages/dashboard/dashboard.php';
+            require 'dashboard.php';
             $cloud == 0;
             break;
         default:
