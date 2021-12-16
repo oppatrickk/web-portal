@@ -30,7 +30,7 @@
 <body style='height: 100%; padding: 50px; background-color: royalblue'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 30%;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>

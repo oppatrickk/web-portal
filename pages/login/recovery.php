@@ -73,7 +73,7 @@ if(isset($_REQUEST['btn_recover'])){
 <body style='height: 100%; padding: 50px; background-color: royalblue;'>
 
 <div>
-    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 35%; margin: auto;'>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; margin: auto;'>
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
@@ -98,7 +98,7 @@ if(isset($_REQUEST['btn_recover'])){
             <br>
         </div>
     </div>
-    <div style='width: 35%; margin: auto;'>
+    <div style='width: 600px; margin: auto;'>
     <center>
         <br>
         <a href='https://codex-bu.appspot.com/'>
