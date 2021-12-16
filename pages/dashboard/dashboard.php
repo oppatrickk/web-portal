@@ -6,19 +6,6 @@ include '../../database/config.php';
 // Initialize the session
 session_start();
 
-// Cloud
-if ($cloud == 1){
-    switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
-        case '/':
-            require 'dashboard.php';
-            $cloud == 0;
-            break;
-        default:
-            http_response_code(404);
-            exit('Not Found');
-    }
-}
-
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     header("location: ../../index.php");
