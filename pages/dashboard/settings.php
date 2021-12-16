@@ -214,10 +214,13 @@ include '../../widgets/navbar.php'
                             <?php
                             if (isset($success_msg_verify)){
                                 ?>
-                                <div class = "alert alert-success">
-                                    <strong><?php echo $success_msg_verify; ?></strong>
-                                </div>
+                                <script type="text/javascript">
+                                    $(window).on('load', function() {
+                                        $('#verifyModal').modal('show');
+                                    });
+                                </script>
                                 <?php
+                                header("Refresh: 3");
                             }
                             ?>
 
@@ -264,7 +267,6 @@ include '../../widgets/navbar.php'
         </div>
     </header>
 </div>
-
 
 
 <!-- Verified Modal-->
