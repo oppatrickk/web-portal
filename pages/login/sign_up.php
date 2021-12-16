@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div style='padding-left: 15px; padding-right: 15px;'>
             <br>
             <h1 style='font-weight: bold; color: limegreen; margin-bottom: 12px;'>Activate your account</h1>
-            <p style='color:black'>Hello <b>" .  $first_name . " " . $last_name . "</b>, welcome to codeX!</p>
+            <p style='color:black'>Hello <b>" .  $_POST['first_name'] . " " . $_POST['last_name'] . "</b>, welcome to codeX!</p>
             <br>
             <p style='color:black'>Use the following code to activate your account:</p>
             <center>
