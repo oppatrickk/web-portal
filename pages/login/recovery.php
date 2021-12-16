@@ -77,7 +77,7 @@ if(isset($_REQUEST['btn_recover'])){
         <center>
             <div>
                 <a href='https://codex-bu.appspot.com/'>
-                    <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 6rem; height: 2rem;'>
+                    <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 7rem; height: 2.5rem;'>
                 </a>
             </div>
         </center>
@@ -104,7 +104,7 @@ if(isset($_REQUEST['btn_recover'])){
         <p style='color:white; font-size: 12px; opacity: 75%'>This password will expire in the next 24 hours.</p>
         <br>
         <a href='https://codex-bu.appspot.com/'>
-            <img src='https://i.ibb.co/VTB4vfy/logo1.png' style='width: 7rem; height: 2.5rem;'>
+            <img src='https://i.ibb.co/VTB4vfy/logo1.png' style='width: 6rem; height: 6rem;'>
         </a>
         <p style='color:white; font-size: 12px; opacity: 100%'>codeX © 2021</p>      
     </center>
