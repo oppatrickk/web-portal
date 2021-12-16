@@ -12,6 +12,11 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     exit;
 }
 
+if ($cloud == 1){
+
+    header("location: pages/dashboard/dashboard.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +62,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
 
         include '../../widgets/navbar.php';
 
-        if($cloud == 1){
-            include 'widgets/navbar.php';
-        }
+
 
         ?>
 
@@ -179,9 +182,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
 
         include '../../widgets/footer.php';
 
-        if($cloud == 1){
-            include 'widgets/footer.php';
-        }
+
 
     ?>
     </div>
