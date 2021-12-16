@@ -69,7 +69,7 @@ if(isset($_REQUEST['btn_recover'])){
 
 
 
-                    $message_body ='<html><body><h1>Hello World</h1></body></html>';
+                    $message_body = include 'email.php';
 
                     $mail_options = [
                         'sender' => 'Reset@codex-bu.appspotmail.com',
