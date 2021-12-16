@@ -75,7 +75,7 @@ if (isset($_REQUEST['btn_resend'])) {
 
     $mail_options = [
         'sender' => 'Activate@codex-bu.appspotmail.com',
-        'to' => $row["email"],
+        'to' => $_SESSION["email"],
         'subject' => 'codeX | Verify Account',
         'htmlBody' => $message_body
     ];
@@ -87,7 +87,7 @@ if (isset($_REQUEST['btn_resend'])) {
         echo 'error: ';
     }
 
-    $success_msg = "We have re-sent the confirmation code to " . $row["email"];
+    $success_msg_verify = "We have re-sent the confirmation code to " . $row["email"];
 
 }
 

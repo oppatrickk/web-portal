@@ -24,6 +24,8 @@
 
 
             <?php
+            header("Refresh: 3");
+            exit;
         }
         ?>
 

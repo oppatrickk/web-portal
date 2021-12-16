@@ -266,6 +266,44 @@ include '../../widgets/navbar.php'
 </div>
 
 
+
+<!-- Verified Modal-->
+<div class="modal fade" id="verifyModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered col-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-success p-4 justify-content-md-center">
+                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Account Verification</h5>
+                <button class="btn-close btn-close-white" type="button"
+                        data-bs-dismiss = "modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body border-0 p-4">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <!-- Image -->
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <i class="bi bi-check-circle-fill" style="color:lightgreen; font-size: 128px"> </i>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center fw-bold">
+                            Success!
+                        </div>
+                        <div class="mt-3 d-flex justify-content-center ">
+                            <p>Your account is not verified</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Picture Modal-->
 <div class="modal fade" id="pictureModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered col-sm">
@@ -361,7 +399,6 @@ include '../../widgets/navbar.php'
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
 <!-- External JavaScript-->
 <script src="../../js/settings.js"></script>
