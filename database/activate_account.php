@@ -7,6 +7,8 @@ use google\appengine\api\mail\Message;
 $err_confirm_code =  "";
 $username = $first_name = $last_name = $password = $email = "";
 
+$activate_code = $_SESSION["activate_code"];
+
 
 if (isset($_REQUEST['btn_resend'])) {
 
@@ -37,7 +39,7 @@ if (isset($_REQUEST['btn_resend'])) {
             <br>
             <p style='color:black'>Use the following code to activate your account:</p>
             <center>
-                <div style='border-radius: 32px; border: 1px solid limegreen; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$_SESSION["activate_code"]. "</div>
+                <div style='border-radius: 32px; border: 1px solid limegreen; color: black; padding: 8px; width: 50%; font-weight: bold'>" . $activate_code. "</div>
             </center>
             <br>
 

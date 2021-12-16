@@ -14,6 +14,7 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
 
 // Variables
 $activate_check = $_SESSION["activate_account"];
+$activate_code = $_SESSION["activate_code"];
 
 $err_current_password = $err_new_password = $err_confirm_password = $err_match_password = "";
 $err_confirm_code = "";
@@ -230,7 +231,7 @@ include '../../widgets/navbar.php'
                                 if (isset($success_resent)){
                                     ?>
                                     <div class = "alert alert-success">
-                                        <?php echo $sucess_resent; ?>
+                                        <?php echo $success_resent; ?>
                                     </div>
                                     <?php
                                 }
