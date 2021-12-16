@@ -7,9 +7,6 @@ handlers:
   - url: /
     script: index.php
 
-  - url: /index\.php
-    script: index.php
-
   # Allow multi-pages
   - url: /(.+\.php)$
     script: \1
