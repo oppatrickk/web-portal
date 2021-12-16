@@ -221,6 +221,7 @@ include '../../widgets/navbar.php'
                                     });
                                 </script>
                                 <?php
+                                header("refresh: 3");
                             }
                             ?>
 
@@ -308,7 +309,7 @@ include '../../widgets/navbar.php'
                             Success!
                         </div>
                         <div class="mt-3 d-flex justify-content-center ">
-                            <p>Your account is not verified</p>
+                            <p>Your account is now verified</p>
                         </div>
                     </div>
                 </form>
