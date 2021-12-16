@@ -57,6 +57,10 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
 
         include '../../widgets/navbar.php';
 
+        if($cloud == 1){
+            include 'widgets/navbar.php';
+        }
+
         ?>
 
     <div class="main custom-scrollbar-css">
@@ -173,7 +177,11 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
         $forums_path = "../forum/forum.php";
 
 
-        include '../../widgets/footer.php'
+        include '../../widgets/footer.php';
+
+        if($cloud == 1){
+            include 'widgets/footer.php';
+        }
 
     ?>
     </div>
