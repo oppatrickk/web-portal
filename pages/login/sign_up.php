@@ -179,11 +179,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             ':activate' => 1,
             ':activate_code' =>$activate_code,
+            ':delete_code' => 0,
         ];
 
-        $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code)');
+        $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code, delete_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code, :delete_code)');
         if ($stm->execute($params)) {
             header('Location: sign_in.php');
+            exit;
         }
     }
 }
