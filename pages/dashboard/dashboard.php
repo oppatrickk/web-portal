@@ -33,14 +33,10 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
     <!-- External CSS -->
     <link href="../../css/dashboard.css" rel="stylesheet"/>
 
-    <!-- Icons -->
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-
-    <!-- Assets -->
 
 
 </head>

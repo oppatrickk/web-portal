@@ -66,9 +66,6 @@ if(isset($_REQUEST['btn_recover'])){
                     // Email
                     $successMsg = "We have sent the instructions to " .$row["email"];
 
-
-
-
                     $message_body = "
 <body style='height: 100%; padding: 2%; background-color: royalblue;'>
 
