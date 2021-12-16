@@ -209,14 +209,16 @@ include '../../widgets/navbar.php'
                                 <h3 class="mb-2">Verify your account</h3>
                             </div>
 
-                            <!-- Resend -->
-                            <p class="mt-4">We have sent a confirmation code to <strong><?php echo $_SESSION["email"]; ?></strong></p>
 
-                            <div class="mt-2 text-primary">
-                                <btn type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none">Resend confirmation code</btn>
-                            </div>
 
                             <form method = "post">
+                                <!-- Resend -->
+                                <p class="mt-4">We have sent a confirmation code to <strong><?php echo $_SESSION["email"]; ?></strong></p>
+
+                                <div class="mt-2 text-primary">
+                                    <btn type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none">Resend confirmation code</btn>
+                                </div>
+
                                 <!-- Confirm -->
                                 <div class="form-group mt-5 col-2">
                                     <label style="font-size: 12px; color: grey">Confirmation code</label>
