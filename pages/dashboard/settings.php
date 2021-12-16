@@ -226,7 +226,18 @@ include '../../widgets/navbar.php'
 
                             <form method = "post">
                                 <!-- Resend -->
+                                <?php
+                                if (isset($success_resent)){
+                                    ?>
+                                    <div class = "alert alert-success">
+                                        <?php echo $sucess_resent; ?>
+                                    </div>
+                                    <?php
+                                }
+                                else{
+                                ?>
                                 <p class="mt-4">We have sent a confirmation code to <strong><?php echo $_SESSION["email"]; ?></strong></p>
+                                <?php }?>
 
                                 <div class="mt-2 text-primary">
                                     <input type="submit" name="btn_resend" class="btn btn-link" style="margin-left: -12px; text-decoration: none" value="Resend confirmation code">

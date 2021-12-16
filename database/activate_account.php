@@ -8,8 +8,6 @@ $err_confirm_code =  "";
 $username = $first_name = $last_name = $password = $email = "";
 
 
-
-
 if (isset($_REQUEST['btn_resend'])) {
 
     $active_account = "active";
@@ -78,7 +76,7 @@ if (isset($_REQUEST['btn_resend'])) {
         echo 'error: ';
     }
 
-    $success_msg_verify = "We have re-sent the confirmation code to " . $_SESSION["email"];
+    $success_resent = "We have re-sent the confirmation code to " . $_SESSION["email"];
 
 }
 
