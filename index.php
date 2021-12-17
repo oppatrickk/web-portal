@@ -71,6 +71,7 @@ else{
         $login_path = "pages/login/sign_in.php";
         $register_path = "pages/login/sign_up.php";
         $redirect_path = "pages/dashboard/dashboard.php";
+        $logo_path = "assets/logo2.png";
 
         //include 'widgets/navbar_nologin.php'
     ?>
