@@ -13,7 +13,6 @@ $_url = '';
 
 if(isset($_POST['submit']))
 {
-    $hello = "hello";
     if(isset($_FILES['userfile']))
     {
         $name = $_FILES['userfile']['name'];
