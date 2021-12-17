@@ -35,11 +35,12 @@ if(isset($_POST['submit']))
 
     <img src="<?php echo $image_url;?>">
 
+    <?php
+
+    echo $_url;
+
+    ?>
+
     </body>
 
     </html>
-<?php
-
-echo $_url;
-
-?>
