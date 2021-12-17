@@ -48,6 +48,8 @@ if(isset($_POST['submit_picture']))
 
         $success_picture = "Picture Changed";
 
+        $_SESSION["profile_picture"] = $name;
+
     }
 }
 

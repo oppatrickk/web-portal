@@ -9,7 +9,18 @@
                             <div class="col col-lg-2">
                             </div>
                             <div class="col-md-auto mt-4">
-                                
+                                <?php
+                                // Database
+                                use google\appengine\api\cloud_storage\CloudStorageTools;
+
+                                $bucket = 'codex-bu.appspot.com'; // your bucket name
+                                $image = $_SESSION["profile_picture"];
+
+                                $image_file = "gs://" . $bucket . "/" . $image;
+                                $image_url = CloudStorageTools::getImageServingUrl($image_file);
+                                ?>
+
+                                <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
 
 
 
