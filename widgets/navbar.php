@@ -3,17 +3,19 @@
 
 $id = htmlspecialchars($_SESSION["id"]);
 
-// Get image from the database
-$query = $db->query("SELECT * FROM images where `username` = '$id'");
+// Database
+use google\appengine\api\cloud_storage\CloudStorageTools;
 
-if($query > 0){
-    if($row = $query->fetch_assoc()){
-        $imageURL = '../../assets/img/avatars/'.$row["file_name"];
-    }
+if($cloud ==1){
+    $bucket = 'codex-bu.appspot.com'; // your bucket name
+    $image = $_SESSION["profile_picture"];
+
+    $image_file = "gs://" . $bucket . "/" . $image;
+    $imageURL = CloudStorageTools::getImageServingUrl($image_file);
 }
-else{
-    $imageURL = '../../assets/img/avatars/default_avatar.png';
- } ?>
+
+
+?>
 
 
 <!-- Top Navigation Bar -->
