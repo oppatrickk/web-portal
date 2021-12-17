@@ -23,7 +23,7 @@
                                 <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
 
                                 <?php
-                                if (isset($success_msg)){
+                                if (isset($success_picture)){
                                     ?>
                                     <script>
                                         $(document).ready(function () {
@@ -81,7 +81,7 @@
                         <div>
                             <input name="userfile" class="form-control" type="file" id="formFile" onchange="preview()">
                             <div class="d-grid mt-3">
-                                <input type="submit" class="btn btn-primary rounded-pill" name="submit" value="Upload">
+                                <input type="submit" class="btn btn-primary rounded-pill" name="submit_picture" value="Upload">
                             </div>
                         </div>
                     </div>

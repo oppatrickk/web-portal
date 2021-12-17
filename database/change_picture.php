@@ -18,7 +18,7 @@ $select_stmt = $db->prepare("Select * FROM users WHERE username=:uname OR email=
 $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
-if(isset($_POST['submit']))
+if(isset($_POST['submit_picture']))
 {
     if(isset($_FILES['userfile']))
     {
@@ -28,7 +28,7 @@ if(isset($_POST['submit']))
 
         // Rename
         $temp = explode(".", $_FILES["userfile"]["name"]);
-        $name = $username . "_avatar" . '.' . end($temp);
+        $name = $_SESSION["username"] . "_avatar" . '.' . end($temp);
 
         $original = $root_path .$name;
         move_uploaded_file($file_tmp, $original);
