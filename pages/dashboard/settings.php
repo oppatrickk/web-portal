@@ -134,11 +134,10 @@ include '../../widgets/navbar.php';
                                                                     use google\appengine\api\cloud_storage\CloudStorageTools;
 
                                                                     $bucket = 'codex-bu.appspot.com'; // your bucket name
-                                                                    $image = $_SESSION["file_name"];
+                                                                    $image = $_SESSION["profile_picture"];
 
-                                                                    $options = ['size' => 400, 'crop' => true];
                                                                     $image_file = "gs://" . $bucket . "/" . $image;
-                                                                    $image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
+                                                                    $image_url = CloudStorageTools::getImageServingUrl($image_file);
                                                                     ?>
 
                                                                     <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
