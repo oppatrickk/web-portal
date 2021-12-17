@@ -52,9 +52,7 @@
                             </div>
 
                             <?php
-                            if (isset($success_msg_verify)){
-                                $_SESSION["activate_account"] = 0;
-
+                            if (isset($loginMsg)){
                                 ?>
                                 <script type="text/javascript">
                                     $(document).ready(function () {
