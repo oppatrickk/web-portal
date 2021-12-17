@@ -40,7 +40,7 @@ if(isset($_POST['submit']))
 
     <body>
     <form action="#" method="post" enctype="multipart/form-data"> Send these files:
-        <p/> <input name="userfile" type="file" />
+        <p/> <input name="uploaded_files" type="file" />
         <p/> <input type="submit" name="submit" value="Send files" />
     </form>
 
