@@ -40,6 +40,16 @@ session_start();
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- Forum API -->
+    <script src="https://cdn.tiny.cloud/1/7pqbld893t2g9d1ul8wrmm34bu7vb89xc2p28iqfh4vw5e8s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#desc',
+            plugins: 'autoresize',
+
+        });
+    </script>
+
 
 </head>
 
@@ -102,7 +112,7 @@ session_start();
                           <div class="card-body">
                               
                               <p class="card-text" style=" font-size: 12px;">' . substr($desc, 0, 90) . ' </p>
-                              <a href="Threadlist.php?catid=' . $id . '" class="btn btn-primary mt-3">View Threads</a>
+                              <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary mt-3">View Threads</a>
                           </div>
                       </div>
                     </div>';

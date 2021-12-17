@@ -58,6 +58,8 @@
                                                                                        style="text-decoration: none">SIGN UP</a>
                                 </p>
                             </div>
+
+
                         </form>
                     </div>
                 </div>

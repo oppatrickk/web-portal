@@ -1,18 +1,24 @@
+<?php
 
-<script type="text/javascript">
+if($_SESSION["activate_account"] == 1){ ?>
+    <script type="text/javascript">
 
-    $(window).on('load', function () {
-        $('#verificationModal').modal('show');
-    });
+        $(window).on('load', function () {
+            $('#verificationModal').modal('show');
+        });
 
-    $(document).ready(function () {
-        setTimeout(function () {
-            window.location.href = '<?php echo $settings_path; ?>';
-        }, 3000);
+        $(document).ready(function () {
+            setTimeout(function () {
+                window.location.href = '<?php echo $settings_path; ?>';
+            }, 3000);
 
-    });
+        });
+    </script>
+    <?php
+}
 
-</script>
+?>
+
 <!-- Verified Modal-->
 <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered col-sm">

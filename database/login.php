@@ -44,7 +44,8 @@ if(isset($_REQUEST['btn_login'])){
 
                         // Login
                         $loginMsg = "Success!";
-                        header("Location: $redirect_path");
+                        header("Location: " . $redirect_path);
+                        exit;
                     }
                     else{
                         $login_password_err = "Wrong password";

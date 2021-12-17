@@ -1,10 +1,31 @@
 <!-- PHP -->
 <?php
-// Include config file
-require_once "../../database/config.php";
+// Use Mail API
+use google\appengine\api\mail\Message;
 
-// Initialize the session
 session_start();
+
+if (isset($_REQUEST['btn_report'])) {
+
+    // Email
+    $successMsg = "We have sent your feedback. Thank you!";
+
+    $image_data = file_get_contents($_REQUEST['image']);
+
+    $mail_options = [
+        'sender' => 'Support@codex-bu.appspotmail.com',
+        'to' => $_REQUEST["email"],
+        'subject' => $_REQUEST["title"],
+        'htmlBody' => $_REQUEST["concern"]
+    ];
+
+    try {
+        $message = new Message($mail_options);
+        $message->send();
+    } catch (InvalidArgumentException $e) {
+        echo 'error: ';
+    }
+}
 
 ?>
 
@@ -37,6 +58,16 @@ session_start();
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- Forum API -->
+    <script src="https://cdn.tiny.cloud/1/7pqbld893t2g9d1ul8wrmm34bu7vb89xc2p28iqfh4vw5e8s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#desc',
+            plugins: 'autoresize',
+
+        });
+    </script>
+
 </head>
 
 <body>
@@ -67,26 +98,25 @@ session_start();
     <header class="pt-5 pb-5">
         <div class="container pt-5">
             <div class="row align-items-center justify-content-center">
-                <div class="col px-5">
+                <div class="col px-5 mb-5">
                     <img src="../../assets/img/report/img1.svg" style="height: 12rem;">
                     <h1 class="mt-5">Report a problem</h1>
                     <p> Your feedback matters to us</p>
 
-                    <form>
-                        <div class="form-group mt-5 mb-4">
-                            <label for="exampleFormControlInput1">Email Address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <form method="post">
+                        <div class="form-group mt-4">
+                            <label for="exampleInputEmail1">Problem Title</label>
+                            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Please state the problem</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        <div class="form-group mt-3">
+                            <label for="exampleFormControlTextarea1" class="mb-2">Elaborate Your Concern</label>
+                            <textarea class="form-control" id="desc" name="concern" rows="3" style="height:350px"></textarea>
                         </div>
 
+                        <input type="submit" name="btn_report" class="btn btn-outline-danger rounded-pill px-3 mt-4">
                     </form>
 
-                    <a class="btn btn-outline-danger rounded-pill px-3 mt-4" href="">
-                        Submit
-                    </a>
+
                 </div>
             </div>
         </div>
