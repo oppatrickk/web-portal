@@ -56,6 +56,10 @@ else{
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -73,8 +77,45 @@ else{
     ?>
 
     <!-- Top Navigation Bar-->
-    <?php include_once "database/login.php"; ?>
+    <?php
 
+    include_once "database/login.php";
+    include_once "database/register.php";
+    include_once "database/recover.php";
+
+    if(isset($_SESSION["keep_login"])){
+    ?>
+        <script type="text/javascript">
+
+            $(window).on('load', function () {
+                $('#loginModal').modal('show');
+            });
+
+        </script>
+
+    <?php unset($_SESSION["keep_login"]); }
+
+    else if(isset($_SESSION["keep_register"])){
+    ?>
+        <script type="text/javascript">
+
+            $(window).on('load', function () {
+                $('#registerModal').modal('show');
+            });
+
+        </script>
+    <?php unset($_SESSION["keep_register"]); }
+    else if(isset($_SESSION["keep_forget"])){
+        ?>
+        <script type="text/javascript">
+
+            $(window).on('load', function () {
+                $('#forgotModal').modal('show');
+            });
+
+        </script>
+
+    <?php unset($_SESSION["keep_forget"]); }?>
 
     <nav class="mainNav navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container px-5">
@@ -92,20 +133,20 @@ else{
                 </btn>
 
                 <!-- Register -->
-                <a class="btn rounded-pill px-3 mb-2 mb-lg-0 sign-btn" href="<?php echo $register_path; ?>">
+                <btn class="btn rounded-pill px-3 mb-2 mb-lg-0 sign-btn"
+                     data-bs-toggle="modal"
+                     data-bs-target="#registerModal">
                 <span class="d-flex align-items-center">
                     <span class="medium sign-up">Sign up</span>
                 </span>
-                </a>
-
-
+                </btn>
             </div>
         </div>
     </nav>
 
-    <!-- Include Modal -->
+    <!-- Include Modals -->
     <?php
-
+    $logo_path = 'assets/logo1.png';
     include "widgets/modals.php";
 
     ?>
@@ -141,7 +182,7 @@ else{
     </section>
 
     <!-- Row 2 | Features -->
-    <section class="feature gradient">
+    <section class="feature" style="background-color: #f3f3f3">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,96L48,85.3C96,75,192,53,288,90.7C384,128,480,224,576,240C672,256,768,192,864,149.3C960,107,1056,85,1152,85.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
         <div class="container">
             <div class="row align-items-center">
@@ -251,8 +292,6 @@ else{
     <!-- Bootstrap JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- External JavaScript-->
     <script src="js/index.js"></script>

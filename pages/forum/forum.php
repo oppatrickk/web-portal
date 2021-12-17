@@ -53,6 +53,8 @@ session_start();
     $register_path = "../login/sign_up.php";
     $profile_path = "../dashboard/profile.php";
     $logo_path = "../../assets/logo2.png";
+    $settings_path = "../dashboard/settings.php";
+    $activity_path = "../dashboard/activity.php";
 
 
     // Check if the user is logged in

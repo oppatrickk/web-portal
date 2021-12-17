@@ -1,5 +1,5 @@
 
-loginModal.show();
+
 
 $(window).on("scroll", function() {
     var scrollPos = $(window).scrollTop();

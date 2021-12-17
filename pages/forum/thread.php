@@ -183,12 +183,14 @@ require_once "../../database/config.php";
     <!-- Footer -->
       <?php
       // Paths
-      $about_path = "";
-      $founders_path = "../footer/founders.php";
-      $faqs_path = "";
-      $contact_path = "";
-      $report_path = "../footer/report.php";
-      $logo_path = "../../assets/logo2_white.png";
+      $navbar_path = "../dashboard/dashboard.php";
+      $logout_path = "../../database/logout.php";
+      $login_path = "../login/sign_in.php";
+      $register_path = "../login/sign_up.php";
+      $profile_path = "../dashboard/profile.php";
+      $logo_path = "../../assets/logo2.png";
+      $settings_path = "../dashboard/settings.php";
+      $activity_path = "../dashboard/activity.php";
 
 
       include '../../widgets/footer.php'

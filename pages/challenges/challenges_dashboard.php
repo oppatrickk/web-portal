@@ -35,6 +35,8 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -43,12 +45,18 @@ session_start();
 <!-- Top Navigation Bar-->
 <?php
 // Paths
-$navbar_path = "../dashboard/dashboard.php";
+$navbar_path = "../../index.php";
+$profile_path =  "../dashboard/profile.php";
+$settings_path =  "../dashboard/settings.php";
+$activity_path =  "../dashboard/activity.php";
 $logout_path = "../../database/logout.php";
+$redirect_path = "founders.php";
+$logo_path = "../../assets/logo2.png";
 $login_path = "../login/sign_in.php";
 $register_path = "../login/sign_up.php";
-$profile_path = "../dashboard/profile.php";
-$logo_path = "../../assets/logo2.png";
+$tutorials_path = "../tutorials/tutorial_dashboard.php";
+$challenges_path = "challenges_dashboard.php";
+$forums_path = "../forum/forum.php";
 
 
 // Check if the user is logged in
@@ -57,6 +65,7 @@ if(!isset($_SESSION['user_login'])){
 }
 else{
     include '../../widgets/navbar.php';
+    include '../../widgets/verify.php';
 }
 
 ?>
@@ -183,9 +192,6 @@ else{
 
 <!-- Bootstrap JavaScript-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- External JavaScript-->
 <script src="../../js/scroll.js"></script>

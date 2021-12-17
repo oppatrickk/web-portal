@@ -54,17 +54,14 @@ require_once "../../database/config.php";
     <!-- Navbar -->
     <?php
     // Paths
-    $navbar_path = "dashboard.php";
-    $profile_path =  "profile.php";
-    $settings_path =  "settings.php";
-    $activity_path =  "activity.php";
+    $navbar_path = "../dashboard/dashboard.php";
     $logout_path = "../../database/logout.php";
-    $tutorials_path = "../tutorials/tutorial_dashboard.php";
-    $forums_path = "../forum/forum.php";
-    $logo_path = "../../assets/logo2.png";
-    $challenges_path = "../challenges/challenges_dashboard.php";
     $login_path = "../login/sign_in.php";
     $register_path = "../login/sign_up.php";
+    $profile_path = "../dashboard/profile.php";
+    $logo_path = "../../assets/logo2.png";
+    $settings_path = "../dashboard/settings.php";
+    $activity_path = "../dashboard/activity.php";
 
 
 

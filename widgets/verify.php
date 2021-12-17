@@ -1,11 +1,13 @@
+
 <script type="text/javascript">
-    $(window).on('load', function() {
+
+    $(window).on('load', function () {
         $('#verificationModal').modal('show');
     });
 
     $(document).ready(function () {
         setTimeout(function () {
-            window.location.href = <?php $settings_path?>;
+            window.location.href = '<?php echo $settings_path; ?>';
         }, 3000);
 
     });

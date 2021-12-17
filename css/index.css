@@ -5,6 +5,11 @@ body {
     font-family: 'Noto Sans';
 }
 
+.text-heading{
+    font-family: 'Bebas Neue';
+    font-style: italic;
+}
+
 .navbar{
     background-color: transparent;
 }
