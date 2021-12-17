@@ -71,10 +71,20 @@ else{
         $login_path = "pages/login/sign_in.php";
         $register_path = "pages/login/sign_up.php";
         $redirect_path = "pages/dashboard/dashboard.php";
-        $logo_path = "assets/logo2.png";
 
         //include 'widgets/navbar_nologin.php'
     ?>
+
+    <script>
+        $(window).on("scroll", function() {
+            var scrollPos = $(window).scrollTop();
+            if (scrollPos <= 100) {
+                <?php $logo_path = "assets/logo2_white.png";; ?>
+            } else {
+                <?php $logo_path = "assets/logo2.png"; ?>
+            }
+        });
+    </script>
 
     <!-- Modal Forms -->
     <?php
@@ -145,7 +155,11 @@ else{
     </nav>
 
     <!-- Include Modals -->
-    <?php include "widgets/modals.php"; ?>
+    <?php
+    $logo_path = 'assets/logo1.png';
+    include "widgets/modals.php";
+
+    ?>
 
     <!-- Main Body -->
     <div class="main custom-scrollbar-css">
