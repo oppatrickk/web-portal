@@ -7,11 +7,23 @@ include 'database/config.php';
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["user_login"])){
-}
+if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
 else{
-    header("location: pages/dashboard/dashboard.php");
-    exit;
+
+    if ($cloud == 1){
+        switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
+            case '/':
+                header("Location: https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
+                break;
+            default:
+                http_response_code(404);
+                exit('Not Found');
+        }
+    }
+    else{
+        header("location: pages/dashboard/dashboard.php");
+        exit;
+    }
 }
 
 ?>
@@ -57,7 +69,7 @@ else{
         $navbar_path = "index.php";
         $login_path = "pages/login/sign_in.php";
         $register_path = "pages/login/sign_up.php";
-        $redirect_path = "https://codex-bu.appspot.com/pages/dashboard/dashboard.php";
+        $redirect_path = "/pages/dashboard/dashboard.php";
         $logo_path = "assets/logo2.png";
 
         //include 'widgets/navbar_nologin.php'
