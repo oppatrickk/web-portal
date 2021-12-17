@@ -1,6 +1,10 @@
 <!-- PHP -->
 <?php
 
+
+// Use Mail API
+use google\appengine\api\mail\Message;
+
 // Initialize the session
 session_start();
 
@@ -197,14 +201,12 @@ include '../../widgets/navbar.php';
                         <?php
                         $delete_code = $_SESSION["delete_code"];
 
-                        // Use Mail API
-                        use google\appengine\api\mail\Message;
 
                         // Variables
                         $err_confirm_code =  "";
                         $username = $first_name = $last_name = $password = $email = "";
 
-                        if (isset($_REQUEST['btn_delete'])) {
+                        if (isset($_REQUEST["btn_delete"])) {
 
                             $active_delete = "active";
                             $active_profile = "";
@@ -301,13 +303,7 @@ include '../../widgets/navbar.php';
                                     $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
                                     if($select_stmt->rowCount() > 0) {
-
                                         if($delete_code == $row["delete_code"]){
-
-                                            // Parameter
-                                            $params = [
-                                                ':activate' => 0,
-                                            ];
 
                                             // Username
                                             $id = $_SESSION["id"];
@@ -416,7 +412,7 @@ include '../../widgets/navbar.php';
                             <div class="col-md-auto">
                                 <div class="flex form-group mt-3 justify-content-center">
                                     <label style="font-size: 10px; color: grey">Confirmation Code</label>
-                                    <input type="text" name="delete_code" class="form-control" style="border-radius: 25px">
+                                    <input type="text" name="" class="form-control" style="border-radius: 25px">
                                 </div>
                             </div>
                             <div class="col col-lg-2">
