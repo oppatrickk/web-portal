@@ -51,6 +51,23 @@
                                 <input type="submit" name="btn_login" class="btn btn-primary rounded-pill" value="SIGN IN" onclick="$('#loginModal').modal({'backdrop': 'static'});">
                             </div>
 
+                            <?php
+                            if (isset($success_msg_verify)){
+                                $_SESSION["activate_account"] = 0;
+
+                                ?>
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        setTimeout(function () {
+                                            window.location.href = <?php $redirect_path;?> ;
+                                        }, 1000);
+
+                                    });
+                                </script>
+                                <?php
+                            }
+                            ?>
+
                             <!-- Register -->
                             <div class="form-floating mb-3">
                                 <p class="float-center mt-3">Don't have an account? <a href="#" data-bs-toggle="modal"
