@@ -22,21 +22,7 @@
 
                                 <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
 
-                                <?php
-                                if (isset($success_picture)){
-                                    ?>
-                                    <script>
-                                        $(document).ready(function () {
-                                            setTimeout(function () {
-                                                window.location.href = 'settings.php';
-                                            }, 10000);
-
-                                        });
-                                    </script>
-
-                                    <?php
-                                    unset($success_picture);}
-                                ?>
+                                
 
                             </div>
                             <div class="col col-lg-2">
