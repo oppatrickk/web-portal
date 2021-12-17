@@ -165,8 +165,7 @@ if (isset($_REQUEST['btn_register'])) {
 
             $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code, delete_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code, :delete_code)');
             if ($stm->execute($params)) {
-                $_SESSION["keep_register"] = 0;
-                $_SESSION["keep_login"] = 1;
+                header('Location: sign_in.php');
                 exit;
             }
         }
