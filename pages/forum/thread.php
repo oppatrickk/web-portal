@@ -55,6 +55,8 @@ require_once "../../database/config.php";
   $logo_path = "../../assets/logo2.png";
   $login_path = "../login/sign_in.php";
   $register_path = "../login/sign_up.php";
+  $forum_path = "forum.php";
+  $challenges_path = "../challenges/challenges_dashboard.php";
 
   // Check if the user is logged in
   if (!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true) {

@@ -119,8 +119,7 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
         </div>
     </div>
 
-
-        <<?php
+        <?php
         if(isset($_SESSION['user_login']) && $_SESSION['user_login']==true){
             echo '<div class="container">
             <h1 class="py-2">Start a Discussion</h1> 
@@ -204,8 +203,6 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
             }
             ?>
 
-
-            <!-- remove later; putting this just to check html allignment-->
 
 
     </div>

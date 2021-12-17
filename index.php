@@ -24,8 +24,6 @@ else{
         header("location: pages/dashboard/dashboard.php");
         exit;
     }
-
-
 }
 
 ?>
@@ -71,7 +69,7 @@ else{
         $navbar_path = "index.php";
         $login_path = "pages/login/sign_in.php";
         $register_path = "pages/login/sign_up.php";
-        $redirect_path = "pages/dashboard/dashboard.php";
+        $redirect_path = "https://codex-bu.appspot.com/pages/dashboard/dashboard.php";
         $logo_path = "assets/logo2.png";
 
         //include 'widgets/navbar_nologin.php'
