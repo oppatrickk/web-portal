@@ -20,9 +20,11 @@ else{
                 exit('Not Found');
         }
     }
+    else{
+        header("location: pages/dashboard/dashboard.php");
+        exit;
+    }
 
-    header("location: pages/dashboard/dashboard.php");
-    exit;
 }
 
 ?>
