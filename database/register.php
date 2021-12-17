@@ -166,9 +166,10 @@ if (isset($_REQUEST['btn_register'])) {
                 ':activate' => 1,
                 ':activate_code' => $activate_code,
                 ':delete_code' => $delete_code,
+                ':file_name' => "default_avatar.png",
             ];
 
-            $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code, delete_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code, :delete_code)');
+            $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code, delete_code, file_name) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code, :delete_code, :file_name)');
             $stm->execute($params);
 
             $_SESSION["keep_register"] = 0;

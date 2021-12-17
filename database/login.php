@@ -41,7 +41,7 @@ if(isset($_REQUEST['btn_login'])){
                         $_SESSION["activate_account"] = $row["activate"];
                         $_SESSION["activate_code"] = $row["activate_code"];
                         $_SESSION["delete_code"] = $row["delete_code"];
-
+                        $_SESSION["profile_picture"] = $row["file_name"];
 
                         // Login
                         $loginMsg = "Success!";
