@@ -59,7 +59,7 @@
                                 <script type="text/javascript">
                                     $(document).ready(function () {
                                         setTimeout(function () {
-                                            window.location.href = <?php $redirect_path;?> ;
+                                            window.location.href = '<?php $redirect_path;?>';
                                         }, 1000);
 
                                     });

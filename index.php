@@ -70,13 +70,23 @@ else{
         $navbar_path = "index.php";
         $login_path = "pages/login/sign_in.php";
         $register_path = "pages/login/sign_up.php";
-        $logo_path = "assets/logo2_white.png";
         $redirect_path = "pages/dashboard/dashboard.php";
 
         //include 'widgets/navbar_nologin.php'
     ?>
 
-    <!-- Top Navigation Bar-->
+    <script>
+        $(window).on("scroll", function() {
+            var scrollPos = $(window).scrollTop();
+            if (scrollPos <= 100) {
+                <?php $logo_path = "assets/logo2_white.png";; ?>
+            } else {
+                <?php $logo_path = "assets/logo2.png"; ?>
+            }
+        });
+    </script>
+
+    <!-- Modal Forms -->
     <?php
 
     include_once "database/login.php";
