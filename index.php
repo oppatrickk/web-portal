@@ -145,11 +145,7 @@ else{
     </nav>
 
     <!-- Include Modals -->
-    <?php
-    $logo_path = 'assets/logo1.png';
-    include "widgets/modals.php";
-
-    ?>
+    <?php include "widgets/modals.php"; ?>
 
     <!-- Main Body -->
     <div class="main custom-scrollbar-css">
