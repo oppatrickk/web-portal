@@ -10,18 +10,16 @@ session_start();
 if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true);
 else{
 
-    /*
     if ($cloud == 1){
         switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
             case '/':
-                require 'pages/dashboard/dashboard.php';
+                header("Location: https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
                 break;
             default:
                 http_response_code(404);
                 exit('Not Found');
         }
-    }*/
-
+    }
 
     header("location: pages/dashboard/dashboard.php");
     exit;
