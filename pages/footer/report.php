@@ -108,8 +108,7 @@ if (isset($_REQUEST['btn_report'])) {
                         <?php
                     }
                     ?>
-                    <img src="../../assets/img/report/img1.svg" style="height: 12rem;">
-                    <h1 class="mt-5">Report a problem</h1>
+                    <h1 class="mt-3 title-heading" style="font-size: 64px">Report a problem</h1>
                     <p> Your feedback matters to us</p>
 
                     <form method="post">

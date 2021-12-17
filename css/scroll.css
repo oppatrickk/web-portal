@@ -6,6 +6,10 @@ body {
     overflow: hidden;
 }
 
+.title-heading{
+    font-family: "Bebas Neue";
+}
+
 .main{
     overflow-y: scroll;
     overflow-x: hidden;
