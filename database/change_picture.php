@@ -4,10 +4,6 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
 
 $bucket = 'codex-bu.appspot.com'; // your bucket name
 
-$options = ['size' => 400, 'crop' => true];
-$image_file = "gs://$bucket/11.jpg";
-$image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
-
 $root_path = 'gs://' . $bucket . '/';
 $_url = '';
 
