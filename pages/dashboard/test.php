@@ -18,6 +18,7 @@ if(isset($_POST['submit']))
         $name = $_FILES['userfile']['name'];
         $file_size =$_FILES['userfile']['size'];
         $file_tmp =$_FILES['userfile']['tmp_name'];
+        $name = "test";
         $original = $root_path .$name;
         move_uploaded_file($file_tmp, $original);
         $_url=CloudStorageTools::getImageServingUrl($original);
