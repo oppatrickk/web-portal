@@ -10,7 +10,7 @@ if (isset($_REQUEST['btn_report'])) {
     // Email
     $successMsg = "We have received your feedback. Thank you!";
 
-    $message_body = "Sent by: " . $_REQUEST["name"] . "<br><br>" . $_REQUEST["concern"];
+    $message_body = "Sent by: <b>" . $_REQUEST["name"] . "</b><br><br>Message:<br>" . $_REQUEST["concern"];
 
     $mail_options = [
         'sender' => 'Support@codex-bu.appspotmail.com',
@@ -54,6 +54,7 @@ if (isset($_REQUEST['btn_report'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bebas Neue' rel='stylesheet'>
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

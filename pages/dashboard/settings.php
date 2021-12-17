@@ -27,6 +27,8 @@ $show_password = $show_account = $show_delete = "";
 
 include_once '../../database/change_password.php';
 include_once '../../database/activate_account.php';
+include_once '../../database/edit_information.php';
+
 
 ?>
 
@@ -110,6 +112,8 @@ include '../../widgets/navbar.php';
                         <div class="tab-pane fade <?php echo $show_profile?>" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="container mt-4">
                                 <div class="row">
+
+                                    <!-- Change Picture -->
                                     <div class="col">
                                         <h3 class="mb-5">Change Picture</h3>
                                         <div class="row">
@@ -175,35 +179,14 @@ include '../../widgets/navbar.php';
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <h3 class="mb-2">Edit Information</h3>
 
-                                        <!-- Username -->
-                                        <div class="form-group mt-4 col-6">
-                                            <label style="font-size: 12px; color: grey">Username</label>
-                                            <input type="text" name="txt_password" class="form-control" value="<?php echo $_SESSION["username"]?>">
-                                        </div>
+                                    <!-- Edit Information -->
+                                    <?php include_once 'edit_information.php'; ?>
 
-                                        <!-- First Name-->
-                                        <div class="form-group mt-4 col-6">
-                                            <label style="font-size: 12px; color: grey">First Name</label>
-                                            <input type="text" name="txt_password" class="form-control" value="<?php echo $_SESSION["first_name"]?>">
-                                        </div>
-
-                                        <!-- Last Name-->
-                                        <div class="form-group mt-4 col-6">
-                                            <label style="font-size: 12px; color: grey">Last Name</label>
-                                            <input type="text" name="txt_password" class="form-control" value="<?php echo $_SESSION["last_name"]?>">
-                                        </div>
-
-                                        <!-- Submit -->
-                                        <div class="form-group mt-3">
-                                            <input type="submit" name="btn_login" class="btn btn-primary" value="Save">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <!-- Password -->
                         <?php include_once 'change_password.php'; ?>
 
@@ -211,6 +194,146 @@ include '../../widgets/navbar.php';
                         <?php include_once 'activate_account.php'; ?>
 
                         <!-- Delete -->
+                        <?php
+                        $delete_code = $_SESSION["delete_code"];
+
+                        // Use Mail API
+                        use google\appengine\api\mail\Message;
+
+                        // Variables
+                        $err_confirm_code =  "";
+                        $username = $first_name = $last_name = $password = $email = "";
+
+                        if (isset($_REQUEST['btn_delete'])) {
+
+                            $active_delete = "active";
+                            $active_profile = "";
+
+                            $show_profile = "";
+                            $show_delete = "show active";
+
+                            // Email
+                            $message_body = "
+<body style='height: 100%; padding: 2%; background-color: indianred;'>
+
+<div>
+    <div style='background-color: white; border-radius: 16px; padding: 25px; width: 600px; margin: auto; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>
+        <center>
+            <div>
+                <a href='https://codex-bu.appspot.com/'>
+                    <img src='https://i.ibb.co/qjwp8ZK/logo2.png' style='width: 7rem; height: 2.5rem;'>
+                </a>
+            </div>
+        </center>
+        <div style='padding-left: 15px; padding-right: 15px;'>
+            <br>
+            <h1 style='font-weight: bold; color: red; margin-bottom: 12px;'>Delete Account</h1>
+            <p style='color:black'>Hello <b>" .  $_SESSION["first_name"] . " " . $_SESSION["last_name"]  . "</b>, we have received a request to delete your account.</p>
+            <br>
+            <p style='color:black'>Use the following code to confirm:</p>
+            <center>
+                <div style='border-radius: 32px; border: 1px solid red; color: black; padding: 8px; width: 50%; font-weight: bold'>" .$delete_code. "</div>
+            </center>
+            <br>
+            <p style='color:black'><strong>WARNING!</strong> All data will be permanently removed from our system. </p>
+            <br>
+            <p style='color:black'>Having trouble? <a href='https://codex-bu.appspot.com/pages/footer/report.php' style='text-decoration: none; color:red'>Contact us</a></p>
+            <br>
+        </div>
+    </div>
+    <div style='width: 600px; margin: auto;'>
+        <center>
+            <br>
+            <p style='color:white; font-size: 12px; opacity: 75%'>The code will expire in the next 24 hours.</p>
+            <br>
+            <a href='https://codex-bu.appspot.com/'>
+                <img src='https://i.ibb.co/VTB4vfy/logo1.png' style='width: 6rem; height: 6rem;'>
+            </a>
+            <p style='color:white; font-size: 12px; opacity: 100%'>codeX © 2021</p>
+        </center>
+    </div>
+</div>";
+
+                            $mail_options = [
+                                'sender' => 'Delete@codex-bu.appspotmail.com',
+                                'to' => $_SESSION["email"],
+                                'subject' => 'codeX | Delete Account',
+                                'htmlBody' => $message_body
+                            ];
+
+                            try {
+                                $message = new Message($mail_options);
+                                $message->send();
+                            } catch (InvalidArgumentException $e) {
+                                echo 'error: ';
+                            }
+
+                            $success_resent = "We have re-sent the confirmation code to " . $_SESSION["email"];
+
+                        }
+
+                        if (isset($_REQUEST['delete_code'])) {
+
+                            $pass = 0;
+
+                            $active_delete = "active";
+                            $active_profile = "";
+
+                            $show_profile = "";
+                            $show_delete = "show active";
+
+                            // Variables
+                            $username = $_SESSION["username"];
+                            $email = $_SESSION["email"];
+
+                            // Check if value is empty
+                            if (empty($delete_code)) {
+                                $err_delete_code = "Please enter code";
+                            }
+                            else{
+                                $pass++;
+                            }
+
+                            if($pass == 1) {
+                                try {
+                                    $select_stmt = $db->prepare("Select * FROM users WHERE username=:uname OR email=:uemail");
+                                    $select_stmt->execute(array(':uname'=>$username, ':uemail'=>$email));
+                                    $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+                                    if($select_stmt->rowCount() > 0) {
+
+                                        if($delete_code == $row["delete_code"]){
+
+                                            // Parameter
+                                            $params = [
+                                                ':activate' => 0,
+                                            ];
+
+                                            // Username
+                                            $id = $_SESSION["id"];
+
+                                            $sql = 'DELETE FROM users WHERE user_id = :user_id';
+
+                                            $statement = $db->prepare($sql);
+                                            $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+
+                                            $delete_success = "Account Deleted";
+                                            $_SESSION["activate_account"] = 0;
+                                        }
+                                        else{
+                                            $err_confirm_code = "Wrong code";
+                                        }
+                                    }
+                                }
+                                catch (PDOException $e) {
+                                    $e->getMessage();
+                                }
+                            }
+                        }
+
+                        ?>
+
+
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="mt-4 mb-4">
                                 <h3 class="mb-2">Delete your account?</h3>
@@ -219,8 +342,8 @@ include '../../widgets/navbar.php';
                             <div class="d-inline flex alert-danger text-danger p-3 mt-4">
                                 <i class="bi bi-exclamation-triangle-fill h6"> </i> WARNING! This is Permanent
                             </div>
-                            <p class="mt-4">This would delete your personal data permanently from our system.</p>
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style = "text-decoration: none">Delete Account</button>
+                            <p class="mt-5">This would delete your personal data permanently from our system.</p>
+                            <input name="btn_delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" value="Delete Account">
                         </div>
                     </div>
 
@@ -228,6 +351,87 @@ include '../../widgets/navbar.php';
             </div>
         </div>
     </header>
+</div>
+
+
+<!-- Delete Modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered col-sm">
+        <div class="modal-content">
+            <div class="modal-header bg-danger p-4 justify-content-md-center">
+                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Delete Account</h5>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body border-0">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <!-- Image -->
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <i class="bi bi-exclamation-triangle-fill" style="color:lightgray; font-size: 128px"> </i>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+
+                        <?php if (isset($delete_success)) { ?>
+
+                            <div class="d-flex justify-content-center fw-bold">
+                                Account has been deleted.
+                            </div>
+                            <div class="mt-3 d-flex justify-content-center ">
+                                <p>Redirecting to home page...</p>
+                            </div>
+
+                            <script>
+                                $(document).ready(function () {
+                                    setTimeout(function () {
+                                        window.location.href = '../../database/logout.php';
+                                    }, 1000);
+
+                                });
+                            </script>
+
+                        <?php } else{ ?>
+
+                        <div class="d-flex justify-content-center fw-bold">
+                            A confirmation code has been sent to your email.
+                        </div>
+                        <div class="mt-3 d-flex justify-content-center ">
+                            <p>Didn't receive an email?</p>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <input type="submit" class="btn btn-link text-danger d-inline" value="Resend Code" style="text-decoration: none">
+                        </div>
+
+
+                        <!-- Code -->
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <div class="flex form-group mt-3 justify-content-center">
+                                    <label style="font-size: 10px; color: grey">Confirmation Code</label>
+                                    <input type="text" name="delete_code" class="form-control" style="border-radius: 25px">
+                                </div>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex justify-content-center fw-bold mt-4 mb-4">
+                            <btn class="btn btn-danger">Delete Forever</btn>
+                        </div>
+
+                        <?php } ?>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Picture Modal-->
@@ -267,60 +471,6 @@ include '../../widgets/navbar.php';
     </div>
 </div>
 
-<!-- Delete Modal-->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered col-sm">
-        <div class="modal-content">
-            <div class="modal-header bg-danger p-4 justify-content-md-center">
-                <h5 class="modal-title font-alt text-white" id="loginModalLabel">Delete Account</h5>
-                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body border-0 p-4">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <!-- Image -->
-                    <div class="container">
-                        <div class="row justify-content-md-center">
-                            <div class="col col-lg-2">
-                            </div>
-                            <div class="col-md-auto">
-                                <i class="bi bi-exclamation-triangle-fill" style="color:lightgray; font-size: 128px"> </i>
-                            </div>
-                            <div class="col col-lg-2">
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-center fw-bold">
-                            A confirmation code has been sent to your email.
-                        </div>
-                        <div class="mt-3 d-flex justify-content-center ">
-                            <p>Didn't receive an email?⠀</p> <p class="text-danger d-inline flex justify-content-center"> Resend</p>
-                        </div>
-
-
-                        <!-- Code -->
-                        <div class="row justify-content-md-center">
-                            <div class="col col-lg-2">
-                            </div>
-                            <div class="col-md-auto">
-                                <div class="flex form-group mt-3 justify-content-center">
-                                    <label style="font-size: 10px; color: grey">Confirmation Code</label>
-                                    <input type="text" name="confirm_code" class="form-control" style="border-radius: 25px">
-                                </div>
-                            </div>
-                            <div class="col col-lg-2">
-                            </div>
-                        </div>
-
-
-                        <div class="d-flex justify-content-center fw-bold mt-4 mb-4">
-                            <btn class="btn btn-danger disabled">Delete Forever</btn>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- Bootstrap JavaScript-->

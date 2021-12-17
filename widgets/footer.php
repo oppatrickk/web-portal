@@ -46,7 +46,7 @@
                 <h5 class="mb-4">Get Help</h5>
                 <ul class="list-unstyled">
                     <li class="mt-2">
-                        <a href="<?php echo $forum_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Contact us</a>
+                        <a href="<?php echo $forum_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">FAQs</a>
                     </li>
                     <li class="mt-2">
                         <a href="<?php echo $report_path; ?>" style="text-decoration:none; color: dimgray" rel="noopener noreferrer">Report Issue</a>
@@ -58,7 +58,7 @@
         <p class="text-white-50">
             <a class="navbar-brand fw-bold" href="<?php echo $navbar_path; ?>">
                 <img src="<?php echo $logo_path; ?>" style = "width: 6rem; height: 2rem" alt="logo">
-            </a> © codeX 2021 version 3.5 | All rights reserved.
+            </a> © codeX 2021 version 3.6 | All rights reserved.
         </p>
     </div>
 </footer>

@@ -22,6 +22,15 @@
                 });
             </script>
 
+            <script>
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        window.location.href = 'settings.php';
+                    }, 1000);
+
+                });
+            </script>
+
 
             <?php
         }

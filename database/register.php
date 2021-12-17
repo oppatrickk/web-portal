@@ -89,6 +89,11 @@ if (isset($_REQUEST['btn_register'])) {
             array_rand($special) .
             implode(array_rand($combined, rand(4, 8))));
 
+        $delete_code = str_shuffle(array_rand($digits) .
+            array_rand($lowercase) .
+            array_rand($uppercase) .
+            array_rand($special) .
+            implode(array_rand($combined, rand(4, 8))));
 
         if ($pass == 6) {
 
@@ -160,7 +165,7 @@ if (isset($_REQUEST['btn_register'])) {
                 ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 ':activate' => 1,
                 ':activate_code' => $activate_code,
-                ':delete_code' => 0,
+                ':delete_code' => $delete_code,
             ];
 
             $stm = $db->prepare('INSERT INTO users (username, email, password, first_name, last_name, activate, activate_code, delete_code) VALUES (:name, :email, :password, :first_name, :last_name, :activate, :activate_code, :delete_code)');
