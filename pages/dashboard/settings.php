@@ -137,7 +137,7 @@ include '../../widgets/navbar.php';
                                                                     $image = $_SESSION["file_name"];
 
                                                                     $options = ['size' => 400, 'crop' => true];
-                                                                    $image_file = "gs://$bucket/$image";
+                                                                    $image_file = "gs://" . $bucket . "/" . $image;
                                                                     $image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
                                                                     ?>
 
