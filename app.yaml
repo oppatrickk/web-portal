@@ -37,3 +37,6 @@ env_variables:
   CLOUDSQL_USER: root
   CLOUDSQL_PASSWORD: U^YuNDKb4Oh#pgjOSHkR
   CLOUDSQL_DSN: "mysql:dbname=codex;unix_socket=/cloudsql/codex-bu:asia-southeast2:codex-bu"
+
+beta_settings:
+  cloud_sql_instances: "codex-bu:asia-southeast2:codex-bu"
