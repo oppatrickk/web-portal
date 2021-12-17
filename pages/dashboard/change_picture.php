@@ -35,7 +35,7 @@
                                     </script>
 
                                     <?php
-                                }
+                                    unset($success_picture);}
                                 ?>
 
                             </div>
@@ -70,7 +70,7 @@
                             <div class="col col-lg-2">
                             </div>
                             <div class="col-md-auto">
-                                <img id="frame" src="../../assets/img/avatars/default_avatar.png" class="img-fluid rounded-circle mb-4" style="height: 12rem; width: 12rem;"/>
+                                <img id="frame" src="<?php echo $image_url; ?>"  class="img-fluid rounded-circle mb-4" style="height: 12rem; width: 12rem;"/>
                             </div>
                             <div class="col col-lg-2">
                             </div>
