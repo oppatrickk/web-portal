@@ -13,7 +13,7 @@ else{
     if ($cloud == 1){
         switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
             case '/':
-                header("Location: https://codex-bu.appspot.com/pages/dashboard/dashboard.php");
+                header("Location: /pages/dashboard/dashboard.php");
                 break;
             default:
                 http_response_code(404);
