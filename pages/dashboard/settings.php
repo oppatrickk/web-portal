@@ -64,7 +64,7 @@ include_once '../../database/activate_account.php';
 <!-- Top Nav Bar-->
 <?php
     // Paths
-    $navbar_path = "../../index.php";
+    $navbar_path = "dashboard.php";
     $logo_path = "../../assets/logo2.png";
     $login_path = "../login/sign_in.php";
     $logout_path = "../../database/logout.php";
