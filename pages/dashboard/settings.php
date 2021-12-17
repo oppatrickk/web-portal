@@ -1,7 +1,6 @@
 <!-- PHP -->
 <?php
 
-
 // Use Mail API
 use google\appengine\api\mail\Message;
 
@@ -132,46 +131,16 @@ include '../../widgets/navbar.php';
                                                                 <div class="col-md-auto mt-4">
                                                                     <?php
                                                                     // Database
-
-
-                                                                    $query = $db->query("SELECT * FROM images where `username` = '$id'");
-
-                                                                    // Cloud Image Storage
                                                                     use google\appengine\api\cloud_storage\CloudStorageTools;
 
                                                                     $bucket = 'codex-bu.appspot.com'; // your bucket name
 
-                                                                    $root_path = 'gs://' . $bucket . '/';
-                                                                    $_url = '';
-                                                                    if(isset($_POST['submit']))
-                                                                    {
-                                                                        if(isset($_FILES['userfile']))
-                                                                        {
-                                                                            $name = $_FILES['userfile']['name'];
-                                                                            $file_size =$_FILES['userfile']['size'];
-                                                                            $file_tmp =$_FILES['userfile']['tmp_name'];
-                                                                            $original = $root_path .$name;
-                                                                            move_uploaded_file($file_tmp, $original);
-                                                                            $_url=CloudStorageTools::getImageServingUrl($original);
-                                                                        }
-                                                                    }
+                                                                    $options = ['size' => 400, 'crop' => true];
+                                                                    $image_file = "gs://$bucket/11.jpg";
+                                                                    $image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
+                                                                    ?>
 
-                                                                    // Get image from the database
-                                                                    if($query > 0){
-                                                                        if($row = $query->fetch_assoc()){
-
-                                                                            $options = ['size' => 400, 'crop' => true];
-                                                                            $image_file = 'gs://$bucket/' .$row["file_name"];
-                                                                            $image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
-
-                                                                            ?>
-                                                                            <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
-
-                                                                        <?php }
-                                                                    }
-                                                                    else{ ?>
-                                                                        <img src="../../assets/img/avatars/default_avatar.png" style="height: 128px; width: 128px" class="rounded-circle">
-                                                                    <?php } ?>
+                                                                    <img src="<?php echo $image_url; ?>" style="height: 128px; width: 128px" class="rounded-circle" alt="" />
                                                                 </div>
                                                                 <div class="col col-lg-2">
                                                                 </div>

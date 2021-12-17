@@ -13,26 +13,15 @@ $_url = '';
 
 if(isset($_POST['submit']))
 {
-    if(isset($_FILES['uploaded_files']))
+    if(isset($_FILES['userfile']))
     {
-// get image from Form
-        $gs_name = $_FILES["uploaded_files"]["tmp_name"];
-        $fileType = $_FILES["uploaded_files"]["type"];
-        $fileSize = $_FILES["uploaded_files"]["size"];
-        $fileErrorMsg = $_FILES["uploaded_files"]["error"];
-        $fileExt = pathinfo($_FILES['uploaded_files']['name'], PATHINFO_EXTENSION);
-
-// change name if you want
-        $fileName = 'foo.jpg';
-
-// put to cloud storage
-        $image = file_get_contents($gs_name);
-        $options = [ "gs" => [ "Content-Type" => "image/jpeg"]];
-        $ctx = stream_context_create($options);
-        file_put_contents("gs://codex-bu.appspot.com/".$fileName, $gs_name, 0, $ctx);
-
-// or move
-        $moveResult = move_uploaded_file($gs_name, 'gs://codex-bu.appspot.com/'.$fileName);
+        $name = $_FILES['userfile']['name'];
+        $file_size =$_FILES['userfile']['size'];
+        $file_tmp =$_FILES['userfile']['tmp_name'];
+        $name = "test.jpg";
+        $original = $root_path .$name;
+        move_uploaded_file($file_tmp, $original);
+        $_url=CloudStorageTools::getImageServingUrl($original);
     }
 }
 
@@ -41,11 +30,17 @@ if(isset($_POST['submit']))
 
     <body>
     <form action="#" method="post" enctype="multipart/form-data"> Send these files:
-        <p/> <input name="uploaded_files" type="file" />
+        <p/> <input name="userfile" type="file" />
         <p/> <input type="submit" name="submit" value="Send files" />
     </form>
 
-    <img src="<?php echo $_url;?>">
+    <img src="<?php echo $image_url;?>">
+
+    <?php
+
+    echo $hello;
+
+    ?>
 
     </body>
 
