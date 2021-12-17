@@ -40,7 +40,7 @@ if(isset($_POST['submit']))
         ];
 
         // Username
-        $id = $_SESSION["id"];
+        $id = $_SESSION["user_id"];
 
         // Replace in Database
         $stm = $db->prepare("UPDATE users SET file_name = :file_name WHERE user_id = '$id'");

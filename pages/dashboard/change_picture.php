@@ -81,7 +81,7 @@
                         <div>
                             <input name="userfile" class="form-control" type="file" id="formFile" onchange="preview()">
                             <div class="d-grid mt-3">
-                                <input onclick="clearImage()" type="submit" class="btn btn-primary rounded-pill" name="submit" value="Upload">
+                                <input type="submit" class="btn btn-primary rounded-pill" name="submit" value="Upload">
                             </div>
                         </div>
                     </div>
