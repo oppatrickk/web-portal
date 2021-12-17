@@ -59,6 +59,16 @@
                                 </p>
                             </div>
 
+                            <?php if(isset($loginMsg)){ ?>
+                                <script>
+                                    $(document).ready(function () {
+                                        setTimeout(function () {
+                                            window.location.href = 'pages/dashboard/dashboard.php';
+                                        }, 100);
+                                    });
+                                </script>
+
+                            <?php } ?>
 
                         </form>
                     </div>
