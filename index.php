@@ -75,17 +75,6 @@ else{
         //include 'widgets/navbar_nologin.php'
     ?>
 
-    <script>
-        $(window).on("scroll", function() {
-            var scrollPos = $(window).scrollTop();
-            if (scrollPos <= 100) {
-                <?php $logo_path = "assets/logo2_white.png";; ?>
-            } else {
-                <?php $logo_path = "assets/logo2.png"; ?>
-            }
-        });
-    </script>
-
     <!-- Modal Forms -->
     <?php
 
