@@ -40,7 +40,7 @@ if(isset($_POST['submit_picture']))
         ];
 
         // Username
-        $id = $_SESSION["user_id"];
+        $id = $_SESSION["id"];
 
         // Replace in Database
         $stm = $db->prepare("UPDATE users SET file_name = :file_name WHERE user_id = '$id'");
