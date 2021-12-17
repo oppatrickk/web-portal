@@ -1,5 +1,7 @@
 <?php
 
+require_once("../../vendor/autoload.php");
+
 use google\appengine\api\cloud_storage\CloudStorageTools;
 
 $bucket = 'codex-bu.appspot.com'; // your bucket name
@@ -10,6 +12,8 @@ $image_url = CloudStorageTools::getImageServingUrl($image_file, $options);
 
 $root_path = 'gs://' . $bucket . '/';
 $_url = '';
+
+
 if(isset($_POST['submit']))
 {
     // get image from Form
