@@ -29,7 +29,7 @@ $show_profile = "show active";
 $show_password = $show_account = $show_delete = "";
 
 include_once '../../database/change_password.php';
-include_once '../../database/change_picture.php';
+
 include_once '../../database/activate_account.php';
 include_once '../../database/edit_information.php';
 include_once '../../database/delete_account.php';
@@ -119,7 +119,7 @@ include '../../widgets/navbar.php';
                                 <div class="row">
 
                                     <!-- Change Picture -->
-                                    <?php include_once 'change_picture.php'; ?>
+                                    
 
                                     <!-- Edit Information -->
                                     <?php include_once 'edit_information.php'; ?>
