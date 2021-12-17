@@ -10,13 +10,13 @@ if (isset($_REQUEST['btn_report'])) {
     // Email
     $successMsg = "We have received your feedback. Thank you!";
 
-    $image_data = file_get_contents($_REQUEST['image']);
+    $message_body = "Sent by: " . $_REQUEST["name"] . "<br><br>" . $_REQUEST["concern"];
 
     $mail_options = [
         'sender' => 'Support@codex-bu.appspotmail.com',
         'to' => 'prieto.patrick15@gmail.com',
         'subject' => $_REQUEST["title"],
-        'htmlBody' => $_REQUEST["concern"]
+        'htmlBody' => $message_body
     ];
 
     try {
@@ -113,11 +113,15 @@ if (isset($_REQUEST['btn_report'])) {
                     <p> Your feedback matters to us</p>
 
                     <form method="post">
-                        <div class="form-group mt-4">
+                        <div class="col-3 form-group mt-4">
+                            <label for="exampleInputEmail1" style="font-size: 12px; color: grey">Name (Optional)</label>
+                            <input type="text" class="form-control" id="title" name="name" aria-describedby="emailHelp" value="Anonymous">
+                        </div>
+                        <div class="col-3 form-group mt-4" style="font-size: 12px; color: grey">
                             <label for="exampleInputEmail1">Problem Title</label>
                             <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
                         </div>
-                        <div class="form-group mt-3">
+                        <div class="form-group mt-3" style="font-size: 12px; color: grey">
                             <label for="exampleFormControlTextarea1" class="mb-2">Elaborate Your Concern</label>
                             <textarea class="form-control" id="desc" name="concern" rows="3" style="height:350px"></textarea>
                         </div>
