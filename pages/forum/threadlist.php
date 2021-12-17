@@ -184,7 +184,7 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
                 $image_url = CloudStorageTools::getImageServingUrl($image_file);
 
                 echo '<div class="media my-3">
-      <img class="mr-3" src="../../assets/img/avatars/default_avatar.png" width="40px" alt="Generic placeholder image">
+      <img class="mr-3" src="'.$image_url.'" width="40px" alt="Generic placeholder image">
       <div class="media-body"> 
       <p class="font-weight-bold my-0"><b> Created by ' . $name . ' at ' .$time. '</b></p>
         <h5 class="mt-0"><a class="text-dark" href="thread.php?threadid='  . $id  . '">' . $title . '</a></h5>
