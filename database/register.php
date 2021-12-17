@@ -167,7 +167,6 @@ if (isset($_REQUEST['btn_register'])) {
             if ($stm->execute($params)) {
                 $_SESSION["keep_register"] = 0;
                 $_SESSION["keep_login"] = 1;
-                exit;
             }
         }
     }
