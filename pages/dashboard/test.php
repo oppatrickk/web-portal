@@ -1,7 +1,5 @@
 <?php
 
-require_once("../../vendor/autoload.php");
-
 use google\appengine\api\cloud_storage\CloudStorageTools;
 
 $bucket = 'codex-bu.appspot.com'; // your bucket name
