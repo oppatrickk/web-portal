@@ -343,7 +343,9 @@ include '../../widgets/navbar.php';
                                 <i class="bi bi-exclamation-triangle-fill h6"> </i> WARNING! This is Permanent
                             </div>
                             <p class="mt-5">This would delete your personal data permanently from our system.</p>
-                            <input name="btn_delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" value="Delete Account">
+                            <form method="post">
+                                <input name="btn_delete" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" value="Delete Account">
+                            </form>
                         </div>
                     </div>
 
@@ -363,7 +365,7 @@ include '../../widgets/navbar.php';
                 <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body border-0">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
                     <!-- Image -->
                     <div class="container">
                         <div class="row justify-content-md-center">
@@ -403,7 +405,7 @@ include '../../widgets/navbar.php';
                             <p>Didn't receive an email?</p>
                         </div>
                         <div class="d-flex justify-content-center ">
-                            <input type="submit" class="btn btn-link text-danger d-inline" value="Resend Code" style="text-decoration: none">
+                            <input type="submit" name="btn_delete" class="btn btn-link text-danger d-inline" value="Resend Code" style="text-decoration: none">
                         </div>
 
 
