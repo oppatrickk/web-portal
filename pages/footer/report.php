@@ -8,13 +8,13 @@ session_start();
 if (isset($_REQUEST['btn_report'])) {
 
     // Email
-    $successMsg = "We have sent your feedback. Thank you!";
+    $successMsg = "We have received your feedback. Thank you!";
 
     $image_data = file_get_contents($_REQUEST['image']);
 
     $mail_options = [
         'sender' => 'Support@codex-bu.appspotmail.com',
-        'to' => $_REQUEST["email"],
+        'to' => 'prieto.patrick15@gmail.com',
         'subject' => $_REQUEST["title"],
         'htmlBody' => $_REQUEST["concern"]
     ];
@@ -99,6 +99,15 @@ if (isset($_REQUEST['btn_report'])) {
         <div class="container pt-5">
             <div class="row align-items-center justify-content-center">
                 <div class="col px-5 mb-5">
+                    <?php
+                    if (isset($successMsg)){
+                        ?>
+                        <div class = "alert alert-success">
+                            <strong><?php echo $successMsg; ?></strong>
+                        </div>
+                        <?php
+                    }
+                    ?>
                     <img src="../../assets/img/report/img1.svg" style="height: 12rem;">
                     <h1 class="mt-5">Report a problem</h1>
                     <p> Your feedback matters to us</p>
