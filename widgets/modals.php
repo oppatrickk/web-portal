@@ -27,7 +27,7 @@
                                 <input type="text"
                                        name="txt_username_email"
                                        class="form-control <?php echo (!empty($login_username_err)) ? 'is-invalid' : ''; ?>">
-                                <label>Username</label>
+                                <label>Username/Email</label>
                                 <span class="invalid-feedback"><?php echo $login_username_err; ?></span>
                             </div>
 
