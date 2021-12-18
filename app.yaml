@@ -11,6 +11,10 @@ handlers:
   - url: /(.+\.php)$
     script: \1
 
+  # Allow multi-pages
+  - url: /(.+\.html)$
+    upload: \1
+
   # Upload images
   - url: /(.+\.(gif|png|jpg|svg|ico|jpeg))$
     static_files: \1
