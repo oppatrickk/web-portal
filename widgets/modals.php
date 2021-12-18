@@ -78,12 +78,13 @@
             </div>
             <!-- Content -->
             <div class="modal-body border-1">
-                <div class="row p-1" style="height: 500px">
+                <div class="row p-1" style="height: 600px">
                     <div class="col p-1 m-3" style="margin: auto">
                         <img src="<?php echo $logo_path; ?>" class="img-fluid">
                     </div>
                     <div class="col-6 p-3 m-3" style="margin: auto;">
                         <form method="post">
+                            <h1 class=" text-heading">SIGN UP</h1>
                             <!-- Info -->
                             <div class="form-floating">
                                 <div class="row"">
@@ -160,55 +161,66 @@
 
 
 <!-- Recover Modal-->
-<div class="modal fade " id="forgotModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+<div class="modal fade bd-example-modal-lg " id="forgotModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg ">
+        <div class="modal-content" style="height: 500px">
             <div class="modal-header bg-primary p-4">
-                <h5 class="modal-title font-alt text-white" id="signupModalLabel">Recover Password</h5>
+
                 <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-            <div class="modal-body border-0 p-4">
-                <form method="post">
-
-                    <?php
-                    if(isset($errorMsg)){
-                        foreach($errorMsg as $error){
-                            ?>
-                            <div class = "alert alert-danger">
-                                <?php echo $error; ?>
-                            </div>
-                            <?php
-                        }
-                    }
-                    if (isset($successMsg)){
-                        ?>
-                        <div class = "alert alert-success">
-                            <strong><?php echo $successMsg; ?></strong>
+            <div class="modal-body border-0 p-4" style="margin: auto">
+                <div class="row">
+                    <div class="col">
+                        <div class="col p-1 m-3"">
+                            <img src="<?php echo $logo_path; ?>" class="img-fluid">
                         </div>
-                        <?php
-                    }
-                    ?>
-
-                    <!-- Username Input -->
-                    <div class="form-floating mb-3">
-                        <input type="text" name="txt_username_email"
-                               class="form-control <?php echo (!empty($errorMsg)) ? 'is-invalid' : ''; ?>">
-                        <label for="user">Username/Email</label>
-                        <span class="invalid-feedback"><?php echo $errorMsg; ?></span>
                     </div>
+                    <div class="col p-5" style="margin: auto">
+                        <form method="post">
+                            <h2 class=" text-heading">RECOVER YOUR PASSWORD</h2>
 
-                    <!-- Submit -->
-                    <div class="d-grid">
-                        <input class="btn btn-primary rounded-pill" name="btn_recover" id="btn_recover" type="submit" value="Recover">
+                            <?php
+                            if(isset($errorMsg)){
+                                foreach($errorMsg as $error){
+                                    ?>
+                                    <div class = "alert alert-danger">
+                                        <?php echo $error; ?>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            if (isset($successMsg)){
+                                ?>
+                                <div class = "alert alert-success">
+                                    <strong><?php echo $successMsg; ?></strong>
+                                </div>
+                                <?php
+                            }
+                            ?>
+
+                            <!-- Username Input -->
+                            <div class="form-floating mb-3">
+                                <input type="text" name="txt_username_email"
+                                       class="form-control <?php echo (!empty($errorMsg)) ? 'is-invalid' : ''; ?>">
+                                <label for="user">Username/Email</label>
+                                <span class="invalid-feedback"><?php echo $errorMsg; ?></span>
+                            </div>
+
+                            <!-- Submit -->
+                            <div class="d-grid">
+                                <input class="btn btn-primary rounded-pill" name="btn_recover" id="btn_recover" type="submit" value="Recover">
+                            </div>
+
+                            <!-- -->
+                            <p class="float-center mt-3">Already have an account? <a href="#" data-bs-toggle="modal"
+                                                                                     data-bs-target="#loginModal"
+                                                                                     style="text-decoration: none">Sign In</a>
+                            </p>
+                        </form>
                     </div>
+                </div>
 
-                    <!-- -->
-                    <p class="float-center mt-3">Already have an account? <a href="#" data-bs-toggle="modal"
-                                                                             data-bs-target="#loginModal"
-                                                                             style="text-decoration: none">Sign In</a>
-                    </p>
-                </form>
             </div>
         </div>
     </div>

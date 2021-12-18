@@ -144,7 +144,11 @@ else{
     </nav>
 
     <!-- Include Modals -->
-    <?php include "widgets/modals.php"; ?>
+    <?php
+
+    $logo_path = "assets/logo1.png";
+
+    include "widgets/modals.php"; ?>
 
     <!-- Main Body -->
     <div class="main custom-scrollbar-css">
@@ -177,7 +181,7 @@ else{
     </section>
 
     <!-- Row 2 | Features -->
-    <section class="feature" style="background-color: #f3f3f3">
+    <section class="gradient feature">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,96L48,85.3C96,75,192,53,288,90.7C384,128,480,224,576,240C672,256,768,192,864,149.3C960,107,1056,85,1152,85.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
         <div class="container">
             <div class="row align-items-center">
@@ -198,39 +202,32 @@ else{
     <!-- Row 3 | -->
     <section class="icons">
         <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-md-4">
-                    <div class="icon gradient mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
-                        </svg>
-                    </div>
-                    <h3>Tutorials</h3>
-                    <p>
-                        Lorem Ipsum.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <div class="icon gradient mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ol" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
-                            <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z"/>
-                        </svg>
-                    </div>
-                    <h3>Challenges</h3>
-                    <p>
-                        Lorem Ipsum.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <div class="icon gradient mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
-                            <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
-                            <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                        </svg>
-                    </div>
-                    <h3>Community</h3>
-                    <p>Lorem Ipsum.</p>
+            <div class="row text-center justify-content-center align-items-center">
+                <div class="row my-4 p-5 m-5">
+
+                    <!-- Fetch all the categories and use a loop to iterate through categories -->
+                    <?php
+                    $sql = "SELECT * FROM `forum_categories`";
+                    $result = $db->query($sql);
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                        $id = $row['category_id'];
+                        $cat = $row['category_name'];
+                        $desc = $row['category_description'];
+                        echo '<div class="col my-2">
+                      <div class="card" style="width: 12rem;">
+                          <img src="../../assets/img/forum/' . $cat . '.jpg"
+                           class="card-img-top" alt="image for this category">
+                          <div class="card-body">
+                              
+                              <p class="card-text" style=" font-size: 12px;">' . substr($desc, 0, 90) . ' </p>
+                              <a href="../forum/Threadlist.php?catid=' . $id . '" class="btn btn-primary mt-3">View Threads</a>
+                          </div>
+                      </div>
+                    </div>';
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
@@ -238,6 +235,8 @@ else{
 
     <!-- Row 4 | -->
     <section class="services gradient">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,96L48,85.3C96,75,192,53,288,90.7C384,128,480,224,576,240C672,256,768,192,864,149.3C960,107,1056,85,1152,85.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-5 mt-5">
