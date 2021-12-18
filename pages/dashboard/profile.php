@@ -147,34 +147,9 @@ $id = htmlspecialchars($_SESSION["id"]);
                 <div class="col col-lg-2">
                 </div>
 
+                <a href="certificate_c.php" class="btn btn-outline">View Certificate</a>
 
-                <!-- Card -->
-                <div class="col col-lg-2 m-3">
-                </div>
-                <div class="col-md-auto">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="certificate_c.php" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-lg-2">
-                </div>
+                
 
             </div>
         </div>
