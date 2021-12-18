@@ -158,7 +158,7 @@ else{
         <div class="container pt-5">
             <div class="row align-items-center justify-content-center">
                 <div class="col px-5">
-                    <h1 class="mb-4 fw-bold">Learn Basic Programming</h1>
+                    <h1 class="mb-4 fw-bold">Learn Medium Programming</h1>
                     <p class="fw-light">Start developing your skills by taking<br>our Tutorials and Challenges</p>
                     <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal"
                             data-bs-target="#registerModal">Join Now</button>
