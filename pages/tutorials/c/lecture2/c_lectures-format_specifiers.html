@@ -1,0 +1,97 @@
+
+
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+
+                <!-- Post content-->
+
+                <section class="mb-5">
+
+                    <p class="fs-5 mb-4">Format specifiers can be defined as the operators which are used in association with printf() function for printing the data that is referred by any object or any variable. When a value is stored in a particular variable, then you cannot print the value stored in the variable straightforwardly without using the format specifiers. You can retrieve the data that are stored in the variables and can print them onto the console screen by implementing these format specifiers in a printf() function.</p>
+                    <p class="fs-5 mb-4">Format specifiers start with a percentage <span class="highlight">%</span> operator and followed by a special character for identifying the type of data.</p>
+                    <p class="fs-5 mb-4">There are mostly <span class="highlight">six&nbsp;types&nbsp;of&nbsp;format&nbsp;specifiers</span> that are available in C.</p>
+                    
+                    <h5 class="fw-bolder mb-4 mt-5">Managing Input/Output</h5>
+                    <div class="container">
+                        <div class="row rowhead">
+                            <div class="col-4 col-border pad cent">Format Specifiers</div>
+                            <div class="col-8 col-border pad">Desciption</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-border pad cent">%d</div>
+                            <div class="col-8 col-border pad"><a href="#ifs">Integer Format Specifier</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-border pad cent">%f</div>
+                            <div class="col-8 col-border pad"><a href="#ffs">Float Format Specifier</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-border pad cent">%c</div>
+                            <div class="col-8 col-border pad"><a href="#cfs">Character Format Specifier</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-border pad cent">%s</div>
+                            <div class="col-8 col-border pad"><a href="#sfs">String Format Specifier</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-border pad cent">%u</div>
+                            <div class="col-8 col-border pad"><a href="#uifs">Unsigned Integer Format Specifier</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-border pad cent">%ld</div>
+                            <div class="col-8 col-border pad"><a href="#lifs">Long Int Format Specifier</a></div>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5" id="ifs">Integer Format Specifier %d</h5>
+                    <p class="fs-5 mb-4">The <span class="highlight">%d</span> format specifier is implemented for representing integer values. This is used with printf() function for printing the integer value stored in the variable.</p>
+                    <div class="card">
+                        <p class="outputTitle">Syntax:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/0802c082916fd71ebf6fb7bcbe19a30b.js"></script>
+                    </div>
+                    
+                    <h5 class="fw-bolder mb-4 mt-5" id="ffs">Float Format Specifier %f</h5>
+                    <p class="fs-5 mb-4">The <span class="highlight">%f</span> format specifier is implemented for representing fractional values. This is implemented within printf() function for printing the fractional or floating value stored in the variable. Whenever you need to print any fractional or floating data, you have to use <span class="highlight">%f</span> format specifier.</p>
+                    <div class="card">
+                        <p class="outputTitle">Syntax:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/ad8ea6a1a94de1fa0460831a5962e5ee.js"></script>
+                    </div>
+                    
+                    <h5 class="fw-bolder mb-4 mt-5" id="cfs">Character Format Specifier %c</h5>
+                    <p class="fs-5 mb-4">The <span class="highlight">%c</span> format specifier is implemented for representing characters. This is used with printf() function for printing the character stored in a variable. When you want to print a character data, you should incorporate the <span class="highlight">%c</span> format specifier.</p>
+                    <div class="card">
+                        <p class="outputTitle">Syntax:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/30582066d1fd297d1b48c51795e9380d.js"></script>
+                    </div>
+                    
+                    <h5 class="fw-bolder mb-4 mt-5" id="sfs">String Format Specifier %s</h5>
+                    <p class="fs-5 mb-4">The <span class="highlight">%s</span> format specifier is implemented for representing strings. This is used in printf() function for printing a string stored in the character array variable. When you have to print a string, you should implement the <span class="highlight">%s</span> format specifier.</p>
+                    <div class="card">
+                        <p class="outputTitle">Syntax:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/8dd9c0e8463753e14e92b61c56d3299d.js"></script>
+                    </div>
+                    
+                    <h5 class="fw-bolder mb-4 mt-5" id="uifs">Unsigned Integer Format Specifier %u</h5>
+                    <p class="fs-5 mb-4">The <span class="highlight">%u</span> format specifier is implemented for fetching values from the address of a variable having unsigned decimal integer stored in the memory. This is used within printf() function for printing the unsigned integer variable.</p>
+                    <div class="card">
+                        <p class="outputTitle">Syntax:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/ec0f3f3e85a9c911a47f9cb465168801.js"></script>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5" id="lifs">Long Int Format Specifier %ld</h5>
+                    <p class="fs-5 mb-4">The <span class="highlight">%ld</span> format specifier is implemented for representing long integer values. This is implemented with printf() function for printing the long integer value stored in the variable.</p>
+                    <div class="card">
+                        <p class="outputTitle">Syntax:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/cdeb80cda27728defd78406fbabca614.js"></script>
+                    </div>
+                    
+                </section>
+            </article>
+        </div>
+        </div>
+</div>

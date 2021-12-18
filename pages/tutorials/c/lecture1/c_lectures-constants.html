@@ -1,0 +1,156 @@
+<p class="fs-5 mb-4">Constants are like a variable, except that their value never changes during execution once
+    defined.</p>
+<div>
+    <p class="fs-5 mb-4">C Constants is the most fundamental and essential part of the C programming language. Constants
+        in C are the fixed values that are used in a program, and its value remains the same during the entire execution
+        of the program.</p>
+    <ul>
+        <li>Constants are also called literals.</li>
+        <li>Constants can be any of the <a href="c_lectures-data_types.html">data types</a>.</li>
+        <li>It is considered best practice to define constants using only <span class="highlight">upper-case</span>
+            names.
+        </li>
+    </ul>
+</div>
+<h5 class="fw-bolder mb-4 mt-5">Constant Definition in C</h5>
+<div class="card">
+    <div class="card-body">
+        <p class="outputTitle">Syntax:</p>
+        <script src="https://gist.github.com/ryy-clavo-317/bb5bc6eb016b5fdc0370728b064cc445.js"></script>
+        <p><span class="highlight">const keyword</span> defines a constant in C.</p>
+        <p class="outputTitle">Example:</p>
+        <script src="https://gist.github.com/ryy-clavo-317/8918cf42259744191195b3d716aa817b.js"></script>
+        <p class="outputTitle">Output:</p>
+        <div class="output">
+            <p>The area of the square with side: 10 is: 100 sq. units</p>
+        </div>
+        <p class="outputTitle">Putting const either before or after the type is possible:</p>
+        <script src="https://gist.github.com/ryy-clavo-317/2ad63ea2c051d61d7dba7b7cd6b88a46.js"></script>
+    </div>
+</div>
+
+<h5 class="fw-bolder mb-4 mt-5">Constants Types in C</h5>
+<p class="fs-5 mb-4">Constants are categorized into two basic types, and each of these types has its
+    subtypes/categories. These are:</p>
+
+<div class="card">
+    <div class="card-header">Primary Constants</div>
+    <div class="card-body">
+        <ol>
+            <li>Numeric Constants
+                <ul>
+                    <li>Integer Constants</li>
+                    <li>Real Constants</li>
+                </ul>
+            </li>
+            <li>Character Constants
+                <ul>
+                    <li>Single Character Constants</li>
+                    <li>String Constants</li>
+                    <li>Backslash Character Constants</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<h5 class="fw-bolder mb-4 mt-5">Integer Constant</h5>
+<p class="fs-5 mb-4">It's referring to a sequence of digits. Integers are of three types viz:</p>
+<div>
+    <ol>
+        <li>Decimal Integer</li>
+        <li>Octal Integer</li>
+        <li>Hexadecimal Integer</li>
+    </ol>
+</div>
+<p class="outputTitle">Example:</p>
+<span class="card">15, -265, 0, 99818, +25, 045, 0X6</span>
+
+<h5 class="fw-bolder mb-4 mt-5">Real Constants</h5>
+<p class="fs-5 mb-4">The numbers containing fractional parts like 99.25 are called real or floating points constant.</p>
+
+<h5 class="fw-bolder mb-4 mt-5">Single Character Constants</h5>
+<p class="fs-5 mb-4">It simply contains a single character enclosed within ' and ' (a pair of single quote). It is to be
+    noted that the character '<b>8</b>' is not the same as <b>8</b>. Character constants have a specific set of integer
+    values known as ASCII values (American Standard Code for Information Interchange).</p>
+<p class="outputTitle">Example:</p>
+<span class="card">'X', '5', ';'</span>
+
+<h5 class="fw-bolder mb-4 mt-5">String Constants</h5>
+<p class="fs-5 mb-4">These are a sequence of characters enclosed in double quotes, and they may include letters, digits,
+    special characters, and blank spaces. It is again to be noted that "<b>G</b>" and '<b>G</b>' are different - because
+    "G" represents a string as it is enclosed within a pair of double quotes whereas 'G' represents a single character.
+</p>
+<p class="outputTitle">Example:</p>
+<span class="card">"Hello!", "2015", "2+1"</span>
+
+<h5 class="fw-bolder mb-4 mt-5">Backslash Character Constants</h5>
+<p class="fs-5 mb-4">C supports some character constants having a backslash in front of it. The lists of backslash
+    characters have a specific meaning which is known to the compiler. They are also termed as "Escape Sequence".</p>
+<p class="outputTitle">Example:</p>
+<div class="card"><span class="highlight">\t</span>is used to give a tab</div>
+<div class="card"><span class="highlight">\n</span>is used to give a new line</div>
+
+<div class="container">
+    <div class="row rowhead">
+        <div class="col-6 col-border pad">Constants</div>
+        <div class="col-6 col-border pad">Meaning</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\a</div>
+        <div class="col-6 col-border pad">beep sound</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\b</div>
+        <div class="col-6 col-border pad">backspace</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\f</div>
+        <div class="col-6 col-border pad">form feed</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\n</div>
+        <div class="col-6 col-border pad">new line</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\r</div>
+        <div class="col-6 col-border pad">carriage return</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\t</div>
+        <div class="col-6 col-border pad">horizontal tab</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\v</div>
+        <div class="col-6 col-border pad">vertical tab</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\'</div>
+        <div class="col-6 col-border pad">single quote</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\"</div>
+        <div class="col-6 col-border pad">double quote</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\\</div>
+        <div class="col-6 col-border pad">backslash</div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-border pad">\0</div>
+        <div class="col-6 col-border pad">null</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Secondary Constant</div>
+    <div class="card-body">
+        <ul>
+            <li>Array</li>
+            <li>Pointer</li>
+            <li>Structure</li>
+            <li>Union</li>
+            <li>Enum</li>
+        </ul>
+    </div>
+</div>

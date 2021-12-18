@@ -18,7 +18,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>codeX | C Lecture 1</title>
+    <title>codeX | C Lecture 3</title>
     <link rel="icon" type="image/x-icon" href="../../../assets/favicon.ico">
 
     <!-- Bootstrap CSS and Icons -->
@@ -85,14 +85,14 @@ else{
                 <!-- Post header-->
                 <header class="mb-4">
                     <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">Fundamentals of C Language</h1>
+                    <h1 class="fw-bolder mb-1">Decisions</h1>
                     <div class="container">
                         <div class="row justify-content-md-center">
                             <div class="col col-lg-2">
                             </div>
                             <div class="col-md-auto">
                                 <p class="badge bg-secondary text-decoration-none link-light align-content-center" href="#!">C Programming</p>
-                                <p class="badge bg-secondary text-decoration-none link-light" href="#!">Lecture 1</p>
+                                <p class="badge bg-secondary text-decoration-none link-light" href="#!">Lecture 3</p>
                             </div>
                             <div class="col col-lg-2">
                             </div>
@@ -100,28 +100,25 @@ else{
                         <div class="col-md-auto p-4 m-2">
                             <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#tokens" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Tokens</button>
+                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#decisions" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Decision Making</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#identifiers" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Identifiers</button>
+                                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#if" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">If</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#keywords" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Keywords</button>
+                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#if-else" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">If-else</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#constants" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Constants</button>
+                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#nested" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Nested If-Else</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#operators" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Operators</button>
+                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#else-if" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Else-If</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#data_types" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Data Types</button>
+                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#goto" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Goto</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#variables" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Variables</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#type_casting" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Type Casting</button>
+                                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#switch" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Switch</button>
                                 </li>
                             </ul>
                         </div>
@@ -136,14 +133,13 @@ else{
 
 
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="tokens" role="tabpanel" aria-labelledby="pills-home-tab"><?php include 'lecture1/c_lectures-tokens.html';?></div>
-                    <div class="tab-pane fade" id="identifiers" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-identifiers.html';?></div>
-                    <div class="tab-pane fade" id="keywords" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-keywords.html';?></div>
-                    <div class="tab-pane fade" id="constants" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-constants.html';?></div>
-                    <div class="tab-pane fade" id="operators" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-operators.html';?></div>
-                    <div class="tab-pane fade" id="data_types" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-data_types.html';?></div>
-                    <div class="tab-pane fade" id="variables" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-variables.html';?></div>
-                    <div class="tab-pane fade" id="type_casting" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture1/c_lectures-type_casting.html';?></div>
+                    <div class="tab-pane fade show active" id="decisions" role="tabpanel" aria-labelledby="pills-home-tab"><?php include 'lecture3/c_lectures-decision.html';?></div>
+                    <div class="tab-pane fade" id="if" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture3/c_lectures-if.html';?></div>
+                    <div class="tab-pane fade" id="if-else" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture3/c_lectures-if-else.html';?></div>
+                    <div class="tab-pane fade" id="nested" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture3/c_lectures-nested_if-else.html';?></div>
+                    <div class="tab-pane fade" id="else-if" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture3/c_lectures-else-if.html';?></div>
+                    <div class="tab-pane fade" id="goto" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture3/c_lectures-goto.html';?></div>
+                    <div class="tab-pane fade" id="switch" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture3/c_lectures-switch.html';?></div>
                 </div>
 
             </article>

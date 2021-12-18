@@ -1,0 +1,75 @@
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+
+                <!-- Post content-->
+
+                <section class="mb-5">
+
+                    <p class="fs-5 mb-4">So far we have discussed the <span class="highlight">if&nbsp;statements</span>
+                        and how it is used in C to control statement execution based on some decisions or conditions.
+                        The flow of execution also depends on other statements which are not based on conditions that
+                        can control the flow.</p>
+                    <p class="fs-5 mb-4">C supports a unique form of a statement that is the <span class="highlight">goto</span>
+                        Statement which is used to branch unconditionally within a program from one point to another.
+                        Although it is not a good habit to use the goto statement in C, there may be some situations
+                        where the use of the goto statement might be desirable.</p>
+                    <p class="fs-5 mb-4">The goto statement is used by programmers to change the sequence of execution
+                        of a C program by shifting the control to a different part of the same program.</p>
+                    <p class="fs-5 mb-4"><u>The general form of the goto statement is:</u></p>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="outputTitle">Syntax:</p>
+                            <div class="card">goto label;</div>
+                            <p>A label is an identifier required for goto statement to a place where the branch is to be
+                                made. A label is a valid variable name which is followed by a colon and is put
+                                immediately before the statement where the control needs to be jumped/transferred
+                                unconditionally.</p>
+                            <p class="outputTitle">Syntax:</p>
+                            <div class="card">
+                                goto label; <br><br>
+                                - - -- - - <br>
+                                - - - - - - - - <br><br>
+                                label: <br><br>
+                                statement - X; <br>
+                                /* This the forward jump of goto statement */
+                            </div>
+                            <p class="outputTitle">Or</p>
+                            <div class="card">
+                                label: <br><br>
+                                - - -- - - <br>
+                                - - - - - - - - <br><br>
+                                goto label; <br><br>
+                                /*This is the backward jump of goto statement */
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">An Example of a C Program to Demonstrate goto Statement</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="outputTitle">Example:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/8730313cb1f34c110ec371c891e11442.js"></script>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">goto Statement in C - Video Tutorial</h5>
+                    <p class="fs-5 mb-4">To understand "C goto Statements" in more depth, please watch this video
+                        tutorial.</p>
+                    <div class="iframe-container">
+                        <iframe width="775" height="480" src="https://www.youtube.com/embed/3w81X4yg6Yk"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+
+                </section>
+            </article>
+        </div>
+    </div>
+</div>

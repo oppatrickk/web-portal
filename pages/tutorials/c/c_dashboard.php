@@ -91,7 +91,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 0</h2>
                             <h2 class="card-title h2 mb-3 ">Overview of C Language</h2>
-                            <a class="btn btn-primary">Start</a>
+                            <a class="btn btn-primary" href="c_lecture0.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 1</h2>
                             <h2 class="card-title h2 mb-3 ">Fundamentals of C Language</h2>
-                            <a class="btn btn-primary disabled">Finish the previous lectures first</a>
+                            <a class="btn btn-primary" href="c_lecture1.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 2</h2>
                             <h2 class="card-title h2 mb-3 ">Data Input and Output</h2>
-                            <a class="btn btn-primary disabled">Finish the previous lectures first</a>
+                            <a class="btn btn-primary" href="c_lecture2.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 3</h2>
                             <h2 class="card-title h2 mb-3 ">Decision Making</h2>
-                            <a class="btn btn-primary disabled">Finish the previous lectures first</a>
+                            <a class="btn btn-primary" href="c_lecture3.php">Start</a>
                         </div>
                     </div>
                 </div>

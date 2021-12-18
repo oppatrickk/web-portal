@@ -49,6 +49,8 @@ $login_path = "../../login/sign_in.php";
 $register_path = "../../login/sign_up.php";
 $profile_path = "../../dashboard/profile.php";
 $logo_path = "../../../assets/logo2.png";
+$settings_path = "../../dashboard/settings.php";
+$activity_path = "../../dashboard/activity.php";
 
 // Check if the user is logged in
 if(!isset($_SESSION['user_login'])){
@@ -56,7 +58,7 @@ if(!isset($_SESSION['user_login'])){
 }
 else{
     include '../../../widgets/navbar.php';
-    include '../../../widgets/verify.php.php';
+    include '../../../widgets/verify.php';
 }
 
 ?>
@@ -73,8 +75,9 @@ else{
     </div>
 </header>
 
+
 <!-- Page content-->
-<div class="container mt-5">
+<div class="container mt-5 px-4">
     <div class="row">
         <div class="col">
             <!-- Post content-->
@@ -83,36 +86,58 @@ else{
                 <header class="mb-4">
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">Overview of C Language</h1>
-                    <div class=" flex justify-content-center">hello</div>
-                    <p class="badge bg-secondary text-decoration-none link-light align-content-center" href="#!">C Programming</p>
-                    <p class="badge bg-secondary text-decoration-none link-light" href="#!">Lecture 0</p>
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto">
+                                <p class="badge bg-secondary text-decoration-none link-light align-content-center" href="#!">C Programming</p>
+                                <p class="badge bg-secondary text-decoration-none link-light" href="#!">Lecture 0</p>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="col col-lg-2">
+                            </div>
+                            <div class="col-md-auto p-4 m-2">
+                                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#intro1" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Introduction 1.0</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#intro2" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Introduction 2.0</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#limitations" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Limitations</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#history" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">History</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#installation" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Installation</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col col-lg-2">
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Post meta content-->
                     <!-- Post categories-->
 
                 </header>
                 <!-- Post content-->
 
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Introduction 1.0</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Introduction 2.0</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Limitations</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">History</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Installation</button>
-                    </li>
-                </ul>
+
+
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><?php include 'lecture0/c_lecture-Intro1.html';?></div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture0/c_lecture-Intro2.html';?></div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><?php include 'lecture0/c_lecture-lim.html';?></div>
+                    <div class="tab-pane fade show active" id="intro1" role="tabpanel" aria-labelledby="pills-home-tab"><?php include 'lecture0/c_lecture-Intro1.html';?></div>
+                    <div class="tab-pane fade" id="intro2" role="tabpanel" aria-labelledby="pills-profile-tab"><?php include 'lecture0/c_lecture-Intro2.html';?></div>
+                    <div class="tab-pane fade" id="limitations" role="tabpanel" aria-labelledby="pills-contact-tab"><?php include 'lecture0/c_lecture-lim.html';?></div>
+                    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="pills-contact-tab"><?php include 'lecture0/c_lecture-history.html';?></div>
+                    <div class="tab-pane fade" id="installation" role="tabpanel" aria-labelledby="pills-contact-tab"><?php include 'lecture0/c_lecture-installation.html';?></div>
                 </div>
 
             </article>
@@ -141,8 +166,8 @@ include '../../../widgets/footer.php'
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- External JavaScript-->
-<script src="../../../js/scroll.js"></script>
 
+<script src="../../../js/scroll.js"></script>
 
 </body>
 </html>

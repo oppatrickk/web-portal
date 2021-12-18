@@ -1,0 +1,176 @@
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <article>
+                <!-- Post header-->
+                <!-- Post content-->
+                <p class="fs-5 mb-4">A data-type in C programming is a set of values and is determined to act on those
+                    values. C provides various types of data-types which allow the programmer to select the appropriate
+                    type for the variable to set its value.</p>
+                <p class="fs-5 mb-4">The data-type in a programming language is the collection of data with values
+                    having fixed meaning as well as characteristics. Some of them are an integer, floating point,
+                    character, etc. Usually, programming languages specify the range values for given data-type.</p>
+                <div>
+                    <p class="fs-5 mb-4">C Data Types are used to:</p>
+                    <ul>
+                        <li>Identify the type of a variable when it declared.</li>
+                        <li>Identify the type of the return value of a function.</li>
+                        <li>Identify the type of a parameter expected by a function.</li>
+                    </ul>
+                </div>
+
+                <h5 class="fw-bolder mb-4 mt-5">Types of Operators in C</h5>
+                <div class="card">
+                    <div class="card-header">ANSI C provides three types of data types:</div>
+                    <div class="card-body">
+                        <ol>
+                            <li>
+                                <b>Primary(Built-in) Data Types:</b> <br>
+                                <span class="highlight">void</span>, <span class="highlight">int</span>, <span
+                                    class="highlight">char</span>, <span class="highlight">double</span> and <span
+                                    class="highlight">float</span>.
+                            </li>
+                            <li>
+                                <b>Derived Data Types:</b> <br>
+                                <span class="highlight">Array</span>, <span class="highlight">References</span>, and
+                                <span class="highlight">Pointers</span>.
+                            </li>
+                            <li>
+                                <b>User Defined Data Types:</b> <br>
+                                <span class="highlight">Structure</span>, <span class="highlight">Union</span>, and
+                                <span class="highlight">Enumeration</span>.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h5 class="fw-bolder mb-4 mt-5">Primary Data Types</h5>
+                <div class="container">
+                    <div class="row rowhead">
+                        <div class="col-12 col-border pad">Every C compiler supports five primary data types:</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-border pad cent">void</div>
+                        <div class="col-8 col-border pad"> As the name suggests, it holds no value and is generally used
+                            for specifying the type of function or what it returns. If the function has a void type, it
+                            means that the function will not return any value.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-border pad cent">int</div>
+                        <div class="col-8 col-border pad">Used to denote an integer type.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-border pad cent">char</div>
+                        <div class="col-8 col-border pad">Used to denote a character type.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-border pad cent">float, double</div>
+                        <div class="col-8 col-border pad">Used to denote a floating point type.</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-border pad cent">int *, float *, char *</div>
+                        <div class="col-8 col-border pad">Used to denote a pointer type.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Three more data types have been added in C99:</div>
+                    <div class="card-body">
+                        <ul>
+                            <li>_Bool</li>
+                            <li>_Complex</li>
+                            <li>_Imaginary</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h5 class="fw-bolder mb-4 mt-5">Declaration of Primary Data Types with Variable Names</h5>
+                <div class="card">
+                    <p class="outputTitle">Example</p>
+                    <script src="https://gist.github.com/ryy-clavo-317/78ef3408596bf619e141976e41321c82.js"></script>
+                </div>
+
+                <h5 class="fw-bolder mb-4 mt-5">Derived Data Types</h5>
+                <p class="fs-5 mb-4">C supports three derived data types:</p>
+                <div class="container">
+                    <div class="row rowhead">
+                        <div class="col-4 col-border pad cent">Data</div>
+                        <div class="col-8 col-border pad">Description</div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-4 col-border pad cent">Arrays</div>
+                        <div class="col-8 col-border pad">Arrays are sequences of data items having homogeneous values.
+                            They have adjacent memory locations to store values.
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-4 col-border pad cent">References</div>
+                        <div class="col-8 col-border pad">Function pointers allow referencing functions with a
+                            particular signature.
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-4 col-border pad cent">Pointers</div>
+                        <div class="col-8 col-border pad">These are powerful C features which are used to access the
+                            memory and deal with their addresses.
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bolder mb-4 mt-5">User Defined Data Types</h5>
+                <p class="fs-5 mb-4">C allows the feature called <span class="highlight">type&nbsp;definition</span>
+                    which allows programmers to define their identifier that would represent an existing data type.
+                    There are three such types:</p>
+                <div class="container">
+                    <div class="row rowhead">
+                        <div class="col-4 col-border pad cent">Data</div>
+                        <div class="col-8 col-border pad">Description</div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-4 col-border pad cent">Arrays</div>
+                        <div class="col-8 col-border pad">Arrays are sequences of data items having homogeneous values.
+                            They have adjacent memory locations to store values.
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-4 col-border pad cent">References</div>
+                        <div class="col-8 col-border pad">Function pointers allow referencing functions with a
+                            particular signature.
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-4 col-border pad cent">Pointers</div>
+                        <div class="col-8 col-border pad">These are powerful C features which are used to access the
+                            memory and deal with their addresses.
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="fw-bolder mb-4 mt-5">Data Types and Variable Declarations in C</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="outputTitle">Example:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/6b36d3e5b4ea4ac12e63d58dca7433d8.js"></script>
+                        <p>The storage representation and machine instructions differ from machine to machine. <span
+                                class="highlight">sizeof</span> operator can use to get the exact size of a type or a
+                            variable on a particular platform.</p>
+                        <p class="outputTitle">Example:</p>
+                        <script src="https://gist.github.com/ryy-clavo-317/92cd80d2d560b5d53716178c5762d561.js"></script>
+                        <p class="outputTitle">Output:</p>
+                        <div class="output">
+                            <p class="output">
+                                Storage size for int is: 4 <br>
+                                Storage size for char is: 1
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="next-chapter">
+                    <span class="nextchap">Next Chapter: </span> <a href="c_lectures-variables.html">Variables in C</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

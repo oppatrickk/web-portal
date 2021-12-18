@@ -1,0 +1,119 @@
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+
+                <!-- Post content-->
+
+                <section class="mb-5">
+
+                    <p class="fs-5 mb-4">As we all know the three essential functions of a computer are reading, processing and writing data. Majority of the programs take data as input, and then after processing the processed data is being displayed which is called information. In C programming you can use <span class="highlight">scanf()</span> and <span class="highlight">printf()</span> predefined function to read and print data.</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="outputTitle">Example:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/b582d95ee70542f17fb2e16e0234ea93.js"></script>
+                            <p class="outputTitle">Output:</p>
+                            <div class="output">
+                                <p>
+                                    Please enter any two numbers: <br>
+                                    12 <br>
+                                    3 <br>
+                                    The addition of two number is: 15
+                                </p>
+                            </div>
+                            <p class="note">
+                                <span class="noted">NOTE:</span> <br>
+                                The above program <span class="highlight">scanf()</span> is used to take input from the user, and respectively <span class="highlight">printf()</span> is used to display output result on the screen.</p>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">Managing Input/Output</h5>
+                    <p class="fs-5 mb-4">I/O operations are useful for a program to interact with users. <span class="highlight">stdlib</span> is the standard C library for input-output operations. While dealing with input-output operations in C, two important streams play their role. These are:</p>
+                    <div>
+                        <ul>
+                            <li>
+                                <span class="highlight">Standard Input (stdin)</span> <br>
+                                <span class="noted">Standard input</span> or <span class="noted">stdin</span> is used for taking input from devices such as the keyboard as a data stream.
+                            </li>
+                            <li>
+                                <span class="highlight">Standard Output (stdout)</span> <br>
+                                <span class="noted">Standard output</span> or <span class="noted">stdout</span> is used for giving output to a device such as a monitor.
+                            </li>
+                        </ul>
+                        <p class="fs-5 mb-4">For using I/O functionality, programmers must include <span class="highlight">stdio&nbsp;header-file</span> within the program.</p>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">Reading Character in C</h5>
+                    <p class="fs-5 mb-4">The easiest and simplest of all I/O operations are taking a character as input by reading that character from standard input (keyboard). <span class="highlight">getchar()</span> function can be used to read a single character. This function is alternate to <span class="highlight">scanf()</span> function.</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="outputTitle">Syntax:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/17ba925286486b4ac7ff56504b14ff7e.js"></script>
+                            <p class="outputTitle">Example:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/545134b8b1ae035f0fd5981c910f4f60.js"></script>
+                            <p class="fs-5 mb-4">There is another function to do that task for files: getc which is used to accept a character from standard input.</p>
+                            <p class="outputTitle">Syntax:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/8500ad9129c4c89e97359ff05acbafb9.js"></script>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">Writing Character in C</h5>
+                    <p class="fs-5 mb-4">Similar to <span class="highlight">getchar()</span> there is another function which is used to write characters, but one at a time.</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="outputTitle">Syntax:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/39f9a63fa0261da094fbdd0f7a89c9fa.js"></script>
+                            <p class="outputTitle">Example:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/cc249dc48fd8943a6a52fb698e373b25.js"></script>
+                            <p class="fs-5 mb-4">Similarly, there is another function <span class="highlight">putc</span> which is used for sending a single character to the standard output.</p>
+                            <p class="outputTitle">Syntax:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/7f1c292c2dac3c2f2eda7340a9179c10.js"></script>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">Formatted Input</h5>
+                    <p class="fs-5 mb-4">It refers to an input data which has been arranged in a specific format. This is possible in C using <span class="highlight">scanf()</span>. We have already encountered this and familiar with this function.</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="outputTitle">Syntax:</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/ca8c508ef0b8e20ca9629fa5197ec08f.js"></script>
+                            <p>The field specification for reading integer inputted number is:</p>
+                            <p class="card">%w sd</p>
+                            <p>Here the % sign denotes the conversion specification; <span class="highlight">w</span> signifies the integer number that defines the field width of the number to be read. <span class="highlight">d</span> defines the number to be read in integer format.</p>
+                            <script src="https://gist.github.com/ryy-clavo-317/07da59fa4701e9937b6d2b03a24933f9.js"></script>
+                            <p>Input data items should have to be separated by spaces, tabs or new-line and the punctuation marks are not counted as separators.</p>
+                        </div>
+                    </div>
+
+                    <h5 class="fw-bolder mb-4 mt-5">Reading and Writing Strings in C</h5>
+                    <p class="fs-5 mb-4">There are two popular library functions <span class="highlight">gets()</span> and <span class="highlight">puts()</span> provides to deal with strings in C.</p>
+                    <div>
+                        <ul>
+                            <li>
+                                <span class="noted">gets</span>:<br>
+                                The char *gets(char *str) reads a line from <span class="highlight">stdin</span> and keeps the string pointed to by the <span class="highlight">str</span> and is terminated when the new line is read or <span class="highlight">EOF</span> is reached. The declaration of gets() function is:
+                                <div class="card">
+                                    <p class="outputTitle">Syntax:</p>
+                                    <script src="https://gist.github.com/ryy-clavo-317/b80cfa515e608c69de6b208c89ab60ec.js"></script>
+                                    <p>Where str is a pointer to an array of characters where C strings are stored.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="noted">puts</span>:<br>
+                                The function - int puts(const char *str) is used to write a string to <span class="highlight">stdout</span>, but it does not include null characters. A new line character needs to be appended to the output. The declaration is:
+                                <div class="card">
+                                    <p class="outputTitle">Syntax:</p>
+                                    <script src="https://gist.github.com/ryy-clavo-317/8bce48cff79eea841b8f09435e11849d.js"></script>
+                                    <p>where str is the string to be written in C.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+        </div>
+        </div>
+</div>
