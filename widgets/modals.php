@@ -78,7 +78,7 @@
             </div>
             <!-- Content -->
             <div class="modal-body border-1">
-                <div class="row p-1" style="height: 600px">
+                <div class="row p-1" style="height: 700px">
                     <div class="col p-1 m-3" style="margin: auto">
                         <img src="<?php echo $logo_path; ?>" class="img-fluid">
                     </div>
