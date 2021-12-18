@@ -188,7 +188,7 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
       <img class="mr-3 rounded-circle" src="'.$image_url.'" width="40px" alt="Generic placeholder image">
       <div class="media-body"> 
       <p class="font-weight-bold my-0"><b> ' . $name . ' | ' .$time. '</b></p>
-        <h5 class="mt-0"><a class="text-dark fw-bold mt-3" style="text-decoration: none" href="thread.php?threadid='  . $id  . '">' . $title . '</a></h5>
+        <h5 class="mt-3"><a class="text-dark fw-bold mt-3" style="text-decoration: none" href="thread.php?threadid='  . $id  . '">' . $title . '</a></h5>
         ' . $desc . '
       </div>
     </div>';
