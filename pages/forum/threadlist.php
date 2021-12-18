@@ -65,6 +65,8 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
     $logo_path = "../../assets/logo2.png";
     $settings_path = "../dashboard/settings.php";
     $activity_path = "../dashboard/activity.php";
+    $challenges_path = "../challenges/challenge_dashboard.php";
+    $forum_path = "forum.php";
 
 
 
