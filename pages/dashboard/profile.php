@@ -137,6 +137,7 @@ $id = htmlspecialchars($_SESSION["id"]);
                                     <h6 class="card-title d-flex justify-content-center fw-bolder">codeX</h6>
                                     <p class="card-text mt-4 d-flex justify-content-center">Basics of HTML5</p>
                                     <div class="d-flex justify-content-center"><hr style="width: 250px; height: 8px; color: blue;" class="d-flex justify-content-center"></div>
+                                    <p class="card-text d-flex justify-content-center">WEB LANGUAGE</p>
 
                                 </div>
                             </div>
