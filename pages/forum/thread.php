@@ -6,6 +6,9 @@ session_start();
 // Include config file
 require_once "../../database/config.php";
 
+
+use google\appengine\api\cloud_storage\CloudStorageTools;
+
 ?>
 
 <!DOCTYPE html>
@@ -142,6 +145,9 @@ require_once "../../database/config.php";
                   ?>
 
                   <?php
+
+                  $email = "";
+
                   $id = $_GET['threadid'];
                   $sql = "SELECT * FROM `forum_comments` WHERE thread_id=$id";
                   $result = $db->query($sql);
@@ -152,9 +158,20 @@ require_once "../../database/config.php";
                       $comment_time = $date ;
                       $comment_by = $row['comment_by'];
 
+                      $select_stmt = $db->prepare("Select * FROM users WHERE username=:uname OR email=:uemail");
+                      $select_stmt->execute(array(':uname'=>$name, ':uemail'=>$email));
+                      $row2 = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+                      // Image
+                      $bucket = 'codex-bu.appspot.com'; // your bucket name
+                      $image = $row2["file_name"];
+
+                      $image_file = "gs://" . $bucket . "/" . $image;
+                      $image_url = CloudStorageTools::getImageServingUrl($image_file);
+
                       echo '
                             <div class="d-flex mb-4">
-                      <div class="flex-shrink-0"><img class="rounded-circle" src="../../assets/img/avatars/default_avatar.png" width="40px" alt="Generic placeholder image" /></div>
+                      <div class="flex-shrink-0"><img class="rounded-circle" src="'.$image_url.'" width="40px" alt="Generic placeholder image" /></div>
                       <div class="ms-3">
                           <div class="fw-bold">'.$comment_by.' | '.$comment_time.'</div>
                           ' . $content . '
