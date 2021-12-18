@@ -49,7 +49,7 @@ use google\appengine\api\cloud_storage\CloudStorageTools;
   <!-- Navbar -->
   <?php
   // Paths
-  $navbar_path = "../../index.php";
+  $navbar_path = "../dashboard.php";
   $profile_path = "profile.php";
   $settings_path = "";
   $activity_path = "";
