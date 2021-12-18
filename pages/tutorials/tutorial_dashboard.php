@@ -107,7 +107,7 @@ session_start();
                             <div class="card-body">
                                 <h2 class="card-title h4">Python</h2>
                                 <p class="card-text">An interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with its use of significant indentation. </p>
-                                <a class="btn btn-primary" href="#!">Explore</a>
+                                <a class="btn btn-primary" href="python/python_dashboard.php">Explore</a>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ session_start();
                             <div class="card-body">
                                 <h2 class="card-title h4">HTML5</h2>
                                 <p class="card-text">The HyperText Markup Language is the standard markup language for documents designed to be displayed in a web browser.</p>
-                                <a class="btn btn-primary" href="c_lecture1.php">Explore</a>
+                                <a class="btn btn-primary" href="html/html_dashboard.php">Explore</a>
                             </div>
                         </div>
                     </div>
