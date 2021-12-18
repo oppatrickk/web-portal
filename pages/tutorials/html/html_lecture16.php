@@ -47,7 +47,7 @@
         </ul>
         <p>
             <h5>Example-</h5>
-        </p>
+        </div>
         <ul>
             <p>First lets consider an example of HTML document whish make use of "font" tag and associated attributes to specify text color and font size.</p>
             <blockquote>Note - Thye font tag deprecated and it is supposed to be removed in a future version of HTML. So they should not be used rather, it's suggested to use CSS styles to manipulate your fonts. But still for learning purpose, this chapter will work
