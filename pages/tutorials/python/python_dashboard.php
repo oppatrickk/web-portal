@@ -91,7 +91,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 0</h2>
                             <h2 class="card-title h2 mb-3 ">Introduction to Python</h2>
-                            <a class="btn btn-primary" href="intro.php">Start</a>
+                            <a class="btn btn-primary" href="Intro.php">Start</a>
                         </div>
                     </div>
                 </div>
