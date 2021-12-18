@@ -112,7 +112,6 @@ $id = htmlspecialchars($_SESSION["id"]);
                 <div class="px-5">
                     <h1 class="mt-5 mb-4">Your Badges</h1>
                     <?php ?>
-                    <p> You currently do not have any badges</p>
                 </div>
 
                 <!-- Card -->
@@ -149,7 +148,7 @@ $id = htmlspecialchars($_SESSION["id"]);
 
                 <a href="certificate_c.php" class="btn btn-outline">View Certificate</a>
 
-                
+
 
             </div>
         </div>
