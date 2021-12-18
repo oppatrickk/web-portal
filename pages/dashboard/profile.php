@@ -60,6 +60,7 @@ $id = htmlspecialchars($_SESSION["id"]);
     $tutorials_path = "../tutorials/tutorial_dashboard.php";
     $forums_path = "../forum/forum.php";
     $logo_path = "../../assets/logo2.png";
+    $challenges_path = "../challenges_dashboard.php";
 
     include '../../widgets/navbar.php';
 
