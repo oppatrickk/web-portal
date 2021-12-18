@@ -91,7 +91,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 0</h2>
                             <h2 class="card-title h2 mb-3 ">Introduction to Python</h2>
-                            <a class="btn btn-primary" href="intro.html">Start</a>
+                            <a class="btn btn-primary" href="intro.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 1</h2>
                             <h2 class="card-title h2 mb-3 ">Syntax</h2>
-                            <a class="btn btn-primary" href="Lec1.html">Start</a>
+                            <a class="btn btn-primary" href="Lec1.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 2</h2>
                             <h2 class="card-title h2 mb-3 ">Comments</h2>
-                            <a class="btn btn-primary" href="Lec2.html">Start</a>
+                            <a class="btn btn-primary" href="Lec2.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 3</h2>
                             <h2 class="card-title h2 mb-3 ">Variables</h2>
-                            <a class="btn btn-primary" href="Lec3.html">Start</a>
+                            <a class="btn btn-primary" href="Lec3.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 4</h2>
                             <h2 class="card-title h2 mb-3 ">Data Types</h2>
-                            <a class="btn btn-primary" href="Lec4.html">Start</a>
+                            <a class="btn btn-primary" href="Lec4.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 5</h2>
                             <h2 class="card-title h2 mb-3 ">Numbers</h2>
-                            <a class="btn btn-primary" href="Lec5.html">Start</a>
+                            <a class="btn btn-primary" href="Lec5.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 6</h2>
                             <h2 class="card-title h2 mb-3 ">Strings</h2>
-                            <a class="btn btn-primary" href="Lec6.html">Start</a>
+                            <a class="btn btn-primary" href="Lec6.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 7</h2>
                             <h2 class="card-title h2 mb-3 ">Booleans</h2>
-                            <a class="btn btn-primary" href="Lec7.html">Start</a>
+                            <a class="btn btn-primary" href="Lec7.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 8</h2>
                             <h2 class="card-title h2 mb-3 ">Operators</h2>
-                            <a class="btn btn-primary" href="Lec8.html">Start</a>
+                            <a class="btn btn-primary" href="Lec8.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 9</h2>
                             <h2 class="card-title h2 mb-3 ">Sets</h2>
-                            <a class="btn btn-primary" href="Lec9.html">Start</a>
+                            <a class="btn btn-primary" href="Lec9.php">Start</a>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@ session_start();
                         <div class="card-body">
                             <h2 class="card-text h6 text-black-50">Lecture 10</h2>
                             <h2 class="card-title h2 mb-3 ">If..Else</h2>
-                            <a class="btn btn-primary" href="Lec10.html">Start</a>
+                            <a class="btn btn-primary" href="Lec10.php">Start</a>
                         </div>
                     </div>
                 </div>
