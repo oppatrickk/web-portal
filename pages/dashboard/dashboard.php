@@ -88,6 +88,11 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
 
 
             <div class="col-md-12">
+                <h1>Available Tracks</h1>
+                <a href="../tutorials/c/c_dashboard.php"><img src="../../assets/img/index/logo_c.png" alt="Language logo" class="img-fluid m-5" class="img-responsive" width="25%"></a>
+                <a href="../tutorials/python/python_dashboard.php"><img src="../../assets/img/index/logo_python.svg" alt="Language logo" class="img-fluid m-5" class="img-responsive" width="25%"></a>
+                <a href="../tutorials/html/html_dashboard.php"><img src="../../assets/img/index/logo_html5.png" alt="Language logo" class="img-fluid m-5" class="img-responsive" width="25%"></a>
+                <a href="../tutorials/tutorial_dashboard.php"><img src="../../assets/img/index/logo_css3.png" alt="Language logo" class="img-fluid m-5" class="img-responsive" width="18%"></a>
 
                 <!--Community Section-->
 
@@ -151,14 +156,14 @@ if(!isset($_SESSION["user_login"]) || $_SESSION["user_login"] !== true){
                 <div class="col-md-5">
                     <h1>Quizzes</h1>
                     <p>Assess yourself on how wide is your current knowledge on the programming language you have chosen. This way you can choose to start on something you might have difficulties.</p>
-                    <a class="btn btn-primary" href="#" role="button">Start now!</a>
+                    <a class="btn btn-primary" href="../tutorials/tutorial_dashboard.php" role="button">Start now!</a>
                 </div>
                 <div class="col-md-6"><img src="../../assets/img/dashboard/Online research_Flatline.svg" alt=""></div>
                 <div class="col-md-6"><img src="../../assets/img/dashboard/Team presentation _Flatline.svg" alt=""></div>
                 <div class="col-md-5">
-                    <h1>Exercises</h1>
+                    <h1>Challenges</h1>
                     <p>Try and give it a shot on some of our example Exercises that we have provided that can help you give some hints and tips on the programming track you have chosen.</p>
-                    <a class="btn btn-primary" href="#" role="button">Start now!</a>
+                    <a class="btn btn-primary" href="../challenges/challenges_dashboard.php" role="button">Start now!</a>
                 </div>
             </div>
         </div>
